@@ -55,22 +55,29 @@ router.get('/msgDetail/:id', function(req, res){
       console.log(error);
       console.log('msgDetail select 쿼리문 에러');
     }
-    else{
+    else if(req.session.authId){
       console.log('msgDetail select 쿼리문 성공');
-      conn.query(update_sql, [1, parseInt(id), req.session.authId], function(error, rows){
-        if(error){
-          console.log(error);
+      conn.query(update_sql, [1, parseInt(id), req.session.authId], function(err, rows){
+        if(err){
+          console.log(err);
           console.log('update sql 쿼리문 실패');
         }
         else{
           console.log('update sql 쿼리문 성공');
           res.render('msg_detail', {
+            user: req.session.authId,
             title: results[0].title,
             date: results[0].date,
             post_name: results[0].post_name,
             contents: results[0].contents,
           });
         }
+      });
+    }
+    else{
+      console.log('update sql 쿼리문 성공 else');
+      res.render('msg_detail', {
+        user: undefined,
       });
     }
   });
