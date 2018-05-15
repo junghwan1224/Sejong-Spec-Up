@@ -69,13 +69,8 @@
     <div>보낸이&nbsp;&nbsp;제목&nbsp;&nbsp;날짜&nbsp;&nbsp;상태</div>
     <hr>
     <div id='msg_list'>
-      <% for(var i=0; i<msgList.length; i++) { %>
-        <% if(! msgList[i].check) { %>
-          <div><%= msgList[i].post_name %>&nbsp;&nbsp;<a href='/msg/msgDetail/<%= msgList[i].id %>'><%= msgList[i].title %></a>&nbsp;&nbsp;<%= msgList[i].date %>&nbsp;&nbsp;읽지 않음</div>
-        <% } else{ %>
-          <div><%= msgList[i].post_name %>&nbsp;&nbsp;<a href='/msg/msgDetail/<%= msgList[i].id %>'><%= msgList[i].title %></a>&nbsp;&nbsp;<%= msgList[i].date %>&nbsp;&nbsp;읽음</div>
-        <% } %>
-      <% } %>
+      <% include ./msg_list %>
     </div>
+    
   </body>
 </html>

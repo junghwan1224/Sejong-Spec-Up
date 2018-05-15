@@ -1,0 +1,7 @@
+<% for(var i=0; i<msgList.length; i++) { %>
+  <% if(! msgList[i].check) { %>
+    <div><%= msgList[i].post_name %>&nbsp;&nbsp;<a href='/msg/msgDetail/<%= msgList[i].id %>'><%= msgList[i].title %></a>&nbsp;&nbsp;<%= msgList[i].date %>&nbsp;&nbsp;읽지 않음</div>
+  <% } else{ %>
+    <div><%= msgList[i].post_name %>&nbsp;&nbsp;<a href='/msg/msgDetail/<%= msgList[i].id %>'><%= msgList[i].title %></a>&nbsp;&nbsp;<%= msgList[i].date %>&nbsp;&nbsp;읽음</div>
+  <% } %>
+<% } %>
