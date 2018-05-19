@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>msg test !!</title>
+  </head>
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <body>
+    <form id='msg_form' method='POST' action=''>
+      <div>
+        보내는이 : <input type='text' name='post_input' id='post_input' value='<%= user %>' disabled/>
+      </div>
+      <div>
+        받는이 : <input type='text' name='recv_input' id='recv_input'/>
+      </div>
+      <div>
+        title : <input type='text' name='msg_title' id='msg_title'/>
+      </div>
+      <div>
+        contents : <input type='text' name='msg_contents' id='msg_contents'/>
+      </div>
+      <input type='submit' id='msg_submit' />
+    </form>
+    <script>
+      $('#msg_form').submit(function(e){
+        e.preventDefault();
+        var now = new Date();
+              function leadingZeros(n, digits){
+                var zero='';
+                n = n.toString();
+                if(n.length < digits){
+                  for(i = 0 ; i < digits - n.length; i++){
+                    zero += '0';
+                  }
+                }
+                return zero + n;
+              }
+        var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
+                        leadingZeros(now.getMonth()+1,2)+'-' +
+                        leadingZeros(now.getDate(),2);
+        var data = {
+          post_user: $('#post_input').val(),
+          recv_user: $('#recv_input').val(),
+          title: $('#msg_title').val(),
+          contents: $('#msg_contents').val(),
+          post_date: post_date,
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "/msg/postMsg",
+          contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+          cache: false,
+          data: data,
+          datatype: "json",
+          success: function(result) {
+            if(result['result']=='success'){
+              alert('전송 성공');
+              location.reload();
+            }
+            else
+              alert('쪽지 전송 실패');
+          },
+        });
+        //console.log($('#post_input').val());
+      });
+    </script>
+    <hr>
+    <div>보낸이&nbsp;&nbsp;제목&nbsp;&nbsp;날짜&nbsp;&nbsp;상태</div>
+    <hr>
+    <div id='msg_list'>
+      <% include ./msg_list %>
+    </div>
+    
+  </body>
+</html>
