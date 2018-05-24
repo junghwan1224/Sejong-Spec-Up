@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="top_Div">
+            <div id="nav_Div">
+                    <div id="logo_Div">
+                        <img src="/images/logo4.png" id="logo_Image" height="100%">
+                    </div>
+                    <div id="user_Input">
+                        <div id="help_Vertical">
+                            <div id="message_Div">
+                                <img id="message_Update" src="/images/message_Icon.png" height="13%" />
+                                <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
+                            </div>
+                            <div>
+                                &nbsp;
+                                <strong>seongjin571</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <div id="bottom_Div">
+
+        <div id="three_button_Div">
+            <div class="three_Button">
+                <div class="top_Part_Button">
+                    <img src="/images/user.png" width="20%" height="auto">
+                </div>
+                <div class="bottom_Part_Button">
+                    MY PAGE
+                </div>
+
+            </div>
+            <div class="three_Button">
+
+                <div class="top_Part_Button">
+                    <img src="/images/graph.png" width="20%" height="auto">
+                </div>
+                <div class="bottom_Part_Button">
+                    Spec 비교
+                </div>
+
+            </div>
+            <div class="three_Button">
+
+                <div class="top_Part_Button">
+                    <img src="/images/users.png" width="20%" height="auto">
+                </div>
+                <div class="bottom_Part_Button">
+                    유저별 Spec
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.three_Button:eq(0)').click(function () {
+            location.href = 'http://34.219.126.51:3000/mypage';
+        })
+        setInterval(function () {
+                var blink = document.getElementById("message_Update");
+                blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+            }, 500);
+            $('#message_Update').click(function(){
+                $(this).css('display','none');
+                alert('메세지 확인')
+                $('#message').css('display','block');
+            })
+    </script>
+</body>
+
+</html>

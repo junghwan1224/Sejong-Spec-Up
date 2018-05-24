@@ -12,12 +12,11 @@ var options={
   host: 'localhost',
   port: 3306,
   user: 'root',
-  password: '1066223gks',
+  password: '7dnjf29dlf',
   database: 'ssu'
 };
-var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var index = require('./routes/index');
 var app = express();
 
 // view engine setup
@@ -37,9 +36,9 @@ app.use(session({
   store: new MySQLStore(options)
 }));
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/users', users);
-
+// app.use('/', index);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
