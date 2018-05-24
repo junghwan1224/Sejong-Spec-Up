@@ -1,0 +1,32 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    /* background-image: url('login_Back_Image2.png');
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+#nav_Div{
+    width: 100%;
+    height: 9%;
+    background-color: brown;
+    padding: 0.5%;
+}
+#body_container{
+    margin-top: 3%;
+   
+}
+input{
+    width: 100%;
+}
+#logo_Image{
+    cursor: pointer;
+}
+.container h1{
+    margin-bottom: 2%;
+}
+.col-sm-6{
+    margin: auto;
+}
+#join_Button{
+    margin-bottom: 3%;
+}
