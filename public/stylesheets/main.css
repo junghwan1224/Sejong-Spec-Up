@@ -1,0 +1,168 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('/images/main_Page_Image1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: none;
+    margin: 0;
+    padding: 0;
+}
+#nav_Div{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    background-color:brown;
+}
+#logo_Image{
+    margin-left: 3%;
+    cursor: pointer;
+}
+#user_Input{
+    color:white;
+    font-size: 25px;
+}
+#help_Vertical{
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+#help_Vertical div{
+    display: table-cell;
+    vertical-align: middle;
+}
+#help_Vertical img{
+    display: table-cell;
+    vertical-align: middle;
+    margin-right: 5%;
+    width: auto;
+}
+#logo_Div{
+    width: 75%;
+}
+#user_Input img{
+    margin-left: 10%;
+}
+#user_Input{
+    color:white;
+    height: 100%;
+    font-size: 25px;
+}
+#message_Div{
+    cursor: pointer;
+}
+#top_Div{
+    width: 100%;
+    height:45%;
+}
+#bottom_Div{
+    width: 100%;
+    height:55%;
+}
+#three_button_Div{
+    display: flex;
+    width: 96%;
+    height: 85%;
+    margin-left: 2%;
+}
+.three_Button{
+    width: 33.5%;
+    height: 100%;
+    margin-left: 0.2%;
+    background-color: black;
+    opacity:0.5;
+}
+.top_Part_Button{
+    width: 100%;
+    height:60%;
+}
+.top_Part_Button img{
+margin-left: 40%;
+margin-top: 20%;
+}
+.bottom_Part_Button{
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 40%;
+    font-size: 25px;
+}
+.three_Button:nth-child(1):hover{
+    cursor: pointer;
+    background-color:purple;
+}
+.three_Button:nth-child(2):hover{
+    cursor: pointer;
+    background-color:orangered;
+}
+.three_Button:nth-child(3):hover{
+    cursor: pointer;
+    background-color:green;
+}
+@media only screen and (max-width: 766px) and (min-width: 300px)  {
+    #logo_Div{
+        width: 60%;
+    }
+}
+@media screen and (orientation: portrait) {
+    body{
+        width: 100%;
+        height: 100%;
+        background-image: url('/images/main_Page_Image_Mobile.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    #nav_Div{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-color:brown;
+    }
+    #three_button_Div{
+        display: block;
+        height: 100%;
+        width: 100%;
+        margin-left: 0;
+    }
+    .three_Button{
+        width: 100%;
+        height: 33.33%;
+        margin: 0;
+    }
+    #top_Div{
+        width: 100%;
+        height:9%;
+    }
+    #bottom_Div{
+        width: 100%;
+        height:91%;
+    }
+    .top_Part_Button img{
+        margin-top: 4.7%;
+        }
+        #logo_Image{
+            margin: auto;
+            height: 80%;
+        }
+        .three_Button:nth-child(1),.three_Button:nth-child(2){
+            border-bottom-color: gray;
+            border-bottom-style: solid;
+        }
+        strong{
+            font-size: 17px;
+        }
+        #logo_Div{
+            width: 50%;
+        }
+  }
+@media only screen and (max-width: 1025px) and (min-width: 767px)  {
+
+        #logo_Div{
+            width: 70%;
+        }
+        strong{
+            font-size: 25px;
+        }
+}
