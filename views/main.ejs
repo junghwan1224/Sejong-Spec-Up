@@ -67,7 +67,7 @@
     </div>
     <script>
         $('.three_Button:eq(0)').click(function () {
-            location.href = 'http://34.219.126.51:3000/mypage';
+            $(window).attr('location','/mypage');
         })
         setInterval(function () {
                 var blink = document.getElementById("message_Update");
@@ -75,7 +75,7 @@
             }, 500);
             $('#message_Update').click(function(){
                 $(this).css('display','none');
-                alert('메세지 확인')
+                alert('메세지 확인');
                 $('#message').css('display','block');
             })
     </script>

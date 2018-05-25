@@ -68,9 +68,9 @@ setInterval(function () {
 }, 500);
 $('#message_Update').click(function(){
     $(this).css('display','none');
-    alert('메세지 확인')
+    alert('메세지 확인');
     $('#message').css('display','block');
 })
 $('#logo_Image').click(function(){
-    location.href='http://34.219.126.51:3000/main';
+    $(window).attr('location','/main');
 })
