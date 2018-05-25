@@ -7,7 +7,7 @@ var conn = mysql.createConnection(dbconfig);
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('login', { title: 'loginPage' });
-}); 
+});
 router.get('/main', function(req, res) {
   res.render('main', { title: 'mainPage' });
 });
@@ -33,4 +33,34 @@ router.get('/user', function(req, res) {
   });
 });
 
+router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var id = req.body.id;
+  var password = req.body.password;
+  var major = req.body.major;
+  var student_number = req.body.student_number;
+  var grade = req.body.grade;
+  var score = req.body.score;
+  var toeic = req.body.toeic;
+  var toss = req.body.toss;
+  var opic = req.body.opic;
+  var volunteer = req.body.volunteer;
+  var intern = req.body.intern;
+  var competition = req.body.competition;
+  var aboard = req.body.aboard;
+  var certificate = req.body.certificate;
+  var job_Part = req.body.job_Part;
+
+  var sql = 'insert into `ssu_user` (`id`,`password`,`major`,`student_number`,`grade`,`score`,`toeic`,`toss`,`opic`,`volunteer`,`intern`,`competition`,`aboard`,`certificate`,`job_Part`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);';
+  //입력한 정보를 테이블에 저장하는 쿼리문
+  conn.query(sql,[id,password,major,student_number,grade,score,toeic,toss,opic,volunteer,intern,competition,aboard,certificate,job_Part],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
 module.exports = router;
