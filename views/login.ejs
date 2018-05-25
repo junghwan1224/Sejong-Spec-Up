@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title><%= title %></title>
 
 </head>
-
 <body>
   <div id="top_Div">
       <div id="vertical_Helper">
@@ -43,12 +43,10 @@
                     </table>
                 </div>
       </div>
-      <script>
-          var join =document.getElementById('join_Button');
-          join.onclick=function(){
-              location.href='http://34.219.126.51:3000/join';
-          }
-          </script>
 </body>
-
+<script>
+    $('#join_Button').click(function(){
+      $(window).attr('location','/join');
+    });
+</script>
 </html>
