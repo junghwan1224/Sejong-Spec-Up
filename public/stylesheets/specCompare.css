@@ -1,0 +1,242 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* background-image: url('main_page_Image1.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: none;
+    margin: 0;
+    padding: 0;
+}
+#nav_Div{
+    display: flex;
+    width: 100%;
+    height: 9%;
+    padding: 0.5%;
+    background-color:brown;
+}
+#nav_Div img{
+    cursor: pointer;
+    margin-left: 3%;
+}
+#user_Input{
+    margin-left: 60%;
+    color:white;
+    font-size: 25px;
+    cursor: pointer;
+}
+#help_Vertical{
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+#help_Vertical div{
+    display: table-cell;
+    vertical-align: middle;
+}
+#help_Vertical img{
+    display: table-cell;
+    vertical-align: middle;
+    margin-right: 5%;
+    width: auto;
+}
+#user_Input img{
+    margin-left: 10%;
+}
+/* #top_Div{
+    width: 100%;
+    height:45%;
+} */
+#body_div{
+  background-image: url('back.png');
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#field{
+  text-align: center;
+  padding-top: 1%;
+  width: 30%;
+  height: 10%;
+  margin: 0 auto;
+}
+#field_title{
+  display: block;
+  color: white;
+  font-size: 20px;
+}
+#field_field{
+  display: block;
+  border-style: dashed;
+  width: 60%;
+  height: 60%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 4%;
+}
+#field_change{
+  display: block;
+    margin-left: 80%;
+    width: 40%;
+    margin-top: -10%;
+}
+#boxes{
+  display: block;
+  position: relative;
+  width: 95%;
+  height: 100%;
+  margin: 3% auto;
+}
+#avg{
+  display: inline-block;
+  border-color: tomato;
+  border-style: solid;
+  /* position: relative; */
+  margin-left: 30%;
+  width: 40%;
+  height: 66%;
+  text-align: center;
+  /* transition: all 0.5s; */
+}
+.spec{
+  display: grid;
+width: 63%;
+height: 55%;
+border-color: tomato;
+border-style: solid;
+margin: 1%;
+cursor: pointer;
+}
+#spec_grid{
+  display: grid;
+grid-template-columns: 30% 30% 30%;
+grid-template-rows: 30% 30% 30%;
+grid-row-gap: 3%;
+width: 100%;
+height: 100%;
+margin-left: 9%;
+margin-top: 8%;
+}
+#spec_div{
+  margin-top: -10%;
+}
+.spec_title {
+    display: block;
+    margin-top: -25%;
+    text-align: center;
+}
+#graph_div{
+  display: none;
+position: absolute;
+border-color: tomato;
+border-style: solid;
+width: 55%;
+height: 66%;
+margin-left: 3%;
+text-align: center;
+}
+#graph{
+  width: 97%;
+    height: 73%;
+    margin: 0 auto;
+    margin-top: 8%;
+}
+canvas{
+  width: 40%;
+  height: 30%;
+}
+/* canvas는 max-width:100%;하면된대~~ */
+
+@media screen and (orientation: portrait) {
+    body{
+        width: 100%;
+        height: 100%;
+        background-image: url('back.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: auto;
+    }
+    #body_div{
+      height: 100%;
+      background: none;
+    }
+    #nav_Div{
+        display: flex;
+        width: 100%;
+        height:6%;
+        padding: 0.5%;
+        background-color:brown;
+    }
+    #logo_Image{
+      height: 15%;
+    }
+    #top_Div{
+        width: 100%;
+        height:7%;
+    }
+    #bottom_Div{
+        width: 100%;
+        height:93%;
+    }
+        #user_Input{
+            display: none;
+        }
+        #logo_Image{
+            margin: auto;
+            height: 80%;
+        }
+        #field{
+          width: 90%;
+        }
+        #field_title{
+          font-size: 15px;
+        }
+        #field_field{
+          width: 60%;
+          height: 40%;
+          padding-top: 2%;
+          margin-top: 1%;
+        }
+        #boxes{
+          display: block;
+          margin-top: 10%;
+          margin-right: 3%;
+          width: 95%;
+          height: 90%;
+        }
+        #avg{
+          display: block;
+          width: 100%;
+          height: 60%;
+          margin-left: 0;
+          /* margin-left: 0 !important; */
+        }
+        #spec_grid{
+          height: 90%;
+          width: 110%;
+          margin-left: 6%;
+          margin-top: 14%;
+        }
+        .spec_title{
+          margin-top: -30%;
+        }
+        #graph_div{
+          width: 100%;
+          height: 60%;
+          margin-left: 0;
+          margin-top: 3%;
+        }
+        #graph{
+          margin-top:20%;
+        }
+        #top_rank{
+          display: block;
+          width: 90%;
+        }
+        #bottom_rank{
+          display: block;
+          width: 90%;
+        }
+
+  }
