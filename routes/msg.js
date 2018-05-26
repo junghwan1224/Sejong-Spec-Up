@@ -15,7 +15,8 @@ var conn = mysql.createConnection(dbconfig);
 // });
 
 router.get('/', function(req, res, next) {
-  var sql = 'select * from msg where recv_name=?';
+  var sql = 'select * from msg where recv_name=?;';
+  var new_msgSql = 'select * from msg_new where recv_name=?;';
   if(req.session.authId){
     conn.query(sql, [req.session.authId], function(error, results){
       if(error){
@@ -23,10 +24,24 @@ router.get('/', function(req, res, next) {
         console.log('쪽지 리스트 나열 실패');
       }
       else{
-        res.render('msg_test',{
-          user: req.session.authId,
-          msgList: results
+        conn.query(new_msgSql, [req.session.authId], function(err, rows){
+          if(err){
+            console.log(err);
+            console.log('msg new error');
+          }
+          else{
+            console.log('msg new sccess');
+            res.render('msg_test',{
+              user: req.session.authId,
+              msgList: results,
+              new_msg: rows[0],
+            });
+          }
         });
+        // res.render('msg_test',{
+        //   user: req.session.authId,
+        //   msgList: results
+        // });
       }
     });
   }
@@ -51,6 +66,34 @@ router.post('/postMsg', function(req, res){
     else{
       console.log('쪽지 전송 성공');
       res.send({result: 'success'});
+    }
+  });
+});
+
+router.get('/msgList', function(req, res){
+  var sql = 'select * from msg where recv_name=?;';
+  var new_msgSql = 'delete from msg_new where recv_name=?;';
+  conn.query(sql, [req.session.authId], function(error, results){
+    if(error){
+      console.log(error);
+      console.log('메세지 리스트 나열 실패');
+    }
+    else{
+      conn.query(new_msgSql, [req.session.authId], function(err, rows){
+        if(err){
+          console.log(err);
+          console.log('msg new delete failed');
+        }
+        else{
+          console.log('msg new delete success');
+          res.render('msg_list', {
+            msgList: results,
+          });
+        }
+      });
+      // res.render('msg_list', {
+      //   msgList: results,
+      // });
     }
   });
 });
