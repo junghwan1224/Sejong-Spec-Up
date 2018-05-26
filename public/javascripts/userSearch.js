@@ -11,7 +11,9 @@ function addStudentList(i, name, major) { //인덱스, 성명, 학과
     listParent.innerHTML = html;
     document.getElementById('std_list_parent').appendChild(listParent);
 }
-
+$('#logo_Image').click(function(){
+    $(window).attr('location','/main');
+})
 function studentListOnClick(index) { //학생 리스트 클릭시 인덱스로 식별
     alert("student_" + index);
 }
