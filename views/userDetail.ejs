@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>User Detail</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/userDetail.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="/javascripts/scripts.js"></script>
 </head>
+
 <body>
-    <div><h1 style="color: white;">Header</h1></div> <!-- 헤더 부분 -->
+    <div id="nav_Div">
+        <div id="logo_Div">
+            <img src="/images/logo4.png" id="logo_Image" height="100%">
+        </div>
+        <div id="user_Input">
+            <div id="help_Vertical">
+                <div id="message_Div">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
+                    <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
+                </div>
+                <div>
+                    &nbsp;
+                    <strong>seongjin571</strong>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="article_div">
-        <div class="user_div">    
+        <div class="user_div">
+            
             <div class="container-fluid">
                 <div class="row">
-                   <div class="col-xs-0 col-sm-4 col-md-4 col-lg-4">
-                       <div>
-                       </div>
+                    <div class="col-xs-0 col-sm-4 col-md-4 col-lg-4">
+                        <div>
+                        </div>
                     </div>
                     <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                         <div style="display: flex;">
                             <h3 style="margin-left: auto;margin-right: auto;padding-left: 8px;color: rgb(255, 255, 255);">
-                                <div class="send_msg_btn" title="메시지 전송하기" onclick="alert('메시지 전송')"> <!-- 메시지 전송 버튼 -->
-                                    <img src="images/message_light.png" class="send_msg_btn_img" alt="">
+                                <div class="send_msg_btn" title="메시지 전송하기" onclick="alert('메시지 전송')">
+                                    <!-- 메시지 전송 버튼 -->
+                                    <img src="/images/message_light.png" class="send_msg_btn_img" alt="">
                                 </div>
-                                최세인 <!-- 사용자 이름 -->
+                                최세인
+                                <!-- 사용자 이름 -->
                             </h3>
                         </div>
                     </div>
@@ -47,71 +68,75 @@
         </div>
 
         <div class="container-fluid curtain">
+            
             <div class="row">
+                
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 tile_section">
                     <div class="container-fluid" style="padding-top: 16px;">
+
                         <div class="row">
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="학점">
-                                    <div class="tile_title">학점  </div>
+                                    <div class="tile_title">학점 </div>
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="토익">
-                                    <div class="tile_title">토익  </div>
+                                    <div class="tile_title">토익 </div>
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
                                     <div class="tile_value">700</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="토익스피킹">
-                                    <div class="tile_title">토스  </div>
+                                    <div class="tile_title">토스 </div>
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="오픽">
-                                    <div class="tile_title">오픽  </div>
+                                    <div class="tile_title">오픽 </div>
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="봉사 활동">
-                                    <div class="tile_title">봉사  </div>
+                                    <div class="tile_title">봉사 </div>
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="인턴쉽">
-                                    <div class="tile_title">인턴  </div>
+                                    <div class="tile_title">인턴 </div>
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="공모전">
                                     <div class="tile_title">공모전 </div>
                                     <div class="divider_h_o2">
@@ -120,8 +145,8 @@
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="해외 경험">
                                     <div class="tile_title">해외경험</div>
                                     <div class="divider_h_o2">
@@ -130,8 +155,8 @@
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
-            
-                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                 <div class="tile" title="자격증">
                                     <div class="tile_title">자격증 </div>
                                     <div class="divider_h_o2">
@@ -140,12 +165,70 @@
                                     <div class="tile_value">3.5</div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
 
+                <div class="container">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 apply_section">
-                    <div class="apply_list_div">
+                   
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="date">날짜</th>
+                                <th class="content">내용</th>
+                                <th class="result">결과</th>
+                            </tr>
+                        </thead>
+                        <tbody id="upload_Table">
+                            <tr>
+                                <td>
+                                   18/6/24
+                                </td>
+                                <td>
+                                   카카오 SW기획 파트 인턴 서류 전형
+                                </td>
+                                <td>
+                                   불합격
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    18/7/12
+                                </td>
+                                <td>
+                                   네이버 개발파트(웹 프런트) 신입 정규직 서류
+                                </td>
+                                <td>
+                                   합격
+                                </td>
+                                <tr>
+                                    <td>
+                                     18/7/7
+                                    </td>
+                                    <td>
+                                        삼성 SDS SW개발파트 신입 정규직 서류
+                                    </td>
+                                    <td>
+                                     합격
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      18/7/15
+                                    </td>
+                                    <td>
+                                      삼성 SDS SW개발파트 신입 정규직 1차 면접(알고리즘)
+                                    </td>
+                                    <td>
+                                   대기중
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <!-- <div class="apply_list_div">
                         <div class="container-fluid apply_list_header">
                             <div class="row">
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -155,31 +238,29 @@
                                     <p class="apply_list_header_p">내용</p>
                                 </div>
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                    <p class="apply_list_header_p">합불</p>
+                                    <p class="apply_list_header_p">결과</p>
                                 </div>
                             </div>
                         </div>
 
                         <div id="aply_list_parent">
-                            <!--데이터베이스에서 받아온 정보를 배열로 저장하고
-                                addApplyList(); 함수로 배열값을 넘김
-                           
-                            /**************************예제*****************************/
+                            데이터베이스에서 받아온 정보를 배열로 저장하고 addApplyList(); 함수로 배열값을 넘김 /**************************예제*****************************/
                             <script>
-                                var 지원날짜 = ["18.03.02","18.03.10", "18.04.01","18.05.13","18.05.19"];
-                                var 지원내용 = ["회사A 업무1 공개채용", "회사B 업무3 인턴", 
-                                "회사C 업무2 공개채용", "회사D 업무4 인턴", "회사E 업무5 인턴"];
+                                var 지원날짜 = ["18.03.02", "18.03.10", "18.04.01", "18.05.13", "18.05.19"];
+                                var 지원내용 = ["회사A 업무1 공개채용", "회사B 업무3 인턴",
+                                    "회사C 업무2 공개채용", "회사D 업무4 인턴", "회사E 업무5 인턴"];
                                 var 합격여부 = ["불합", "불합", "대기", "합격", "대기"];
 
                                 addApplyList(지원날짜, 지원내용, 합격여부);
-                            </script>
-                            /***********************************************************/
-                        -->
+                            </script> /***********************************************************/
+
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
+    <script src="/javascripts/userDetail.js"></script>
 </body>
+
 </html>
