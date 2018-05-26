@@ -1,22 +1,65 @@
-body {
+body,html{
     width: 100%;
     height: 100%;
-    background: url('images/schback.jpg') no-repeat center center fixed;
+    background: url('/images/schback.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     margin: 0;
     padding: 0;
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.article_div {
-    width: 80%;
-    max-width: 889px;
+#logo_Image{
+    margin-left: 3%;
+    cursor: pointer;
+}
+#nav_Div{
+    display: flex;
+    width: 100%;
+    height: 9%;
+    background-color: brown;
+}
+#logo_Div{
+    width: 75%;
+}
+.article_div{
+    margin-top: 5%;
+}
+#user_Input{
+    color:white;
     height: 100%;
+    font-size: 25px;
+}
+#message_Div{
+    cursor: pointer;
+}
+
+#help_Vertical{
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+#help_Vertical div{
+    display: table-cell;
+    vertical-align: middle;
+}
+#help_Vertical img{
+    display: table-cell;
+    vertical-align: middle;
+    margin-right: 5%;
+    width: auto;
+}
+#user_Input img{
+    margin-left: 10%;
+}
+.article_div {
+    width: 70%;
+    /* max-width: 889px; */
+    margin-left: 15%;
+    /* height: 100%; */
     background-color: rgba(0, 0, 0, .66);
     border: 2px solid grey;
     border-radius: 6px;
@@ -26,10 +69,14 @@ body {
     align-items: center;
     position: relative;
 }
+.search_button{
+    cursor: pointer;
+}
 
 @media (max-width: 768px) {
     .article_div {
         width: 100%;
+        margin-left: 0;
     }
 }
 
@@ -152,6 +199,30 @@ body {
         width: 55%;
     }
 }
+@media only screen and (max-width: 766px) and (min-width: 300px)  {
+  
+    #logo_Div{
+        width: 60%;
+    }
+   
+}
+@media screen and (orientation: portrait) {
+    strong{
+        font-size: 17px;
+    }
+    #logo_Div{
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 1025px) and (min-width: 767px)  {
+        #logo_Div{
+            width: 70%;
+        }
+        strong{
+            font-size: 25px;
+        }
+}
+
 
 @keyframes SearchBtnHover {
     0% {

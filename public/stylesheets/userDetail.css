@@ -1,0 +1,329 @@
+body {
+    width: 100%;
+    height: 100%;
+    background: url('/images/schback.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article_div {
+    width: 90%;
+    max-width: 1280px;
+    height: 100%;
+    min-height: 560px;
+    margin-top: 4%;
+    background-color: rgba(0, 0, 0, .66);
+    border: 2px solid grey;
+    border-radius: 6px;
+    padding: 0px 14px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+@media (max-width: 448px) {
+    .article_div {
+        padding: 0;
+    }
+    .apply_list_div {
+        padding: 0;
+    }
+}
+@media (min-width: 449px) {
+    .apply_list_div {
+       padding: 0 16px 0 16px;
+    }
+}
+
+
+@media (max-width: 820px) {
+    .article_div {
+        width: 100%;
+    }
+    .apply_list_div {
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .tile_section {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .apply_list_div {
+        margin-left: -15px;
+        margin-right: -15px;
+        border-radius: 0;
+    }
+    .divider_h_o2 {
+        height: 70%;
+        padding-top: 10px;
+    }
+    .divider_h_i2 {
+        border-top: 0;
+        border-left: 1px solid #aaaaaabe;
+        height: 70%;
+        width: 0;
+    }
+    .tile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .tile_title {
+        margin-right: auto;
+        margin-left: auto;
+        padding-top: 0;
+    }
+    .tile_value {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .apply_list_div {
+        min-width: 320px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    .divider_h_i2 {
+        border-top: 1px solid #aaaaaabe; 
+        margin-top: 0px; 
+        width: 70%;
+    }
+    .tile_title {
+        padding-top: 14px;
+    }
+    .tile_value {
+        padding-top: 6px
+    }
+}
+
+.user_div {
+    padding: 10px 0 0 2px;
+    width: 100%;
+}
+
+.send_msg_btn {
+    position: absolute;
+    opacity: .66;
+    transition: opacity .2s;
+}
+
+.send_msg_btn:hover {
+    opacity: 1;
+}
+
+.send_msg_btn_img {
+    width: 36px;
+    margin-top: -6px;
+    margin-left: -46px;
+    cursor: pointer;
+}
+
+.tile {
+    width: 100%;
+    height: 100px;
+    border: 2px solid #d32f2f;
+    border-radius: 6px;
+    background-color: rgba(64,64,64,.72);
+    margin-bottom: 30px;
+    animation: BtnOut .2s forwards;
+}
+
+.tile:hover {
+    width: 100%;
+    height: 100px;
+    border: 2px solid #d32f2f;
+    border-radius: 6px;
+    background-color: rgba(64,64,64,.72);
+    margin-bottom: 30px;
+    animation: BtnOver .2s forwards;
+}
+
+@keyframes BtnOver {
+    0% {
+        background-color: rgba(64,64,64,.72);
+        box-shadow: none;
+    }
+    100% {
+        background-color: rgba(64, 64, 64, 1);
+        box-shadow: 6px 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+@keyframes BtnOut {
+    100% {
+        background-color: rgba(64,64,64,.72);
+        box-shadow: none;
+    }
+    0% {
+        background-color: rgba(64, 64, 64, 1);
+        box-shadow: 6px 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+.tile_title {
+    display: flex;
+    color: #efefef;
+    font-size: 24px;
+    justify-content: center;
+}
+
+.tile_value {
+    color: #dbdbdb;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+.tile_section {
+    margin-top: 20px;
+    background-color: rgba(64, 64, 64, .66);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.apply_section {
+    margin-top: 20px;
+    margin-left: 0px;
+}
+
+.apply_list_div {
+    margin-top: 2px;
+    border-top: 2px solid #d32f2f;
+    border-bottom: 3px solid #9a0007;
+    border-left: 1px solid #707070;
+    border-right: 1px solid #707070;
+    box-sizing: border-box;
+    background-color: rgba(32, 32, 32, .72);
+    height: 406px;
+}
+
+@keyframes divExpander {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(98%);
+    }
+}
+
+.divider_h_o1 {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: divExpander .3s ease-in;
+}
+
+.divider_h_i1 {
+    border-top: 1px solid #aaaaaabe;
+    margin-top: 12px;
+    width: 98%;
+}
+
+.divider_h_o2 {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+.divider_h_i2 {
+    margin-top: 0px; 
+}
+
+.curtain {
+    opacity: 0;
+    animation: contentExpander 0.5s forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes contentExpander {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.apply_list_header {
+    border-bottom: 2px solid #707070;
+    box-shadow: 0px 3px 20px 0px #000000;
+}
+
+.apply_list_header_p {
+    color: #efefef;
+    font-weight: 500;
+    font-size: 14px;
+    padding-top: 6px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#aply_list_parent {
+    max-height: 370px;
+    overflow-y: auto;
+}
+
+.aply_list {
+    padding: 0px;
+}
+
+.aply_list_item {
+    border-bottom: 1px solid grey;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 37px;
+    margin: 0;
+    overflow: auto;
+    animation: ApplyListOut .2s forwards;
+    cursor: pointer;
+}
+
+.aply_list_item :hover {
+    animation: ApplyListHover .2s forwards;
+}
+
+.apply_list_item_header_p {
+    color: #efefef;
+    font-weight: 400;
+    font-size: 12px;
+    padding-top: 10px;
+    margin: 0 0 8px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+@keyframes ApplyListHover {
+    0% {
+        background-color: rgba(64, 64, 64, .05);
+        box-shadow: none;
+    }
+    100% {
+        background-color: rgba(64, 64, 64, 1);
+        box-shadow: 6px 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+@keyframes ApplyListOut {
+    100% {
+        background-color: rgba(64, 64, 64, .05);
+        box-shadow: none;
+    }
+    0% {
+        background-color: rgba(64, 64, 64, .7);
+        box-shadow: 6px 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
