@@ -20,6 +20,12 @@ router.get('/mypage', function(req, res) {
 router.get('/userSearch', function(req, res) {
   res.render('userSearch', { title: 'userSearch' });
 });
+router.get('/userDetail', function(req, res) {
+  res.render('userDetail', { title: 'userDetail' });
+});
+router.get('/specCompare', function(req, res) {
+  res.render('specCompare', { title: 'specCompare' });
+});
 
 router.get('/user', function(req, res) {
   var sql = 'select * from ssu_user;';
