@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/userSearch.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="nav_Div">
+        <div id="logo_Div">
+            <img src="/images/logo4.png" id="logo_Image" height="100%">
+        </div>
+        <div id="user_Input">
+            <div id="help_Vertical">
+                <div id="message_Div">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
+                    <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
+                </div>
+                <div>
+                    &nbsp;
+                    <strong>seongjin571</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="article_div">
+
+        <div>
+            <h3 style="color: rgb(187, 187, 187);">소프트웨어/IT 직군 사용자 검색</h3>
+        </div>
+
+        <div class="container-fluid">
+             <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="score" class="control-label form_control_label">학점</label>
+                    <select class="form_control_styler">
+                        <option>무관</option>
+                        <option>2.0이하</option>
+                        <option>2.0~2.5</option>
+                        <option>2.5~3.0</option>
+                        <option>3.0~3.5</option>
+                        <option>3.5~4.0</option>
+                        <option>4.0~4.5</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="toeic" class="control-label form_control_label">토익</label>
+                    <select class="form_control_styler">
+                        <option>무관</option>
+                        <option>700 이하</option>
+                        <option>700~750</option>
+                        <option>750~800</option>
+                        <option>850~900</option>
+                        <option>900~950</option>
+                        <option>950 이상</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="toeic_speaking" class="control-label form_control_label">토스</label>
+                    <select class="form_control_styler">
+                        <option>무관</option>
+                        <option>Lv4 이하</option>
+                        <option>Lv5</option>
+                        <option>Lv6</option>
+                        <option>Lv7</option>
+                        <option>Lv8</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="opic" class="control-label form_control_label">오픽</label>
+                    <select class="form_control_styler">
+                        <option>무관</option>
+                        <option>AL</option>
+                        <option>IH</option>
+                        <option>IM3</option>
+                        <option>IM2</option>
+                        <option>IM1</option>
+                        <option>IL</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="volunteer" class="control-label form_control_label">봉사</label>
+                    <select class="form_control_styler">
+                            <option>무관</option>
+                            <option>0회</option>
+                            <option>1회</option>
+                            <option>2회</option>
+                            <option>3회 이상</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="internship" class="control-label form_control_label">인턴</label>
+                    <select class="form_control_styler">
+                            <option>무관</option>
+                            <option>0회</option>
+                            <option>1회</option>
+                            <option>2회</option>
+                            <option>3회 이상</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="contests" class="control-label form_control_label">공모전</label>
+                    <select class="form_control_styler">
+                            <option>무관</option>
+                            <option>0회</option>
+                            <option>1회</option>
+                            <option>2회</option>
+                            <option>3회 이상</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="overseas" class="control-label form_control_label">해외경험</label>
+                    <select class="form_control_styler">
+                            <option>무관</option>
+                            <option>0회</option>
+                            <option>1회</option>
+                            <option>2회</option>
+                            <option>3회 이상</option>
+                    </select>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <label for="licenses" class="control-label form_control_label">자격증</label>
+                    <select class="form_control_styler">
+                            <option>무관</option>
+                            <option>0개</option>
+                            <option>1개</option>
+                            <option>2개</option>
+                            <option>3개</option>
+                            <option>4개 이상</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 98%; display: flex; flex-direction: column; align-items: center;">
+            <div style="border-top: 1px solid #aaaaaabe; margin-top: 32px; width: 98%;"></div>
+        </div>
+
+        <div class="search_button_div">
+            <div class="search_button" onclick="addStudentList(1,2,3)"> <!-- 검색 버튼 -->
+                <span style="margin-right: 28px;"><img src="images/search.png" alt="검색" style="width: 40px; margin-right: 4px; margin-left: -8px;">검색</span>
+            </div>
+        </div>
+
+        <div style="width: 98%; display: flex; flex-direction: column; align-items: center;">
+            <div style="border-top: 1px solid #aaaaaabe; margin-top: 32px; width: 98%;"></div>
+        </div>
+
+        <div class="result_container">
+            <div style="height: 40px; padding: 0px 24px 0px 24px;">
+                <div style="float: left; width: 40%;">
+                    <span class="form_control_label">성명</span>
+                </div>
+                <div style="float: right; width: 50%;">
+                    <span class="form_control_label">학과</span>
+                </div> 
+            </div>
+            <div class="result_div">
+                <div id="std_list_parent">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/userSearch.js"></script>
+</body>
+</html>
