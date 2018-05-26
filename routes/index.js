@@ -17,6 +17,9 @@ router.get('/join', function(req, res) {
 router.get('/mypage', function(req, res) {
   res.render('mypage', { title: 'myPage' });
 });
+router.get('/userSearch', function(req, res) {
+  res.render('userSearch', { title: 'userSearch' });
+});
 
 router.get('/user', function(req, res) {
   var sql = 'select * from ssu_user;';
