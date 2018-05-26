@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>msg test !!</title>
   </head>
-  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <body>
     <form id='msg_form' method='POST' action=''>
       <div>
@@ -17,7 +18,8 @@
         title : <input type='text' name='msg_title' id='msg_title'/>
       </div>
       <div>
-        contents : <input type='text' name='msg_contents' id='msg_contents'/>
+        contents :
+        <textarea type='text' name='msg_contents' id='msg_contents'></textarea>
       </div>
       <input type='submit' id='msg_submit' />
     </form>
@@ -68,9 +70,26 @@
     <hr>
     <div>보낸이&nbsp;&nbsp;제목&nbsp;&nbsp;날짜&nbsp;&nbsp;상태</div>
     <hr>
+    <% if(new_msg) { %>
+      <div id='new_msg_true' style='display: block;'></div>
+      <div id='new_msg_false' style='display: none;'></div>
+    <% } else{ %>
+      <div id='new_msg_true' style='display: none;'></div>
+      <div id='new_msg_false' style='display: block;'></div>
+    <% } %>
     <div id='msg_list'>
-      <% include ./msg_list %>
+      <!-- <% include ./msg_list %> -->
+      <a href='/msg/msgList'>msg list</a>
     </div>
-    
+    <script type='text/javascript'>
+      $(document).ready(function(){
+        //console.log(document.location);
+
+        // setInterval(function(){
+        //   $('#new_msg_true').load('/views/img_test.ejs #new_msg');
+        //   $('#new_msg_false').load('/views/img_test.ejs #no_new_msg');
+        // },5000);
+      });
+    </script>
   </body>
 </html>
