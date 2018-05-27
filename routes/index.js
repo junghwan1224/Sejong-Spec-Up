@@ -40,11 +40,13 @@ router.get('/mypage', function(req, res) {
   }
 });
 router.get('/userSearch', function(req, res) {
+  console.log(req.session.job_Part + "??");
   if (req.session.authId) {
   res.render('userSearch', {
     user : req.session.authId,
-    title:'userSearch'
-    });
+    title:'userSearch',
+    jobPart:req.session.job_Part,
+  });
   }
   else {
     res.render('userSearch', {
@@ -57,7 +59,8 @@ router.get('/userDetail', function(req, res) {
   if (req.session.authId) {
   res.render('userDetail', {
     user : req.session.authId,
-    title:'userDetail'
+    title:'userDetail',
+    major: req.session.major
     });
   }
   else {
@@ -145,7 +148,8 @@ router.post('/gologin',function(req,res,next){
         res.send({result:'error'});
       } else if(password == user.password){
         req.session.authId = id;
-        req.session.author = user.authorize;
+        req.session.major = user.major;
+        req.session.job_Part = user.want_job;
         req.session.save(function() {
           res.send({result:'success'});
         });
@@ -157,6 +161,8 @@ router.post('/gologin',function(req,res,next){
 });
 router.get('/logout',function(req,res){
   delete req.session.authId;
+  delete req.session.major;
+  delete req.session.job_Part;
   res.redirect('/');
 });
 module.exports = router;
