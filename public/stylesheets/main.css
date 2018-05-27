@@ -101,6 +101,7 @@ margin-top: 20%;
     cursor: pointer;
     background-color:green;
 }
+
 @media only screen and (max-width: 766px) and (min-width: 300px)  {
     #logo_Div{
         width: 60%;
@@ -154,13 +155,13 @@ margin-top: 20%;
             font-size: 17px;
         }
         #logo_Div{
-            width: 50%;
+            width: 42%;
         }
   }
 @media only screen and (max-width: 1025px) and (min-width: 767px)  {
 
         #logo_Div{
-            width: 70%;
+            width: 65%;
         }
         strong{
             font-size: 25px;
