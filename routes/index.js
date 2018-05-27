@@ -18,7 +18,7 @@ router.get('/main', function(req, res) {
   else {
     res.render('main', {
       user: undefined,
-      title:'openyearround'
+      title:'mainPage'
     });
 }
 });
@@ -26,16 +26,60 @@ router.get('/join', function(req, res) {
   res.render('join', { title: 'joinPage' });
 });
 router.get('/mypage', function(req, res) {
-  res.render('mypage', { title: 'myPage' });
+  if (req.session.authId) {
+  res.render('mypage', {
+    user : req.session.authId,
+    title:'myPage'
+    });
+  }
+  else {
+    res.render('mypage', {
+      user: undefined,
+      title:'mypage'
+    });
+  }
 });
 router.get('/userSearch', function(req, res) {
-  res.render('userSearch', { title: 'userSearch' });
+  if (req.session.authId) {
+  res.render('userSearch', {
+    user : req.session.authId,
+    title:'userSearch'
+    });
+  }
+  else {
+    res.render('userSearch', {
+      user: undefined,
+      title:'userSearch'
+    });
+  }
 });
 router.get('/userDetail', function(req, res) {
-  res.render('userDetail', { title: 'userDetail' });
+  if (req.session.authId) {
+  res.render('userDetail', {
+    user : req.session.authId,
+    title:'userDetail'
+    });
+  }
+  else {
+    res.render('userDetail', {
+      user: undefined,
+      title:'userDetail'
+    });
+  }
 });
 router.get('/specCompare', function(req, res) {
-  res.render('specCompare', { title: 'specCompare' });
+  if (req.session.authId) {
+  res.render('specCompare', {
+    user : req.session.authId,
+    title:'specCompare'
+    });
+  }
+  else {
+    res.render('specCompare', {
+      user: undefined,
+      title:'specCompare'
+    });
+  }
 });
 
 router.get('/user', function(req, res) {
