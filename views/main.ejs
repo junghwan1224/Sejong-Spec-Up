@@ -23,17 +23,13 @@
                                 <img id="message_Update" src="/images/message_Icon.png" height="13%" />
                                 <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
                             </div>
-                          <% if (user === undefined){ %>
-                              <div>
-                                  &nbsp;
-                                  <strong style="cursor:pointer">로그인</strong>
-                              </div>
-                          <% } else{ %>
                             <div>
                                 &nbsp;
-                                <strong style="cursor:pointer"> <%= user %></strong>
+                                <strong style="cursor:pointer" onclick="myFunction()"><%= user %></strong>
                             </div>
-                          <% } %>
+                            <div>
+                                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" />
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -91,6 +87,7 @@
                 alert('메세지 확인');
                 $('#message').css('display','block');
             })
+
     </script>
 </body>
 
