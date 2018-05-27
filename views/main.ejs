@@ -28,7 +28,7 @@
                                 <strong style="cursor:pointer" onclick="myFunction()"><%= user %></strong>
                             </div>
                             <div>
-                                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" />
+                                    <img src="/images/logout.png" id="logout"height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
                                 </div>
                         </div>
                     </div>
@@ -87,7 +87,9 @@
                 alert('메세지 확인');
                 $('#message').css('display','block');
             })
-
+$('#logout').click(function(){
+    
+})
     </script>
 </body>
 

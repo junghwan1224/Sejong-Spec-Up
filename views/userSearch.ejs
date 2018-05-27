@@ -24,10 +24,10 @@
                 </div>
                 <div>
                     &nbsp;
-                    <strong>seongjin571</strong>
+                    <strong><%= user %></strong>
                 </div>
                 <div>
-                        <img src="/images/logout.png" height="8%" style="cursor: pointer;" />
+                        <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
                     </div>
             </div>
         </div>
@@ -44,12 +44,12 @@
                     <label for="score" class="control-label form_control_label">학점</label>
                     <select class="form_control_styler">
                         <option>무관</option>
-                        <option>2.0이하</option>
-                        <option>2.0~2.5</option>
-                        <option>2.5~3.0</option>
-                        <option>3.0~3.5</option>
-                        <option>3.5~4.0</option>
-                        <option>4.0~4.5</option>
+                        <option>2.0 이하</option>
+                        <option>2.0 이상</option>
+                        <option>2.5 이상</option>
+                        <option>3.0 이상</option>
+                        <option>3.5 이상</option>
+                        <option>4.0 이상</option>
                     </select>
                 </div>
 
@@ -58,10 +58,10 @@
                     <select class="form_control_styler">
                         <option>무관</option>
                         <option>700 이하</option>
-                        <option>700~750</option>
-                        <option>750~800</option>
-                        <option>850~900</option>
-                        <option>900~950</option>
+                        <option>700 이상</option>
+                        <option>800 이상</option>
+                        <option>850 이상</option>
+                        <option>900 이상</option>
                         <option>950 이상</option>
                     </select>
                 </div>
@@ -71,9 +71,9 @@
                     <select class="form_control_styler">
                         <option>무관</option>
                         <option>Lv4 이하</option>
-                        <option>Lv5</option>
-                        <option>Lv6</option>
-                        <option>Lv7</option>
+                        <option>Lv5 이상</option>
+                        <option>Lv6 이상</option>
+                        <option>Lv7 이상</option>
                         <option>Lv8</option>
                     </select>
                 </div>
@@ -82,12 +82,12 @@
                     <label for="opic" class="control-label form_control_label">오픽</label>
                     <select class="form_control_styler">
                         <option>무관</option>
-                        <option>AL</option>
-                        <option>IH</option>
-                        <option>IM3</option>
-                        <option>IM2</option>
-                        <option>IM1</option>
-                        <option>IL</option>
+                        <option>AL 이상</option>
+                        <option>IH 이상</option>
+                        <option>IM3 이상</option>
+                        <option>IM2 이상</option>
+                        <option>IM1 이상</option>
+                        <option>IL 이상</option>
                     </select>
                 </div>
 
@@ -95,9 +95,8 @@
                     <label for="volunteer" class="control-label form_control_label">봉사</label>
                     <select class="form_control_styler">
                             <option>무관</option>
-                            <option>0회</option>
-                            <option>1회</option>
-                            <option>2회</option>
+                            <option>1회 이상</option>
+                            <option>2회 이상</option>
                             <option>3회 이상</option>
                     </select>
                 </div>
@@ -106,9 +105,8 @@
                     <label for="internship" class="control-label form_control_label">인턴</label>
                     <select class="form_control_styler">
                             <option>무관</option>
-                            <option>0회</option>
-                            <option>1회</option>
-                            <option>2회</option>
+                            <option>1회 이상</option>
+                            <option>2회 이상</option>
                             <option>3회 이상</option>
                     </select>
                 </div>
@@ -117,9 +115,8 @@
                     <label for="contests" class="control-label form_control_label">공모전</label>
                     <select class="form_control_styler">
                             <option>무관</option>
-                            <option>0회</option>
-                            <option>1회</option>
-                            <option>2회</option>
+                            <option>1회 이상</option>
+                            <option>2회 이상</option>
                             <option>3회 이상</option>
                     </select>
                 </div>
@@ -128,9 +125,8 @@
                     <label for="overseas" class="control-label form_control_label">해외경험</label>
                     <select class="form_control_styler">
                             <option>무관</option>
-                            <option>0회</option>
-                            <option>1회</option>
-                            <option>2회</option>
+                            <option>1회 이상</option>
+                            <option>2회 이상</option>
                             <option>3회 이상</option>
                     </select>
                 </div>
@@ -139,11 +135,10 @@
                     <label for="licenses" class="control-label form_control_label">자격증</label>
                     <select class="form_control_styler">
                             <option>무관</option>
-                            <option>0개</option>
-                            <option>1개</option>
-                            <option>2개</option>
-                            <option>3개</option>
-                            <option>4개 이상</option>
+                            <option>1회 이상</option>
+                            <option>2회 이상</option>
+                            <option>3회 이상</option>
+                            <option>4회 이상</option>
                     </select>
                 </div>
             </div>
