@@ -23,10 +23,17 @@
                                 <img id="message_Update" src="/images/message_Icon.png" height="13%" />
                                 <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
                             </div>
+                          <% if (user === undefined){ %>
+                              <div>
+                                  &nbsp;
+                                  <strong style="cursor:pointer">로그인</strong>
+                              </div>
+                          <% } else{ %>
                             <div>
                                 &nbsp;
-                                <strong>seongjin571</strong>
+                                <strong style="cursor:pointer"> <%= user %></strong>
                             </div>
+                          <% } %>
                         </div>
                     </div>
                 </div>
@@ -70,7 +77,7 @@
             $(window).attr('location','/mypage');
         })
         $('.three_Button:eq(1)').click(function () {
-            $(window).attr('location','/specComparedks');
+            $(window).attr('location','/specCompare');
         })
         $('.three_Button:eq(2)').click(function () {
             $(window).attr('location','/userSearch');
