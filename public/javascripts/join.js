@@ -99,7 +99,7 @@ window.onload=function(){
           success:function(result){
             if(result['result']=='success'){
               alert('ok');
-              $(window).attr('location','/main');
+              $(window).attr('location','/');
             }//result if
           },
           error:function(error){
