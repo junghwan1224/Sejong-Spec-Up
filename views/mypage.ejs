@@ -23,15 +23,22 @@
                     <img id="message_Update" src="/images/message_Icon.png" height="13%" />
                     <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
                 </div>
-                <div>
-                    &nbsp;
-                    <strong>seongjin571</strong>
-                </div>
+                <% if (user === undefined){ %>
+                    <div>
+                        &nbsp;
+                        <strong style="cursor:pointer">로그인</strong>
+                    </div>
+                <% } else{ %>
+                  <div>
+                      &nbsp;
+                      <strong style="cursor:pointer"> <%= user %></strong>
+                  </div>
+                    <% } %>
             </div>
         </div>
     </div>
 
-    
+
     <div id="main_Div">
         <div id="menu_Div">
             <div id="mypage_Content">
