@@ -9,7 +9,18 @@ router.get('/', function(req, res) {
   res.render('login', { title: 'loginPage' });
 });
 router.get('/main', function(req, res) {
-  res.render('main', { title: 'mainPage' });
+  if (req.session.authId) {
+  res.render('main', {
+    user : req.session.authId,
+    title:'mainPage'
+    });
+  }
+  else {
+    res.render('main', {
+      user: undefined,
+      title:'openyearround'
+    });
+}
 });
 router.get('/join', function(req, res) {
   res.render('join', { title: 'joinPage' });
@@ -43,15 +54,15 @@ router.get('/user', function(req, res) {
 });
 
 router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
-  var id = req.body.id;
+  var user_id = req.body.user_id;
   var password = req.body.password;
   var major = req.body.major;
-  var student_number = req.body.student_number;
-  var grade = req.body.grade;
+  var school_num = req.body.student_number;
+  var grade = req.body.grade_num;
   var score = req.body.score;
   var toeic = req.body.toeic;
-  var toss = req.body.toss;
-  var opic = req.body.opic;
+  var toss_num = req.body.toss_num;
+  var opic_num = req.body.opic_num;
   var volunteer = req.body.volunteer;
   var intern = req.body.intern;
   var competition = req.body.competition;
@@ -59,9 +70,9 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
   var certificate = req.body.certificate;
   var job_Part = req.body.job_Part;
 
-  var sql = 'insert into `ssu_user` (`id`,`password`,`major`,`student_number`,`grade`,`score`,`toeic`,`toss`,`opic`,`volunteer`,`intern`,`competition`,`aboard`,`certificate`,`job_Part`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);';
-  //입력한 정보를 테이블에 저장하는 쿼리문
-  conn.query(sql,[id,password,major,student_number,grade,score,toeic,toss,opic,volunteer,intern,competition,aboard,certificate,job_Part],function(error,results,fields){
+  var sql = 'insert into `ssu_user` (`user_id`,`password`,`grade_num`,`school_num`,`major`,`want_job`,`grade`,`toss_num`,`toeic`,`opic_num`,`volunteer`,`intern`,`competition`,`certificate`,`activity`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);';
+
+  conn.query(sql,[user_id,password,grade,school_num,major,job_Part,score,toss_num,toeic,opic_num,volunteer,intern,competition,certificate,aboard],function(error,results,fields){
     if(error){
       console.log(error);
       console.log('no');
@@ -72,4 +83,33 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
     }
   });//query
 });//router post
+
+
+router.post('/gologin',function(req,res,next){
+  var id = req.body.id;
+  var password = req.body.password;
+
+  var sql = "select * from ssu_user where user_id=?";
+  conn.query(sql,[id], function(error,results,fields){
+    if(error){
+      console.log(id);
+
+    } else {
+      var user = results[0];
+      if(!user){
+        console.log('id fail');
+        res.send({result:'error'});
+      } else if(password == user.password){
+        req.session.authId = id;
+        req.session.author = user.authorize;
+        req.session.save(function() {
+          res.send({result:'success'});
+        });
+      } else {
+        res.send({result:'error'});
+      }
+    }
+  });
+});
+
 module.exports = router;

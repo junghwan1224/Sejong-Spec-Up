@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/login.js"></script>
     <title><%= title %></title>
 
 </head>
@@ -23,16 +24,18 @@
                     <table>
                         <tr>
                             <td>
-                                <input class='login_input' type="text" placeholder="아이디" />
+                                <input class='login_input' type="text" placeholder="아이디" / id="login_id">
                                 </br>
                             </td>
+
                             <td rowspan="2">
-                                <button>로그인</button>
+                                <button id="loginButton">로그인</button>
                             </td>
+
                         </tr>
                         <tr>
                             <td>
-                                <input class='login_input' type="password" placeholder="비밀번호" />
+                                <input class='login_input' type="password" placeholder="비밀번호" / id="login_password">
                             </td>
                         </tr>
                         <tr>
@@ -45,6 +48,12 @@
       </div>
 </body>
 <script>
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+      $('#loginButton').click();
+    return false;
+    }
+});
     $('#join_Button').click(function(){
       $(window).attr('location','/join');
     });
