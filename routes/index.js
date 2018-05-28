@@ -108,7 +108,10 @@ router.post('/userSearch', function(req, res){
     }
     else{
       console.log(results);
-      res.send({result: 'success'});
+      res.send({
+        result: 'success',
+        users: results,
+      });
     }
   });
 
