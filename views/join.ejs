@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/join.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/join.js"></script>
+    <!-- <script src="main.js"></script> -->
+</head>
+
+<body>
+    <div id="nav_Div">
+        <img src="/images/logo4.png" id="logo_Image" height="100%">
+    </div>
+    <div id='body_container'>
+
+        <div class="container">
+            <div class="col-sm-6">
+                <h2>회원가입</h2s>
+            </div>
+
+            <form class="form-horizontal" role="form">
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">아이디</label>
+                        <input type="text" id="user_ID" placeholder="" class="supportForm form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">비밀번호</label>
+                        <input type="password" id="password" placeholder="" class="supportForm form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">비밀번호 확인</label>
+                        <input type="password" id="password_Check" placeholder="" class="supportForm form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">학과</label>
+                        <input type="text" id="major" placeholder="ex) 컴퓨터공학과" class="supportForm form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">학번</label>
+                        <input type="text" id="student_number" placeholder="ex) 18011234" class="supportForm form-control">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">학년</label>
+                        <select class="a form-control" id="grade" name="grade_selbox">
+                            <option name='1학년' selected="selected">1학년</option>
+                            <option name='2학년'>2학년</option>
+                            <option name='3학년'>3학년</option>
+                            <option name='4학년'>4학년</option>
+                            <option name='5학년'>5학년(건축학과)</option>
+                            <option name='초과학년'>초과학년</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">학점</label>
+                        <input type="text" id="score" placeholder="ex) 3.5" class="supportForm form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">토익</label>
+                        <input type="text" id="toeic" placeholder="ex) 840" class="supportForm form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">토스</label>
+                        <select class="b form-control" id="toss" name="toss_grade">
+                            <option selected="selected">미응시</option>
+                            <option>Lv4 이하</option>
+                            <option>Lv5</option>
+                            <option>Lv6</option>
+                            <option>Lv7</option>
+                            <option>Lv8</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">오픽</label>
+                        <select class="c form-control" id="opic" name="opic_grade">
+                            <option value="1">미응시</option>
+                            <option>AL</option>
+                            <option>IH</option>
+                            <option>IM3</option>
+                            <option>IM2</option>
+                            <option>IM1</option>
+                            <option>IL</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">봉사활동 횟수</label>
+                        <select class="form-control" id="volunteer" name="volunterr_num">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">인턴경험</label>
+                        <select class="form-control" id="intern" name="intern_num">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">공모전 수상</label>
+                        <select class="form-control" id="Competition" name="competition_num">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">해외 연수</label>
+                        <select class="form-control" id="aboard" name="aboard_num">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">자격증</label>
+                        <select class="form-control" id="certificate" name="certificate_num">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="col-sm-6 control-label">직군</label>
+                        <select class="form-control" id="job_Part" name="job_Part">
+                            <option >소프트웨어/IT</option>>
+                            <option >경영/재무</option>
+                            <option >마케팅</option>
+                            <option >기타</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" id="join_Button">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <button style="margin-bottom: 3%" type="button" class="btn btn-danger btn-block" id='applyButton'>회원 가입</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script>
+        $('#logo_Image').click(function () {
+            $(window).attr('location', '/');
+        });
+    </script>
+</body>
+
+</html>

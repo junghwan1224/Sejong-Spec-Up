@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <% for(var i=0; i<userdata.length;i++){ %>
+    <div>아이디 : <%= userdata[i].user_id %></div>
+    <div>학번 : <%= userdata[i].grade_num %></div>
+    <div>학번 : <%= userdata[i].school_num %></div>
+    <div>전공 : <%= userdata[i].major %></div>
+    <div>직군 : <%= userdata[i].want_job %></div>
+    <div>학점 : <%= userdata[i].grade %></div>
+    <div>토스 : <%= userdata[i].toss %></div>
+    <div>토익 : <%= userdata[i].toeic %></div>
+    <div>봉사활동 횟수 : <%= userdata[i].volunteer %></div>
+    <div>인턴 횟수 : <%= userdata[i].intern %></div>
+    <div>공모전 : <%= userdata[i].competition %></div>
+    <div>자격증 : <%= userdata[i].certificate %></div>
+    <div>해외봉사활동 : <%= userdata[i].activity %></div>
+    <div>바꼇는지확인123123</div>
+    <% } %>
+  </body>
+</html>
