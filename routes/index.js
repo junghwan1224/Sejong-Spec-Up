@@ -40,7 +40,6 @@ router.get('/mypage', function(req, res) {
   }
 });
 router.get('/userSearch', function(req, res) {
-  console.log(req.session.job_Part + "??");
   if (req.session.authId) {
   res.render('userSearch', {
     user : req.session.authId,
@@ -55,6 +54,67 @@ router.get('/userSearch', function(req, res) {
     });
   }
 });
+
+
+router.post('/userSearch', function(req, res){
+  var sql = 'select * from ssu_user where';
+  var grade;
+  var toeic;
+  var tos;
+  var opic;
+  var vol;
+  var intern;
+  var act;
+  var abroad;
+  var li;
+
+  var query_value = [];
+
+  if( req.body.grade == -1 ){ grade = ' (grade is NULL or grade is not NULL)'}
+  else{ grade =  ' grade>=?'; query_value.push(req.body.grade); }
+
+  if( req.body.toeic == -1 ){ toeic = ' and (toeic is NULL or toeic is not NULL)'}
+  else{ toeic = ' and toeic>=?'; query_value.push(req.body.toeic); }
+
+  if( req.body.tos == -1 ){ tos = ' and (toss_num is NULL or toss_num is not NULL)' }
+  else{ tos = ' and toss_num=?'; query_value.push(req.body.tos); }
+
+  if( req.body.opic == -1 ){ opic = ' and (opic_num is NULL or opic_num is not NULL)' }
+  else{ opic =  ' and opic_num=?'; query_value.push(req.body.opic); }
+
+  if( req.body.vol == -1 ){ vol = ' and (volunteer is NULL or volunteer is not NULL)' }
+  else{ vol =  ' and volunteer>=?'; query_value.push(req.body.vol); }
+
+  if( req.body.intern == -1 ){ intern = ' and (intern is NULL or intern is not NULL)' }
+  else{ intern = ' and intern>=?'; query_value.push(req.body.intern); }
+
+  if( req.body.act == -1 ){ act = ' and (competition is NULL or competition is not NULL)' }
+  else{ act = ' and competition>=?'; query_value.push(req.body.act); }
+
+  if( req.body.license == -1 ){ li = ' and (certificate is NULL or certificate is not NULL)' }
+  else{ li = ' and certificate>=?'; query_value.push(req.body.license); }
+
+  if( req.body.abroad == -1 ){ abroad = ' and (activity is NULL or activity is not NULL)' }
+  else{ abroad = ' and activity>=?'; query_value.push(req.body.abroad); }
+
+  sql += grade + toeic + tos + opic + vol + intern + act + li + abroad + ';';
+
+  //console.log(query_value);
+  //console.log(sql);
+  conn.query(sql, query_value, function(error, results){
+    if(error){
+      console.log(error);
+      console.log('user search failed');
+    }
+    else{
+      console.log(results);
+      res.send({result: 'success'});
+    }
+  });
+
+});
+
+
 router.get('/userDetail', function(req, res) {
   if (req.session.authId) {
   res.render('userDetail', {
