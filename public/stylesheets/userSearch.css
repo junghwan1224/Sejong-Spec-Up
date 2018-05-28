@@ -183,7 +183,7 @@ body,html{
     padding-top: 7px;
 }
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
     .std_item_div {
         font-size: 10px;
         padding-top: 12px;
@@ -198,12 +198,13 @@ body,html{
     .std_list_right {
         width: 55%;
     }
-}
+} */
 @media only screen and (max-width: 766px) and (min-width: 300px)  {
   
     #logo_Div{
         width: 60%;
     }
+
    
 }
 @media screen and (orientation: portrait) {
@@ -211,12 +212,12 @@ body,html{
         font-size: 17px;
     }
     #logo_Div{
-        width: 50%;
+        width: 42%;
     }
 }
 @media only screen and (max-width: 1025px) and (min-width: 767px)  {
         #logo_Div{
-            width: 70%;
+            width: 65%;
         }
         strong{
             font-size: 25px;

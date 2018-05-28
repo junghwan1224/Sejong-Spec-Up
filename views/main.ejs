@@ -25,8 +25,11 @@
                             </div>
                             <div>
                                 &nbsp;
-                                <strong>seongjin571</strong>
+                                <strong style="cursor:pointer" onclick="myFunction()"><%= user %></strong>
                             </div>
+                            <div>
+                                    <img src="/images/logout.png" id="logout"height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -69,6 +72,12 @@
         $('.three_Button:eq(0)').click(function () {
             $(window).attr('location','/mypage');
         })
+        $('.three_Button:eq(1)').click(function () {
+            $(window).attr('location','/specCompare');
+        })
+        $('.three_Button:eq(2)').click(function () {
+            $(window).attr('location','/userSearch');
+        })
         setInterval(function () {
                 var blink = document.getElementById("message_Update");
                 blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
@@ -78,6 +87,9 @@
                 alert('메세지 확인');
                 $('#message').css('display','block');
             })
+$('#logout').click(function(){
+    
+})
     </script>
 </body>
 
