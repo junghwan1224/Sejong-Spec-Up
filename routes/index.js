@@ -77,10 +77,10 @@ router.post('/userSearch', function(req, res){
   else{ toeic = ' and toeic>=?'; query_value.push(req.body.toeic); }
 
   if( req.body.tos == -1 ){ tos = ' and (toss_num is NULL or toss_num is not NULL)' }
-  else{ tos = ' and toss_num=?'; query_value.push(req.body.tos); }
+  else{ tos = ' and toss_num>=?'; query_value.push(req.body.tos); }
 
   if( req.body.opic == -1 ){ opic = ' and (opic_num is NULL or opic_num is not NULL)' }
-  else{ opic =  ' and opic_num=?'; query_value.push(req.body.opic); }
+  else{ opic =  ' and opic_num>=?'; query_value.push(req.body.opic); }
 
   if( req.body.vol == -1 ){ vol = ' and (volunteer is NULL or volunteer is not NULL)' }
   else{ vol =  ' and volunteer>=?'; query_value.push(req.body.vol); }
