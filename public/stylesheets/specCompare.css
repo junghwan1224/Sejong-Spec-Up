@@ -1,55 +1,85 @@
 body,html{
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    /* background-image: url('main_page_Image1.png'); */
-    background-repeat: no-repeat;
+    background: url('/images/main_Page_Image1.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    overflow: none;
     margin: 0;
     padding: 0;
+    flex-direction: column;
+    align-items: center;
 }
+
+#logo_Image{
+  margin-left: 3%;
+  cursor: pointer;
+}
+
 #nav_Div{
-    display: flex;
-    width: 100%;
-    height: 9%;
-    padding: 0.5%;
-    background-color:brown;
+  display: flex;
+  width: 100%;
+  height: 9%;
+  background-color: brown;
 }
-#nav_Div img{
-    cursor: pointer;
-    margin-left: 3%;
+#logo_Div{
+  width: 75%;
 }
+
+@media only screen and (max-width: 766px) and (min-width: 300px) {
+  #logo_Div{
+    width: 60%;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #logo_Div{
+      width: 42%;
+  }
+  strong{
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 1025px) and (min-width: 767px)  {
+    #logo_Div{
+        width: 65%;
+    }
+    strong{
+      font-size: 25px;
+    }
+}
+
 #user_Input{
-    margin-left: 60%;
-    color:white;
-    font-size: 25px;
-    cursor: pointer;
+  color:white;
+  height: 100%;
+  font-size: 25px;
 }
+
 #help_Vertical{
-    width: 100%;
-    height: 100%;
-    display: table;
+  width: 100%;
+  height: 100%;
+  display: table;
 }
 #help_Vertical div{
-    display: table-cell;
-    vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 #help_Vertical img{
-    display: table-cell;
-    vertical-align: middle;
-    margin-right: 5%;
-    width: auto;
+  display: table-cell;
+  vertical-align: middle;
+  margin-right: 5%;
+  width: auto;
 }
 #user_Input img{
-    margin-left: 10%;
+  margin-left: 10%;
 }
 /* #top_Div{
     width: 100%;
     height:45%;
 } */
 #body_div{
-  background-image: url('back.png');
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -152,7 +182,6 @@ canvas{
     body{
         width: 100%;
         height: 100%;
-        background-image: url('back.png');
         background-repeat: no-repeat;
         background-size: cover;
         overflow: auto;
@@ -179,12 +208,9 @@ canvas{
         width: 100%;
         height:93%;
     }
-        #user_Input{
-            display: none;
-        }
         #logo_Image{
             margin: auto;
-            height: 80%;
+            height: 100%;
         }
         #field{
           width: 90%;
