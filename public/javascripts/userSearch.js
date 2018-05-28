@@ -19,6 +19,16 @@ function studentListOnClick(index) { //학생 리스트 클릭시 인덱스로 �
 }
 
 document.getElementsByClassName('search_button_div')[0].onclick = function(){
+
+  var ulTags = document.getElementsByTagName('ul');
+  for(var i=0; i<ulTags.length; i++){
+    ulTags[i].parentNode.removeChild(ulTags[i]);
+  }
+  for(var i=0; i<ulTags.length; i++){
+    ulTags[i].parentNode.removeChild(ulTags[i]);
+  }
+
+
   var select_tags = document.getElementsByClassName('form_control_styler');
   var grade_sel = select_tags[0].options[select_tags[0].selectedIndex].value;
   var toeic_sel = select_tags[1].options[select_tags[1].selectedIndex].value;
@@ -40,20 +50,17 @@ document.getElementsByClassName('search_button_div')[0].onclick = function(){
   var abroad;
   var li;
   if(grade_sel == '무관'){
-    //grade = ' and (grade is not NULL or grade is NULL)'
     grade = -1;
-    console.log(grade);
   }
   else{
     grade = parseFloat(grade_sel.split(' ')[0]);
-    console.log(grade);
   }
 
   if(toeic_sel == '무관') { toeic = -1; }
   else{ toeic = parseInt(toeic_sel.split(' ')[0]); }
 
   if(tos_sel == '무관'){ tos = -1; }
-  else{ tos = tos_sel.split(' ')[0]; }
+  else{ tos = parseInt(tos_sel.split(' ')[0].replace('Lv', '')); }
 
   if(opic_sel == '무관'){ opic = -1;}
   else{ opic = opic_sel.split(' ')[0]; }
@@ -94,7 +101,21 @@ document.getElementsByClassName('search_button_div')[0].onclick = function(){
     datatype: "json",
     success: function(result) {
       if(result['result']=='success'){
-        alert('good');
+        var users = result['users'];
+        console.log(users);
+        for(var i=0; i<users.length; i++){
+          var listParent = document.createElement("ul");
+          listParent.setAttribute("class", "std_list");
+
+          var html = '<li id="stdlst_'+ (i+1) +'"class="std_list_item type="button" onclick='+'>';
+              html+= '<div class="std_item_div">';
+              html+= '<span class="std_list_left">' + users[i].user_id + '</span><span class="std_list_right">'+ users[i].major +'</span>';
+              html+= '</div>';
+              html+= '</li>';
+
+          listParent.innerHTML = html;
+          document.getElementById('std_list_parent').appendChild(listParent);
+        }
       }
       else
         alert('search failed');
