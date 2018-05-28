@@ -47,7 +47,7 @@ router.get('/', function(req, res, next) {
   }
   else
     res.render('login',{
-      title:'openyearround', // 사이트 제목
+      title:'Login', // 사이트 제목
     });//render
 });
 

@@ -1,0 +1,201 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/mypage_Back_Image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x:hidden;
+    margin: 0;
+    padding: 0;
+}
+#logo_Image{
+    margin-left: 3%;
+    cursor: pointer;
+}
+#nav_Div{
+    display: flex;
+    width: 100%;
+    height: 9%;
+    background-color: brown;
+}
+#logo_Div{
+    width: 75%;
+}
+#user_Input{
+    color:white;
+    height: 100%;
+    font-size: 25px;
+}
+#message_Div{
+    cursor: pointer;
+}
+
+#help_Vertical{
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+#help_Vertical div{
+    display: table-cell;
+    vertical-align: middle;
+}
+#help_Vertical img{
+    display: table-cell;
+    vertical-align: middle;
+    margin-right: 5%;
+    width: auto;
+}
+#user_Input img{
+    margin-left: 10%;
+}
+#main_Div{
+    width: 100%;
+    height: 91%;
+}
+#menu_Div{
+    width: 100%;
+    height: 13%;
+    color: white;
+    text-align: center;
+    display: flex;
+}
+#content_Div{
+    width: 70%;
+    height: 87%;
+    display: table;
+    margin-left: 15%;
+}
+.new_Daily{
+    color: white;
+    background: none;
+    border: solid;
+    width: 100%;
+}
+.update_Daily{
+    background: none;
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+thead tr{
+    border-bottom-style: solid;
+    border-top-style: solid;
+}
+#mypage_Content{
+    width: 55%;
+    height: 100%;
+    font-size: 40px;
+}
+.mypage_Menu{
+    width: 27%;
+    height: 100%;
+    font-size: 20px;
+    padding-top: 1%;
+}
+div p{
+    margin: 0;
+}
+.mypage_Menu:hover{
+    cursor: pointer;
+    transform:scale(1.05);             /*  default */
+    -webkit-transform:scale(1.05);  /*  크롬 */
+    -moz-transform:scale(1.05);     /* FireFox */
+    -o-transform:scale(1.05);        /* Opera */
+}
+#myspec,#diary{
+    display: table-cell;
+    vertical-align: middle;
+}
+.form-group{
+    margin-top: 3%;
+}
+.two_Button_Spec,.two_Button_Table_Upload,.two_Button_Table_Reform{
+    display: none;
+}
+input{
+    text-align: center;
+}
+select{
+    text-align-last:center; 
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+     appearance:none;
+}
+th::nth-child(0){
+    width: 10%;
+}
+.container,.container-fluid{
+    display: table-cell;
+    vertical-align: middle;
+    display: none;
+    color: white;
+    margin-bottom: 5%;
+}
+label{
+    margin-top: 3%;
+}
+.date{
+    width: 15%;
+}
+.content{
+    width: 70%;
+}
+.result{
+    width: 15%;
+}
+@media only screen and (max-width: 766px) and (min-width: 300px)  {
+    #mypage_Content{
+        font-size: 30px;
+    }
+    .mypage_Menu{
+        font-size: 17px;
+    }
+    td{
+        font-size: 5px;
+    }
+    tr{
+        font-size: 5px;
+    }
+    #content_Div{
+        width: 88%;
+        height: 87%;
+        display: table;
+        margin-left: 6%;
+    }
+    #logo_Div{
+        width: 60%;
+    }
+}
+@media screen and (orientation: portrait) {
+    body,html{
+    overflow: visible;
+    }
+    #mypage_Content{
+        font-size: 30px;
+    }
+    strong{
+        font-size: 17px;
+    }
+    #logo_Div{
+        width: 42%;
+    }
+}
+
+@media only screen and (max-width: 1025px) and (min-width: 767px)  {
+    body,html{
+        overflow: hidden;
+        }
+        #mypage_Content{
+            font-size: 45px;
+        }
+        .mypage_Menu{
+            font-size: 30px;
+        }
+        #logo_Div{
+            width: 65%;
+        }
+        strong{
+            font-size: 25px;
+        }
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mypage.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="nav_Div">
+        <div id="logo_Div">
+            <img src="/images/logo4.png" id="logo_Image" height="100%">
+        </div>
+        <div id="user_Input">
+            <div id="help_Vertical">
+                <div id="message_Div">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
+                    <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
+                </div>
+         
+                  <div>
+                      &nbsp;
+                      <strong style="cursor:pointer"> <%= user %></strong>
+                  </div>
+     
+                    <div>
+                            <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="main_Div">
+        <div id="menu_Div">
+            <div id="mypage_Content">
+                <p>MY PAGE</p>
+            </div>
+
+            <div class="mypage_Menu">
+                <p>MY 스펙</p>
+            </div>
+
+
+            <div class="mypage_Menu">
+                <p>취업 일지</p>
+            </div>
+
+        </div>
+
+        <div id="content_Div">
+
+            <div id="myspec">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" id="job">
+                            <label for="firstName" class="col-sm-12 control-label">직군</label>
+                            <select class="form-control" id="job_Part">
+                                <option>소프트웨어/IT</option>>
+                                <option>경영/재무</option>
+                                <option>마케팅</option>
+                                <option>기타</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">학점</label>
+                            <input type="text" id="score" placeholder="ex) 3.5" value="3.54" readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">토익-Toeic</label>
+                            <input type="text" id="toeic" placeholder="ex) 840" value="890" readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
+                            <select class="form-control" id="toss">
+                                <option>미응시</option>
+                                <option>Level1</option>
+                                <option>Level2</option>
+                                <option>Level3</option>
+                                <option>Level4</option>
+                                <option>Level5</option>
+                                <option>Level6</option>
+                                <option>Level7</option>
+                                <option>Level8</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
+                            <select class="form-control" id="opic">
+                                <option>미응시</option>
+                                <option>NL</option>
+                                <option>NM</option>
+                                <option>NH</option>
+                                <option>IL</option>
+                                <option>IM</option>
+                                <option>IH</option>
+                                <option>AL</option>
+                            </select>
+                        </div>
+
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
+                            <select class="form-control" id="volunteer">
+                                <option>0번</option>
+                                <option>1번</option>
+                                <option>2번</option>
+                                <option>3번</option>
+                                <option>4번</option>
+                                <option>5회이상</option>
+                            </select>
+                        </div>
+
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">인턴 경험</label>
+                            <select class="form-control" id="intern">
+                                <option>0번</option>>
+                                <option>1번</option>
+                                <option>2번</option>
+                                <option>3번</option>
+                                <option>4번</option>
+                                <option>5회이상</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">공모전 수상</label>
+                            <select class="form-control" id="Competition">
+                                <option>0번</option>
+                                <option>1번</option>
+                                <option>2번</option>
+                                <option>3번</option>
+                                <option>4번</option>
+                                <option>5회이상</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">해외 연수</label>
+                            <select class="form-control" id="aborad">
+                                <option>0번</option>>
+                                <option>1번</option>
+                                <option>2번</option>
+                                <option>3번</option>
+                                <option>4번</option>
+                                <option>5회이상</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">자격증</label>
+                            <select class="form-control" id="certificate">
+                                <option>0개</option>>
+                                <option>1개</option>
+                                <option>2개</option>
+                                <option>3개</option>
+                                <option>4개</option>
+                                <option>5개이상</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="reform">
+                            <button type="button" id="reform_Button" class="btn btn-danger btn-block">수정</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="two_Button_Spec col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="cancel_Button" class="btn btn-danger btn-block">취소</button>
+                        </div>
+
+                        <div class="two_Button_Spec col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="ok_Button" class="btn btn-danger btn-block">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="diary">
+                <div class="container-fluid">
+
+                    <!-- <h4>ex)</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="date">날짜</th>
+                                <th class="content">내용</th>
+                                <th class="result">결과</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>18/7/12</td>
+                                <td>네이버 개발파트(웹 프런트) 신입 정규직 서류</td>
+                                <td>합격</td>
+                            </tr>
+                            <tr>
+                                <td>18/7/15</td>
+                                <td>삼성 SDS SW개발파트 신입 정규직 1차 면접(알고리즘)</td>
+                                <td>대기중</td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                    <h3>취업 일지</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="date">날짜</th>
+                                <th class="content">내용</th>
+                                <th class="result">결과</th>
+                            </tr>
+                        </thead>
+                        <tbody id="upload_Table">
+                            <tr>
+                                <td>
+                                    <input type="text" id="update_Date" readonly value="18/6/24" class="update_Daily">
+                                </td>
+                                <td>
+                                    <input type="text" id="update_Content" readonly value="카카오 SW기획 파트 인턴 서류 전형" class="update_Daily">
+                                </td>
+                                <td>
+                                    <input type="text" id="update_Result" readonly value="불합격" class="update_Daily">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" id="update_Date" readonly value="18/7/12" class="update_Daily">
+                                </td>
+                                <td>
+                                    <input type="text" id="update_Content" readonly value="네이버 개발파트(웹 프런트) 신입 정규직 서류" class="update_Daily">
+                                </td>
+                                <td>
+                                    <input type="text" id="update_Result" readonly value="합격" class="update_Daily">
+                                </td>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="update_Date" readonly value="18/7/7" class="update_Daily">
+                                    </td>
+                                    <td>
+                                        <input type="text" id="update_Content" readonly value="삼성 SDS SW개발파트 신입 정규직 서류" class="update_Daily">
+                                    </td>
+                                    <td>
+                                        <input type="text" id="update_Result" readonly value="합격" class="update_Daily">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="update_Date" readonly value="18/7/15" class="update_Daily">
+                                    </td>
+                                    <td>
+                                        <input type="text" id="update_Content" readonly value="삼성 SDS SW개발파트 신입 정규직 1차 면접(알고리즘)" class="update_Daily">
+                                    </td>
+                                    <td>
+                                        <input type="text" id="update_Result" readonly value="대기중" class="update_Daily">
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+
+                        <div class="upload_Two_Button col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="reform_Button_Table" class="btn btn-danger btn-block">수정</button>
+                        </div>
+
+                        <div class="upload_Two_Button col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="upload_Button" class="btn btn-danger btn-block">등록</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="two_Button_Table_Reform col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="reform_Cancel_Button_Table" class="btn btn-danger btn-block">취소</button>
+                        </div>
+
+                        <div class="two_Button_Table_Reform col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="reform_Button_DB" class="btn btn-danger btn-block">확인</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="two_Button_Table_Upload col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="cancel_Button_Table" class="btn btn-danger btn-block">취소</button>
+                        </div>
+
+                        <div class="two_Button_Table_Upload col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="upload_Button_DB" class="btn btn-danger btn-block">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/javascripts/mypage.js"></script>
+</body>
+
+</html>
