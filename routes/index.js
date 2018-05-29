@@ -25,17 +25,27 @@ router.get('/main', function(req, res) {
 router.get('/join', function(req, res) {
   res.render('join', { title: 'joinPage' });
 });
+
+
+
 router.get('/mypage', function(req, res) {
   if (req.session.authId) {
-  res.render('mypage', {
-    user : req.session.authId,
-    title:'myPage'
-    });
+    conn.query('select * from ssu_user where user_id = ?',[req.session.authId],function(err,rows){
+      if(err){
+        throw err;
+      }else{
+        res.render('mypage', {
+          user : req.session.authId,
+          rows : rows,
+          title:'myPage'
+          });
+      }
+    })
   }
   else {
     res.render('mypage', {
       user: undefined,
-      title:'mypage'
+      title:'mywwwpage'
     });
   }
 });
