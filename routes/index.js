@@ -34,11 +34,25 @@ router.get('/mypage', function(req, res) {
       if(err){
         throw err;
       }else{
-        res.render('mypage', {
-          user : req.session.authId,
-          rows : rows,
-          title:'myPage'
+        if(req.session.authId){
+          conn.query('select * from ssu_content where user_id =?',[req.session.authId],function(err,results){
+            if(err){
+              throw err;
+            }else{
+              res.render('mypage', {
+              results : results,
+              user : req.session.authId,
+              rows : rows,
+              title:'myPage'
+                });
+            }
+          })
+        }else{
+          res.render('mypage', {
+            user: undefined,
+            title:'mywwwpage'
           });
+        }
       }
     })
   }
