@@ -11,6 +11,8 @@ $('#reform_Button').click(function () {
     $('select').css('background', 'white').css('color', 'black').css('border-color', 'none').css('appearance', 'menulist');
     $("select").removeAttr('disabled');
     $('input').removeAttr("readonly");
+    $('.original_Form').css('display','none');
+    $('.when_Reform').css('display','block');
 })
 
 $('#cancel_Button').click(function () {
@@ -20,6 +22,8 @@ $('#cancel_Button').click(function () {
     $('select').css('background', 'none').css('color', 'white').css('border-color', 'none').css('appearance', 'none');;
     $("select").not(":selected").attr("disabled", "disabled");
     $('input').attr('readonly', 'true');
+    $('.original_Form').css('display','block');
+    $('.when_Reform').css('display','none');
 })
 
 $('.mypage_Menu:eq(0)').click(function () {
