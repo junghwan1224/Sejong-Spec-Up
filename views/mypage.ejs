@@ -58,15 +58,11 @@
 
             <div id="myspec">
                 <div class="container-fluid">
-                    <div class="row">
+
+                    <div class="original_Form row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" id="job">
                             <label for="firstName" class="col-sm-12 control-label">직군</label>
-                            <select class="form-control" id="job_Part">
-                                <option>소프트웨어/IT</option>>
-                                <option>경영/재무</option>
-                                <option>마케팅</option>
-                                <option>기타</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].want_job %>  readonly class="form-control">
                         </div>
 
 
@@ -74,46 +70,26 @@
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">학점</label>
                             <input type="text" id="score" value=<%= rows[0].grade %>  readonly class="form-control">
-
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">토익-Toeic</label>
-                            <input type="text" id="toeic" value=<%= rows[0].toeic %> value="890" readonly class="form-control">
+                            <input type="text" id="toeic" value=<%= rows[0].toeic %>  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
-                            <select class="form-control"  id="toss">
-                                <option value="0">미응시</option>
-                                <option value="1">Level1</option>
-                                <option value="2">Level2</option>
-                                <option value="3">Level3</option>
-                                <option value="4">Level4</option>
-                                <option value="5">Level5</option>
-                                <option value="6">Level6</option>
-                                <option>Level7</option>
-                                <option>Level8</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].toss %>  readonly class="form-control">
                         </div>
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
-                            <select class="form-control" id="opic">
-                                <option>미응시</option>
-                                <option>NL</option>
-                                <option>NM</option>
-                                <option>NH</option>
-                                <option>IL</option>
-                                <option>IM</option>
-                                <option>IH</option>
-                                <option>AL</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].opic %>  readonly class="form-control">
                         </div>
 
 
@@ -121,14 +97,7 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
-                            <select class="form-control" id="volunteer">
-                                <option>0번</option>
-                                <option>1번</option>
-                                <option>2번</option>
-                                <option>3번</option>
-                                <option>4번</option>
-                                <option>5회이상</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].volunteer %>  readonly class="form-control">
                         </div>
 
 
@@ -136,58 +105,171 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">인턴 경험</label>
-                            <select class="form-control" id="intern">
-                                <option>0번</option>>
-                                <option>1번</option>
-                                <option>2번</option>
-                                <option>3번</option>
-                                <option>4번</option>
-                                <option>5회이상</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].intern %>  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">공모전 수상</label>
-                            <select class="form-control" id="Competition">
-                                <option>0번</option>
-                                <option>1번</option>
-                                <option>2번</option>
-                                <option>3번</option>
-                                <option>4번</option>
-                                <option>5회이상</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].competition %>  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">해외 연수</label>
-                            <select class="form-control" id="aborad">
-                                <option>0번</option>>
-                                <option>1번</option>
-                                <option>2번</option>
-                                <option>3번</option>
-                                <option>4번</option>
-                                <option>5회이상</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].activity  %>  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">자격증</label>
-                            <select class="form-control" id="certificate">
-                                <option>0개</option>>
-                                <option>1개</option>
-                                <option>2개</option>
-                                <option>3개</option>
-                                <option>4개</option>
-                                <option>5개이상</option>
-                            </select>
+                            <input type="text" id="score" value=<%= rows[0].certificate  %>  readonly class="form-control">
                         </div>
                     </div>
+
+
+
+
+
+
+                    <div class="when_Reform row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" id="job">
+                                <label for="firstName" class="col-sm-12 control-label">직군</label>
+                                <select class="form-control" id="job_Part">
+                                    <option>소프트웨어/IT</option>>
+                                    <option>경영/재무</option>
+                                    <option>마케팅</option>
+                                    <option>기타</option>
+                                </select>
+                            </div>
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">학점</label>
+                                <input type="text" id="score" value=<%= rows[0].grade %>  class="form-control">
+    
+                            </div>
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">토익-Toeic</label>
+                                <input type="text" id="toeic" value=<%= rows[0].toeic %> class="form-control">
+                            </div>
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
+                                <select class="form-control"  id="toss">
+                                    <option>미응시</option>
+                                    <option>Level1</option>
+                                    <option>Level2</option>
+                                    <option>Level3</option>
+                                    <option>Level4</option>
+                                    <option>Level5</option>
+                                    <option>Level6</option>
+                                    <option>Level7</option>
+                                    <option>Level8</option>
+                                </select>
+                            </div>
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
+                                <select class="form-control" id="opic">
+                                    <option>미응시</option>
+                                    <option>NL</option>
+                                    <option>NM</option>
+                                    <option>NH</option>
+                                    <option>IL</option>
+                                    <option>IM</option>
+                                    <option>IH</option>
+                                    <option>AL</option>
+                                </select>
+                            </div>
+    
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
+                                <select class="form-control" id="volunteer">
+                                    <option>0번</option>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+    
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">인턴 경험</label>
+                                <select class="form-control" id="intern">
+                                    <option>0번</option>>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">공모전 수상</label>
+                                <select class="form-control" id="Competition">
+                                    <option>0번</option>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">해외 연수</label>
+                                <select class="form-control" id="aborad">
+                                    <option>0번</option>>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+    
+    
+    
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">자격증</label>
+                                <select class="form-control" id="certificate">
+                                    <option>0개</option>>
+                                    <option>1개</option>
+                                    <option>2개</option>
+                                    <option>3개</option>
+                                    <option>4개</option>
+                                    <option>5개이상</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    
+
+
+
 
 
                     <div class="form-group">
@@ -207,6 +289,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
 
             <div id="diary">

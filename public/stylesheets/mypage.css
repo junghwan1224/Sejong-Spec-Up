@@ -13,6 +13,9 @@ body,html{
     margin-left: 3%;
     cursor: pointer;
 }
+.when_Reform{
+    display: none;
+}
 #nav_Div{
     display: flex;
     width: 100%;
