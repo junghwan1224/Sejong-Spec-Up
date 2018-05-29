@@ -205,6 +205,26 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
 });//router post
 
 
+router.post('/goContent',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var user_id = req.session.authId;
+  var result = req.body.result;
+  var date = req.body.date;
+  var content = req.body.content;
+
+  var sql = 'insert into `ssu_content` (`user_id`,`result`,`date`,`content`) values (?,?,?,?);';
+
+  conn.query(sql,[user_id,result,date,content],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
 router.post('/gologin',function(req,res,next){
   var id = req.body.id;
   var password = req.body.password;

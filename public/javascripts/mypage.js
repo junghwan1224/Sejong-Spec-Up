@@ -79,6 +79,33 @@ $('#logo_Image').click(function(){
     $(window).attr('location','/main');
 })
 
-$('#upload_Button').click(function(){
+$('#upload_Button_DB').click(function(){
+  var result = $('#new_Result').val();
+  var date = $('#new_Date').val();
+  var content = $('#new_Content').val();
 
+  var data = {
+    'result' : result,
+    'date' : date,
+    'content' : content
+  };
+  console.log(data);
+
+  $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+        type:'POST',
+        url:'/goContent',
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        cache:false,
+        dataType:'json',
+        data:data,
+        success:function(result){
+          if(result['result']=='success'){
+            alert('okok');
+            $(window).attr('location','/mypage');
+          }//result if
+        },
+        error:function(error){
+          console.log('erer');
+        }
+  });
 })
