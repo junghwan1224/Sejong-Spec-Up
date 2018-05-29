@@ -25,17 +25,27 @@ router.get('/main', function(req, res) {
 router.get('/join', function(req, res) {
   res.render('join', { title: 'joinPage' });
 });
+
+
+
 router.get('/mypage', function(req, res) {
   if (req.session.authId) {
-  res.render('mypage', {
-    user : req.session.authId,
-    title:'myPage'
-    });
+    conn.query('select * from ssu_user where user_id = ?',[req.session.authId],function(err,rows){
+      if(err){
+        throw err;
+      }else{
+        res.render('mypage', {
+          user : req.session.authId,
+          rows : rows,
+          title:'myPage'
+          });
+      }
+    })
   }
   else {
     res.render('mypage', {
       user: undefined,
-      title:'mypage'
+      title:'mywwwpage'
     });
   }
 });
@@ -97,17 +107,17 @@ router.post('/userSearch', function(req, res){
   if( req.body.abroad == -1 ){ abroad = ' and (activity is NULL or activity is not NULL)' }
   else{ abroad = ' and activity>=?'; query_value.push(req.body.abroad); }
 
-  sql += grade + toeic + tos + opic + vol + intern + act + li + abroad + ';';
+  query_value.push(req.session.authId);
+  var exclude_me = ' and user_id!=?;';
 
-  //console.log(query_value);
-  //console.log(sql);
+  sql += grade + toeic + tos + opic + vol + intern + act + li + abroad + exclude_me;
+
   conn.query(sql, query_value, function(error, results){
     if(error){
       console.log(error);
       console.log('user search failed');
     }
     else{
-      console.log(results);
       res.send({
         result: 'success',
         users: results,
