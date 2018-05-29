@@ -97,17 +97,17 @@ router.post('/userSearch', function(req, res){
   if( req.body.abroad == -1 ){ abroad = ' and (activity is NULL or activity is not NULL)' }
   else{ abroad = ' and activity>=?'; query_value.push(req.body.abroad); }
 
-  sql += grade + toeic + tos + opic + vol + intern + act + li + abroad + ';';
+  query_value.push(req.session.authId);
+  var exclude_me = ' and user_id!=?;';
 
-  //console.log(query_value);
-  //console.log(sql);
+  sql += grade + toeic + tos + opic + vol + intern + act + li + abroad + exclude_me;
+
   conn.query(sql, query_value, function(error, results){
     if(error){
       console.log(error);
       console.log('user search failed');
     }
     else{
-      console.log(results);
       res.send({
         result: 'success',
         users: results,

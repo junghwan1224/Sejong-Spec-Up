@@ -1,348 +1,191 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/styleshets/specCompare.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Spec Compare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/specCompare.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 </head>
 
 <body>
-  <div id="nav_Div">
-    <img src="/images/logo4.png" id="logo_Image" height="100%">
-    <div id="user_Input">
-      <div id="help_Vertical">
-        <div>
-          <img src="/images/user.png" height="20%" />
+    <div id="nav_Div">
+        <div id="logo_Div">
+            <img src="/images/logo4.png" id="logo_Image" height="100%">
         </div>
-        <div>
-          &nbsp;<strong>seongjin571</strong>
+        <div id="user_Input">
+            <div id="help_Vertical">
+                <div id="message_Div">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
+                    <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
+                </div>
+                <div>
+                    &nbsp;
+                    <strong><%= user %></strong>
+                </div>
+                <div>
+                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
+                </div>
+            </div>
         </div>
-        <div>ㅣ</div>
-        <div>
-          <strong>컴퓨터공학과</strong>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- </div> -->
-  <div id="body_div">
-    <div id="field">
-      <div id="field_title">
-        선택한 직군
-      </div>
-      <div id="field_field">
-        소프트웨어 개발
-      </div>
     </div>
 
-    <div id="boxes">
-      <div id="avg">
-        평균 스펙
-        <div id="spec_grid">
-          <div class="spec" id="score_div" onclick="showScoreGraph()">
-            <div class="spec_title">
-              학점
-            </div>
-            <div id="score">
-              3.5
-            </div>
-          </div>
-          <div class="spec" id="toeic_div" onclick="showToeicGraph()">
-            <div class="spec_title">
-              토익
-            </div>
-            <div id="toeic">
-              3.5
-            </div>
-          </div>
-          <div class="spec" id="toss_div" onclick="showTossGraph()">
-            <div class="spec_title">
-              토스
-            </div>
-            <div id="toss">
-              3.5
-            </div>
-          </div>
-          <div class="spec">
-            <div class="spec_title">
-              오픽
-            </div>
-            <div id="opic">
-              3.5
-            </div>
-          </div>
-          <div class="spec">
-            <div class="spec_title">
-              봉사
-            </div>
-            <div id="volunteer">
-              3.5
-            </div>
-          </div>
-          <div class="spec">
-            <div class="spec_title">
-              인턴
-            </div>
-            <div id="intern">
-              3.5
-            </div>
-          </div>
-          <div class="spec">
-            <div class="spec_title">
-              공모전
-            </div>
-            <div id="competition">
-              3.5
-            </div>
-          </div>
-          <div class="spec">
-            <div class="spec_title">
-              해외경험
-            </div>
-            <div id="abroad">
-              3.5
-            </div>
-          </div>
-          <div class="spec">
-            <div class="spec_title">
-              자격증
-            </div>
-            <div id="certificate">
-              3.5
-            </div>
-          </div>
+    <div class="article_div">
+        <div class="user_div">
+            <h3 style="margin-left: auto;margin-right: auto;padding-left: 8px;color: rgb(255, 255, 255);">
+                직군 스펙 비교
+            </h3>
         </div>
-      </div>
-      <div id="graph_div">
-        나의 위치
-        <div id="graph">
-          <canvas id="barCanvas"></canvas>
-        </div>
-      </div>
 
+        <div class="divider_h_o1">
+            <div class="divider_h_i1"></div>
+        </div>
+
+        <div class="container-fluid curtain">
+            
+            <div class="row">
+                
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 tile_section">
+                    <div class="container-fluid" style="padding-top: 16px;">
+
+                        <div class="row">
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" onclick="scoreGraph();">
+                                <div class="tile" title="학점">
+                                    <div class="tile_title">학점 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" onclick="toeicGraph();">
+                                <div class="tile" title="토익">
+                                    <div class="tile_title">토익 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">700</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" onclick="toSGraph();">
+                                <div class="tile" title="토익스피킹">
+                                    <div class="tile_title">토스 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="tile" title="오픽">
+                                    <div class="tile_title">오픽 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="tile" title="봉사 활동">
+                                    <div class="tile_title">봉사 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="tile" title="인턴쉽">
+                                    <div class="tile_title">인턴 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="tile" title="공모전">
+                                    <div class="tile_title">공모전 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="tile" title="해외 경험">
+                                    <div class="tile_title">해외경험</div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="tile" title="자격증">
+                                    <div class="tile_title">자격증 </div>
+                                    <div class="divider_h_o2">
+                                        <div class="divider_h_i2"></div>
+                                    </div>
+                                    <div class="tile_value">3.5</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 graph_section">
+                        <div class="graph_internal_div">
+                            <div class="size_div">
+                                <canvas id="barCanvas"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-  </div>
-
-  <script>
-    var graphDiv = document.getElementById('graph_div');
-    var graph = document.getElementById('graph');
-    var avgBox = document.getElementById('avg');
-          
-    var myChart=null;
-
-  //학점 누르면 보이게 하는 함수
-
-    function showScoreGraph() {
-
-      avgBox.style.marginLeft = "0";
-      avgBox.style.marginRight = "1%";
-      avgBox.style.transition = "all 0.5s"
-      $('#graph_div').show('slow');
-      graphDiv.style.display = "inline-block";
-      graph.style.display = "block";
-
-      var ctx = document.getElementById("barCanvas").getContext('2d');
-  
-      Chart.defaults.global.defaultFontColor = 'black';
-      Chart.defaults.global.defaultFontSize = 18;
-      Chart.defaults.global.legend.display=false;
-      Chart.defaults.global.tooltips.enabled=false;
-
-      
-      if(myChart!=null){ myChart.destroy();}
-      myChart = new Chart(ctx, {
-        type: 'bar', //막대그래프
-        data: {
-          labels: ["2.0 미만", "2.0~2.5", "2.5~3.0", "3.0~3.5", "3.5~4.0", "4.0~4.5"], //x축
-          datasets: [{
-            //label: '속한 학생 수',
-            data: [2, 4, 5, 10, 5, 1], //이거 숫자로밖에 안됨주의 y축
-            backgroundColor: [ //#ababba이런거써도댐 labels 수만큼 작성
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 2
-          }]
-        },
-        options: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: "학점 별 학생 분포도"
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
+    <script src="/javascripts/specCompare.js"></script>
+    
+    <script>
+        function scoreGraph() {
+            var labels = ["2.0 미만", "2.0~2.5", "2.5~3.0", "3.0~3.5", "3.5~4.0", "4.0~4.5"];
+            var datas = [12, 16, 14, 19, 9, 6];
+            showGraph("학점 별 학생 분포도", labels, datas);
         }
-      });
- 
-    }
-  
-  
-  //토익 누르면 보이게 하는 함수
-    function showToeicGraph() {
- 
-      avgBox.style.marginLeft = "0";
-      avgBox.style.marginRight = "1%";
-      avgBox.style.transition = "all 0.5s"
-      $('#graph_div').show('slow');
-      graphDiv.style.display = "inline-block";
 
-      var ctx = document.getElementById("barCanvas").getContext('2d');
-
-      Chart.defaults.global.defaultFontColor = 'black';
-      Chart.defaults.global.defaultFontSize = 18;
-      Chart.defaults.global.legend.display=false;
-      Chart.defaults.global.tooltips.enabled=false;
-      
-      if(myChart!=null){ myChart.destroy();}
-      myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["700 이하", "700~750", "750~800", "800~850", "850~900", "900~950", 
-
-"950 이상"],
-          datasets: [{
-            //label: '속한 학생 수',
-            data: [1, 3, 16, 10, 5, 1, 2],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(25, 19, 164, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-              'rgba(25, 19, 164, 1)'
-            ],
-            borderWidth: 2
-          }]
-        },
-        options: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: "TOEIC 점수 별 학생 분포도"
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
+        function toeicGraph() {
+            var labels = ["700 이하", "700~750", "750~800", "800~850", "850~900", "900~950", "950 이상"];
+            var datas = [11, 6, 12, 11, 8, 5, 3];
+            showGraph("TOEIC 점수 별 학생 분포도", labels, datas);
         }
-      });
-    }
 
-
-  //토스 누르면 보이게 하는 함수
-
-    function showTossGraph() {
-
-      avgBox.style.marginLeft = "0";
-      // avgBox.style.marginRight="1%";
-      avgBox.style.transition = "all 0.5s"
-      $('#graph_div').show('slow');
-      graphDiv.style.display = "inline-block";
-
-      var ctx = document.getElementById("barCanvas").getContext('2d');
-      
-      Chart.defaults.global.defaultFontColor = 'black';
-      Chart.defaults.global.defaultFontSize = 18;
-      Chart.defaults.global.legend.display=false;
-      Chart.defaults.global.tooltips.enabled=false;
-
-      
-      if(myChart!=null){ myChart.destroy();}
-      myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["Lv4 이하", "Lv5", "Lv6", "Lv7", "Lv8"],
-          datasets: [{
-            //label: '속한 학생 수',
-            data: [1, 3, 16, 10, 5, 1, 2],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)'
-            ],
-            borderWidth: 2
-          }]
-        },
-        options: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: "TOEIC Speaking 점수 별 학생 분포도"
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
-          }
+        function toSGraph() {
+            var labels = ["Lv4 이하", "Lv5", "Lv6", "Lv7", "Lv8"];
+            var datas = [13, 17, 14, 9, 6];
+            showGraph("TOEIC Speaking 점수 별 학생 분포도", labels, datas);
         }
-      });
-    }
-  /*
-    To.세인
-    이 페이지는 '스펙비교페이지'로 내가 선택한 직군의 평균 스펙과 
-    학점, 토익, 토스를 선택했을 때 스펙 별 인원수 그래프를 보이는 페이지야.
-    앞으로 추가해야될 부분은
-    1. 디자인 수정
-    2. DB와 그래프 연동하기(근데 여기는 아마 진우오빠나 정환이가 하지 않을까 싶어 ㅎ)
-  */
+    </script>
 
-   $('#logo_Image').click(function () {
-            $(window).attr('location','/main');
-        })
-  </script>
 </body>
 
 </html>
