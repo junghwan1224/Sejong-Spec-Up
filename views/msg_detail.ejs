@@ -1,16 +1,122 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>msg detail</title>
-  </head>
-  <body>
-    <% if(user) { %>
-      <div><%= title %></div>
-      <hr>
-      <div><%= contents %></div>
-    <% } else { %>
-      접근 권한이 없습니다!!!!!!@@@
-    <% } %>
-  </body>
-</html>
+
+<% for(var i=0; i<msgList.length; i++) { %>
+    <div class="modal fade" id="myModal_Content<%= msgList[i].id %>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: brown">
+                    <h4 class="modal-title" style="color: white">Message</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="firstName" class="col-sm-12 control-label">보낸 사람</label>
+                        <input type="text" value="<%= msgList[i].post_name %>" class="form-control" readonly>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="firstName" class="col-sm-12 control-label">날짜</label>
+                        <input type="text" id="score" value="<%= msgList[i].date %>" class="form-control" readonly>
+                    </div>
+                </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <label for="firstName" class="col-sm-12 control-label">제목</label>
+                        <input type="text" id="score" value="<%= msgList[i].title %>" class="form-control" readonly>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label for="firstName" class="col-sm-12 control-label">내용</label>
+                            <textarea  rows="7"id="score" class="form-control" readonly><%= msgList[i].contents %>
+                            </textarea>
+                        </div>
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_Reply<%= msgList[i].id %>">답장</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="myModal_Reply<%= msgList[i].id %>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header" style="background-color: brown">
+                        <h4 class="modal-title" style="color: white">Message</h4>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label for="firstName" class="col-sm-12 control-label">받는 사람</label>
+                            <input type="text" value="<%= msgList[i].post_name %>" class="form-control" >
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label for="firstName" class="col-sm-12 control-label">제목</label>
+                            <input type="text" id="reply_title<%= msgList[i].id %>" value="" class="form-control" >
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label for="firstName" class="col-sm-12 control-label">내용</label>
+                                <textarea  rows="7"id="reply_content<%= msgList[i].id %>" class="form-control" >
+                                </textarea>
+                        </div>
+
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id='goReply<%= msgList[i].id %>'>보내기</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+        $('#goReply<%= msgList[i].id %>').click(function(){
+
+          var now = new Date();
+          function leadingZeros(n, digits){
+            var zero='';
+            n = n.toString();
+            if(n.length < digits){
+              for(i = 0 ; i < digits - n.length; i++){
+                zero += '0';
+              }
+            }
+            return zero + n;
+          }
+          var post_date = leadingZeros(now.getYear()-100,2)+ '-'+
+          leadingZeros(now.getMonth()+1,2)+'-' +
+          leadingZeros(now.getDate(),2);
+          var data = {
+            post_user: '<%= msgList[i].recv_name %>',
+            recv_user: '<%= msgList[i].post_name %>',
+            title: $('#reply_title<%= msgList[i].id %>').val(),
+            contents: $('#reply_content<%= msgList[i].id %>').val(),
+            post_date: post_date,
+          };
+          $.ajax({
+            type: "POST",
+            url: "/msg/postMsg",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            cache: false,
+            data: data,
+            datatype: "json",
+            success: function(result) {
+              if(result['result']=='success'){
+                alert('답장 성공');
+                location.reload();
+              }
+              else
+              alert('답장 실패');
+            },
+          });
+        });
+        </script>
+  <% } %>
