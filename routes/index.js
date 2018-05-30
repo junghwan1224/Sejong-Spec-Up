@@ -25,17 +25,41 @@ router.get('/main', function(req, res) {
 router.get('/join', function(req, res) {
   res.render('join', { title: 'joinPage' });
 });
+
+
+
 router.get('/mypage', function(req, res) {
   if (req.session.authId) {
-  res.render('mypage', {
-    user : req.session.authId,
-    title:'myPage'
-    });
+    conn.query('select * from ssu_user where user_id = ?',[req.session.authId],function(err,rows){
+      if(err){
+        throw err;
+      }else{
+        if(req.session.authId){
+          conn.query('select * from ssu_content where user_id =?',[req.session.authId],function(err,results){
+            if(err){
+              throw err;
+            }else{
+              res.render('mypage', {
+              results : results,
+              user : req.session.authId,
+              rows : rows,
+              title:'myPage'
+                });
+            }
+          })
+        }else{
+          res.render('mypage', {
+            user: undefined,
+            title:'mywwwpage'
+          });
+        }
+      }
+    })
   }
   else {
     res.render('mypage', {
       user: undefined,
-      title:'mypage'
+      title:'mywwwpage'
     });
   }
 });
@@ -194,6 +218,26 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
   });//query
 });//router post
 
+
+router.post('/goContent',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var user_id = req.session.authId;
+  var result = req.body.result;
+  var date = req.body.date;
+  var content = req.body.content;
+
+  var sql = 'insert into `ssu_content` (`user_id`,`result`,`date`,`content`) values (?,?,?,?);';
+
+  conn.query(sql,[user_id,result,date,content],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
 
 router.post('/gologin',function(req,res,next){
   var id = req.body.id;

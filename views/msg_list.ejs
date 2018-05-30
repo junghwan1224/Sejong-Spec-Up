@@ -1,7 +1,36 @@
-<% for(var i=0; i<msgList.length; i++) { %>
-  <% if(! msgList[i].check) { %>
-    <div><%= msgList[i].post_name %>&nbsp;&nbsp;<a href='/msg/msgDetail/<%= msgList[i].id %>'><%= msgList[i].title %></a>&nbsp;&nbsp;<%= msgList[i].date %>&nbsp;&nbsp;읽지 않음</div>
-  <% } else{ %>
-    <div><%= msgList[i].post_name %>&nbsp;&nbsp;<a href='/msg/msgDetail/<%= msgList[i].id %>'><%= msgList[i].title %></a>&nbsp;&nbsp;<%= msgList[i].date %>&nbsp;&nbsp;읽음</div>
-  <% } %>
-<% } %>
+
+  <tbody>
+    <% for(var i=0; i<msgList.length; i++) { %>
+      <% if(! msgList[i].check) { %>
+        <tr id='my_msg<%= msgList[i].id %>' data-toggle="modal" data-target="#myModal_Content<%= msgList[i].id %>">
+            <td><%= msgList[i].post_name %></td>
+            <td><%= msgList[i].title %></td>
+            <td><%= msgList[i].date %></td>
+            <td id='my_msg_check<%= msgList[i].id %>'>X</td>
+        </tr>
+      <% } else{ %>
+        <tr id='my_msg<%= msgList[i].id %>' data-toggle="modal" data-target="#myModal_Content<%= msgList[i].id %>">
+            <td><%= msgList[i].post_name %></td>
+            <td><%= msgList[i].title %></td>
+            <td><%= msgList[i].date %></td>
+            <td id='my_msg_check<%= msgList[i].id %>'>O</td>
+        </tr>
+      <% } %>
+      <script>
+        $('#my_msg<%= msgList[i].id %>').click(function(){
+          $.ajax({
+            type: "POST",
+            url: "/msg/readCheck/<%= msgList[i].id %>",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            cache: false,
+            datatype: "json",
+            success: function(result) {
+              if(result['result']=='success'){
+                $('#my_msg_check<%= msgList[i].id %>').text('O');
+              }
+            },
+          });
+        });
+      </script>
+    <% } %>
+  </tbody>

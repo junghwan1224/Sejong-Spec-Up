@@ -101,6 +101,16 @@ margin-top: 20%;
     cursor: pointer;
     background-color:green;
 }
+td{
+    background: none;
+    border-style: none;
+    cursor: pointer;
+}
+tbody tr:hover{
+ background-color:brown;
+ opacity: 0.4;
+ color: white;   
+}
 
 @media only screen and (max-width: 766px) and (min-width: 300px)  {
     #logo_Div{
