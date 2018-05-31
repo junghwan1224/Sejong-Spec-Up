@@ -8,7 +8,7 @@
         <%= title %>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -94,30 +94,17 @@
                                     <th>보낸사람</th>
                                     <th>제목</th>
                                     <th>날짜</th>
+                                    <th>읽음</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr data-toggle="modal" data-target="#myModal_Content">
-                                    <td>gkstjdwls571</td>
-                                    <td>안녕하세요!</td>
-                                    <td>18-05-21</td>
-                                </tr>
-                                <tr>
-                                    <td>simson94</td>
-                                    <td>스터디 함께 하실래요?</td>
-                                    <td>18-05-17</td>
-                                </tr>
-                                <tr>
-                                    <td>jinuKing</td>
-                                    <td>네이버 면접 질문이요ㅠ</td>
-                                    <td>18-05-02</td>
-                                </tr>
+                            <tbody id='msg_list'>
+                                <!-- msg list show -->
                             </tbody>
                         </table>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
@@ -125,85 +112,11 @@
         </div>
 
 
+        <!-- msg detail show -->
+        <div id='msg_detail'></div>
 
-
-        <div class="modal fade" id="myModal_Content">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header" style="background-color: brown">
-                        <h4 class="modal-title" style="color: white">Message</h4>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <label for="firstName" class="col-sm-12 control-label">보낸 사람</label>
-                            <input type="text" value="gkstjdwls571" class="form-control" readonly>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <label for="firstName" class="col-sm-12 control-label">날짜</label>
-                            <input type="text" id="score" value="18-05-21" class="form-control" readonly>
-                        </div>
-                    </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <label for="firstName" class="col-sm-12 control-label">제목</label>
-                            <input type="text" id="score" value="안녕하세요!" class="form-control" readonly>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <label for="firstName" class="col-sm-12 control-label">내용</label>
-                                <textarea  rows="7"id="score" class="form-control" readonly>안녕하세요! 저는 컴퓨터공학과 다니는 한성진이라고 합니다. 다름이 아니오라 제가 seongjin571님 취업일지를 보고 문의차 메세지를 보냅니다!혹시 라인 1차 면접을 보셨다고 했는데 제가 목표가 라인 웹개발자로 취직 하는 거여서 면접 때 어떤 질문을 했는지 알수 있을까요??
-                                </textarea>
-                            </div>
-
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_Reply">답장</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="modal fade" id="myModal_Reply">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <!-- Modal Header -->
-                        <div class="modal-header" style="background-color: brown">
-                            <h4 class="modal-title" style="color: white">Message</h4>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <label for="firstName" class="col-sm-12 control-label">받는 사람</label>
-                                <input type="text" value="gkstjdwls571" class="form-control" >
-                            </div>
-                        
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <label for="firstName" class="col-sm-12 control-label">제목</label>
-                                <input type="text" id="score" value="" class="form-control" >
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <label for="firstName" class="col-sm-12 control-label">내용</label>
-                                    <textarea  rows="7"id="score" class="form-control" >
-                                    </textarea>
-                            </div>
-    
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">보내기</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-
+        <!-- msg reply show -->
+        <div id='msg_reply'></div>
 
 
     </div>
@@ -219,15 +132,60 @@
         $('.three_Button:eq(2)').click(function () {
             $(window).attr('location', '/userSearch');
         })
-        setInterval(function () {
-            var blink = document.getElementById("message_Update");
-            blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
-        }, 500);
+
+        function newMsgCheck(){
+          var blink = document.getElementById("message_Update");
+          blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+        }
+
+
+        //setInterval(newMsgCheck, 500);
         $('#message_Update').click(function () {
             // $(this).css('display', 'none');
             // $('#message').css('display', 'block');
         })
-        
+
+        $.get('/msg/msgList', function(data){
+          $('#msg_list').html(data);
+        });
+
+        $.get('/msg/msgDetail', function(data){
+          $('#msg_detail').html(data);
+        });
+
+        var a = '<%= new_msg %>';
+        if(a) {
+          console.log('ok');
+          setInterval(newMsgCheck, 500);
+        }
+        else {
+          console.log('no');
+          clearInterval(newMsgCheck);
+        }
+
+        // setInterval(function(){
+        //   $.get('/msg/msgList', function(data){
+        //     $('#msg_list').html(data);
+        //   });
+        //
+        //   $.get('/msg/msgDetail', function(data){
+        //     $('#msg_detail').html(data);
+        //   });
+        //
+        //   if(a) {
+        //     console.log('ok');
+        //     setInterval(newMsgCheck, 500);
+        //   }
+        //   else {
+        //     console.log('no');
+        //     clearInterval(newMsgCheck);
+        //   }
+        // }, 6000);
+
+        $('#msgListCloseBtn').click(function(){
+          clearInterval(newMsgCheck);
+          location.reload();
+        });
     </script>
 </body>
 

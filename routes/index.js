@@ -9,11 +9,21 @@ router.get('/', function(req, res) {
   res.render('login', { title: 'loginPage' });
 });
 router.get('/main', function(req, res) {
+  var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
   if (req.session.authId) {
-  res.render('main', {
-    user : req.session.authId,
-    title:'mainPage'
-    });
+  conn.query(sql, [req.session.authId], function(error, results){
+    if(error){
+      console.log(error);
+    }
+    else{
+      console.log(results);
+      res.render('main', {
+        user : req.session.authId,
+        title:'mainPage',
+        new_msg: results[0],
+      });
+    }
+  });
   }
   else {
     res.render('main', {
