@@ -1,5 +1,4 @@
 
-  <tbody>
     <% for(var i=0; i<msgList.length; i++) { %>
       <% if(! msgList[i].check) { %>
         <tr id='my_msg<%= msgList[i].id %>' data-toggle="modal" data-target="#myModal_Content<%= msgList[i].id %>">
@@ -33,4 +32,3 @@
         });
       </script>
     <% } %>
-  </tbody>
