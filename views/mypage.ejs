@@ -40,7 +40,7 @@
     <div id="main_Div">
         <div id="menu_Div">
             <div id="mypage_Content">
-                <p>MY PAGE</p>
+                <p><%= title %></p>
             </div>
 
             <div class="mypage_Menu">
@@ -327,18 +327,30 @@
                             </tr>
                         </thead>
                         <tbody id="upload_Table">
+                          <%
+                                            for(var i = 0; i< results.length ; i++) {
+                                              if(i > 1000) {
+                                                i++;
+                                              } else {
+                                                var item = results[i];
+                                                %>
                             <tr>
                                 <td>
-                                    <input type="text" id="update_Date" value=<%= results[0].date %> class="update_Daily">
+
+                                    <input type="text" id="update_Date" value=<%= item.date %> class="update_Daily">
                                 </td>
                                 <td>
-                                    <input type="text" id="update_Content" value=<%= results[0].content %> class="update_Daily">
+                                    <input type="text" id="update_Content" value=<%= item.content %> class="update_Daily">
                                 </td>
                                 <td>
-                                    <input type="text" id="update_Result" value=<%= results[0].result %> class="update_Daily">
+                                    <input type="text" id="update_Result" value=<%= item.result %> class="update_Daily">
                                 </td>
                             </tr>
-                            
+
+                                                    <%
+                                                  }
+                                                }
+                                                %>
                         </tbody>
                     </table>
 
