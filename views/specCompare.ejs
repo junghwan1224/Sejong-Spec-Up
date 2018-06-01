@@ -23,8 +23,8 @@
         <div id="user_Input">
             <div id="help_Vertical">
                 <div id="message_Div">
-                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
-                    <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" data-toggle="modal" data-target="#myModal"/>
+                    <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
                 </div>
                 <div>
                     &nbsp;
@@ -49,9 +49,9 @@
         </div>
 
         <div class="container-fluid curtain">
-            
+
             <div class="row">
-                
+
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 tile_section">
                     <div class="container-fluid" style="padding-top: 16px;">
 
@@ -160,12 +160,52 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog" modal-lg>
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: brown">
+                    <h4 class="modal-title" style="color: white">Message</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>보낸사람</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                                <th>읽음</th>
+                            </tr>
+                        </thead>
+                        <tbody id='msg_list'>
+                            <!-- msg list show -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
 
             </div>
         </div>
     </div>
+
+
+    <!-- msg detail show -->
+    <div id='msg_detail'></div>
+
+
+
     <script src="/javascripts/specCompare.js"></script>
-    
+
     <script>
         function scoreGraph() {
             var labels = ["2.0 미만", "2.0~2.5", "2.5~3.0", "3.0~3.5", "3.5~4.0", "4.0~4.5"];
@@ -184,6 +224,24 @@
             var datas = [13, 17, 14, 9, 6];
             showGraph("TOEIC Speaking 점수 별 학생 분포도", labels, datas);
         }
+
+        function newMsgCheck(){
+          var blink = document.getElementById("message_Update");
+          blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+        }
+
+        $.get('/msg/msgList', function(data){
+          $('#msg_list').html(data);
+        });
+
+        $.get('/msg/msgDetail', function(data){
+          $('#msg_detail').html(data);
+        });
+
+        $('#msgListCloseBtn').click(function(){
+          clearInterval(newMsgCheck);
+          location.reload();
+        });
     </script>
 
 </body>
