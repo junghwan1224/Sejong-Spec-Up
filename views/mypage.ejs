@@ -20,8 +20,8 @@
         <div id="user_Input">
             <div id="help_Vertical">
                 <div id="message_Div">
-                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
-                    <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" data-toggle="modal" data-target="#myModal" />
+                    <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
                 </div>
 
                   <div>
@@ -40,7 +40,7 @@
     <div id="main_Div">
         <div id="menu_Div">
             <div id="mypage_Content">
-                <p>MY PAGE</p>
+                <p><%= title %></p>
             </div>
 
             <div class="mypage_Menu">
@@ -62,34 +62,34 @@
                     <div class="original_Form row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" id="job">
                             <label for="firstName" class="col-sm-12 control-label">직군</label>
-                            <input type="text" id="score" value=<%= rows[0].want_job %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].want_job %>"  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">학점</label>
-                            <input type="text" id="score" value=<%= rows[0].grade %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].grade %>"  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">토익-Toeic</label>
-                            <input type="text" id="toeic" value=<%= rows[0].toeic %>  readonly class="form-control">
+                            <input type="text" id="toeic" value="<%= rows[0].toeic %>"  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
-                            <input type="text" id="score" value=<%= rows[0].toss %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].toss %>"  readonly class="form-control">
                         </div>
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
-                            <input type="text" id="score" value=<%= rows[0].opic %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].opic %>"  readonly class="form-control">
                         </div>
 
 
@@ -97,7 +97,7 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
-                            <input type="text" id="score" value=<%= rows[0].volunteer %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].volunteer %>"  readonly class="form-control">
                         </div>
 
 
@@ -105,28 +105,28 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">인턴 경험</label>
-                            <input type="text" id="score" value=<%= rows[0].intern %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].intern %>"  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">공모전 수상</label>
-                            <input type="text" id="score" value=<%= rows[0].competition %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].competition %>"  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">해외 연수</label>
-                            <input type="text" id="score" value=<%= rows[0].activity  %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].activity  %>"  readonly class="form-control">
                         </div>
 
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">자격증</label>
-                            <input type="text" id="score" value=<%= rows[0].certificate  %>  readonly class="form-control">
+                            <input type="text" id="score" value="<%= rows[0].certificate  %>"  readonly class="form-control">
                         </div>
                     </div>
 
@@ -328,15 +328,15 @@
                         </thead>
                         <tbody id="upload_Table">
                           <%
-                          for(var i =0;i< results.length;i++) {
-                            if(i > 1000) {
-                              i++;
-                            }else{
-                              var item = results[i];
-                              %>
-
+                                            for(var i = 0; i< results.length ; i++) {
+                                              if(i > 1000) {
+                                                i++;
+                                              } else {
+                                                var item = results[i];
+                                                %>
                             <tr>
                                 <td>
+
                                     <input type="text" id="update_Date" value=<%= item.date %> class="update_Daily">
                                 </td>
                                 <td>
@@ -387,6 +387,50 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog" modal-lg>
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background-color: brown">
+                            <h4 class="modal-title" style="color: white">Message</h4>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>보낸사람</th>
+                                        <th>제목</th>
+                                        <th>날짜</th>
+                                        <th>읽음</th>
+                                    </tr>
+                                </thead>
+                                <tbody id='msg_list'>
+                                    <!-- msg list show -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- msg detail show -->
+            <div id='msg_detail'></div>
+
+            <!-- msg reply show -->
+            <div id='msg_reply'></div>
+
+
+
         </div>
 
         <script src="/javascripts/mypage.js"></script>
