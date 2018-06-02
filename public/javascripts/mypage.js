@@ -130,3 +130,61 @@ $('#upload_Button_DB').click(function(){
         }
   });
 })
+
+$('#my_spec').click(function(){
+  var a = document.getElementById('score_toss').value;
+  if(a == 1){
+    a = 'Level 1';
+  }else if(a == 2)
+  {
+    a = 'Level 2';
+  }else if(a == 3)
+  {
+    a = 'Level 3';
+  }else if(a == 4)
+  {
+    a = 'Level 4';
+  }else if(a == 5)
+  {
+    a = 'Level 5';
+  }else if(a == 6)
+  {
+    a = 'Level 6';
+  }else if(a == 7)
+  {
+    a = 'Level 7';
+  }else if(a == 8)
+  {
+    a = 'Level 8';
+  }else if(a == -1)
+  {
+    a = '미응시';
+  }
+  document.getElementById('score_toss').value = a;
+  var b = document.getElementById('score_opic').value;
+  if(b == 1){
+    b = 'NL';
+  }else if(b == 2)
+  {
+    b = 'NM';
+  }else if(b == 3)
+  {
+    b = 'NH';
+  }else if(b == 4)
+  {
+    b = 'IL';
+  }else if(b == 5)
+  {
+    b = 'IM';
+  }else if(b == 6)
+  {
+    b = 'IH';
+  }else if(b == 7)
+  {
+    b = 'AL';
+  }else if(b == -1)
+  {
+    b = '미응시';
+  }
+  document.getElementById('score_opic').value = b;
+})
