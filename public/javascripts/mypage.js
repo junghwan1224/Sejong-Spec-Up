@@ -121,7 +121,7 @@ $('#upload_Button_DB').click(function(){
         data:data,
         success:function(result){
           if(result['result']=='success'){
-            alert('okok');
+            alert('등록되었습니다');
             $(window).attr('location','/mypage');
           }//result if
         },
