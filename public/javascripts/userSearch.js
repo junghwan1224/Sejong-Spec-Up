@@ -18,6 +18,25 @@ function studentListOnClick(index) { //학생 리스트 클릭시 인덱스로 �
     alert("student_" + index);
 }
 
+
+function newMsgCheck(){
+  var blink = document.getElementById("message_Update");
+  blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+}
+
+$.get('/msg/msgList', function(data){
+  $('#msg_list').html(data);
+});
+
+$.get('/msg/msgDetail', function(data){
+  $('#msg_detail').html(data);
+});
+
+$('#msgListCloseBtn').click(function(){
+  clearInterval(newMsgCheck);
+  location.reload();
+});
+
 document.getElementsByClassName('search_button_div')[0].onclick = function(){
 
   var ulTags = document.getElementsByTagName('ul');

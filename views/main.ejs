@@ -4,35 +4,43 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
 </head>
 
 <body>
     <div id="top_Div">
-            <div id="nav_Div">
-                    <div id="logo_Div">
-                        <img src="/images/logo4.png" id="logo_Image" height="100%">
+        <div id="nav_Div">
+            <div id="logo_Div">
+                <img src="/images/logo4.png" id="logo_Image" height="100%">
+            </div>
+            <div id="user_Input">
+                <div id="help_Vertical">
+                    <div id="message_Div">
+                        <img id="message_Update" src="/images/message_Icon.png" height="13%" data-toggle="modal" data-target="#myModal" />
+
+                        <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
                     </div>
-                    <div id="user_Input">
-                        <div id="help_Vertical">
-                            <div id="message_Div">
-                                <img id="message_Update" src="/images/message_Icon.png" height="13%" />
-                                <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />
-                            </div>
-                            <div>
-                                &nbsp;
-                                <strong style="cursor:pointer" onclick="myFunction()"><%= user %></strong>
-                            </div>
-                            <div>
-                                    <img src="/images/logout.png" id="logout"height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
-                                </div>
-                        </div>
+                    <div>
+                        &nbsp;
+                        <strong style="cursor:pointer" onclick="myFunction()">
+                            <%= user %>
+                        </strong>
+                    </div>
+                    <div>
+                        <img src="/images/logout.png" id="logout" height="8%" style="cursor: pointer;" onclick="location.href='/logout'" />
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
 
     <div id="bottom_Div">
@@ -67,29 +75,114 @@
                 </div>
             </div>
         </div>
+
+        </button>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog" modal-lg>
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header" style="background-color: brown">
+                        <h4 class="modal-title" style="color: white">Message</h4>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>보낸사람</th>
+                                    <th>제목</th>
+                                    <th>날짜</th>
+                                    <th>읽음</th>
+                                </tr>
+                            </thead>
+                            <tbody id='msg_list'>
+                                <!-- msg list show -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- msg detail show -->
+        <div id='msg_detail'></div>
+
+
     </div>
     <script>
+        $('input').css('background', 'none');
+        $('textarea').css('background', 'none');
         $('.three_Button:eq(0)').click(function () {
-            $(window).attr('location','/mypage');
+            $(window).attr('location', '/mypage');
         })
         $('.three_Button:eq(1)').click(function () {
-            $(window).attr('location','/specCompare');
+            $(window).attr('location', '/specCompare');
         })
         $('.three_Button:eq(2)').click(function () {
-            $(window).attr('location','/userSearch');
+            $(window).attr('location', '/userSearch');
         })
-        setInterval(function () {
-                var blink = document.getElementById("message_Update");
-                blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
-            }, 500);
-            $('#message_Update').click(function(){
-                $(this).css('display','none');
-                alert('메세지 확인');
-                $('#message').css('display','block');
-            })
-$('#logout').click(function(){
-    
-})
+
+        function newMsgCheck(){
+          var blink = document.getElementById("message_Update");
+          blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+        }
+
+
+        //setInterval(newMsgCheck, 500);
+        $('#message_Update').click(function () {
+            // $(this).css('display', 'none');
+            // $('#message').css('display', 'block');
+        })
+
+        $.get('/msg/msgList', function(data){
+          $('#msg_list').html(data);
+        });
+
+        $.get('/msg/msgDetail', function(data){
+          $('#msg_detail').html(data);
+        });
+
+        var a = '<%= new_msg %>';
+        if(a) {
+          console.log('ok');
+          setInterval(newMsgCheck, 500);
+        }
+        else {
+          console.log('no');
+          clearInterval(newMsgCheck);
+        }
+
+        // setInterval(function(){
+        //   $.get('/msg/msgList', function(data){
+        //     $('#msg_list').html(data);
+        //   });
+        //
+        //   $.get('/msg/msgDetail', function(data){
+        //     $('#msg_detail').html(data);
+        //   });
+        //
+        //   if(a) {
+        //     console.log('ok');
+        //     setInterval(newMsgCheck, 500);
+        //   }
+        //   else {
+        //     console.log('no');
+        //     clearInterval(newMsgCheck);
+        //   }
+        // }, 6000);
+
+        $('#msgListCloseBtn').click(function(){
+          clearInterval(newMsgCheck);
+          location.reload();
+        });
     </script>
 </body>
 

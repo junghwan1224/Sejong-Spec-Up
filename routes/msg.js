@@ -72,65 +72,48 @@ router.post('/postMsg', function(req, res){
 
 router.get('/msgList', function(req, res){
   var sql = 'select * from msg where recv_name=?;';
-  var new_msgSql = 'delete from msg_new where recv_name=?;';
   conn.query(sql, [req.session.authId], function(error, results){
     if(error){
       console.log(error);
       console.log('메세지 리스트 나열 실패');
     }
     else{
-      conn.query(new_msgSql, [req.session.authId], function(err, rows){
-        if(err){
-          console.log(err);
-          console.log('msg new delete failed');
-        }
-        else{
-          console.log('msg new delete success');
-          res.render('msg_list', {
-            msgList: results,
-          });
-        }
+      console.log('msg new delete success');
+      res.render('msg_list', {
+        msgList: results,
+        user: req.session.authId,
       });
-      // res.render('msg_list', {
-      //   msgList: results,
-      // });
     }
   });
 });
 
-router.get('/msgDetail/:id', function(req, res){
-  var sql = 'select * from msg where id=? and recv_name=?;';
-  var update_sql = 'update `msg` set `check`=? where `id`=? and `recv_name`=?;';
-  var id = req.params.id;
-  conn.query(sql, [id, req.session.authId], function(error, results){
+router.get('/msgDetail', function(req, res){
+  var sql = 'select * from msg where recv_name=?;';
+  conn.query(sql, [req.session.authId], function(error, results){
     if(error){
       console.log(error);
       console.log('msgDetail select 쿼리문 에러');
     }
-    else if(req.session.authId){
+    else{
       console.log('msgDetail select 쿼리문 성공');
-      conn.query(update_sql, [1, parseInt(id), req.session.authId], function(err, rows){
-        if(err){
-          console.log(err);
-          console.log('update sql 쿼리문 실패');
-        }
-        else{
-          console.log('update sql 쿼리문 성공');
-          res.render('msg_detail', {
-            user: req.session.authId,
-            title: results[0].title,
-            date: results[0].date,
-            post_name: results[0].post_name,
-            contents: results[0].contents,
-          });
-        }
+      res.render('msg_detail', {
+        msgList: results,
       });
     }
+  });
+});
+
+router.post('/readCheck/:id', function(req, res){
+  var sql = 'update `msg` set `check`=? where `id`=? and `recv_name`=?;';
+  var idx = req.params.id;
+  conn.query(sql, [1, idx, req.session.authId], function(error, results){
+    if(error){
+      console.log(error);
+      console.log('read check failed');
+    }
     else{
-      console.log('update sql 쿼리문 성공 else');
-      res.render('msg_detail', {
-        user: undefined,
-      });
+      console.log('read check success');
+      res.send({result:'success'});
     }
   });
 });
