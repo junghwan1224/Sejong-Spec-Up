@@ -1,5 +1,9 @@
 var myChart=null;
 
+$('#logo_Image').click(function(){
+    $(window).attr('location','/main');
+})
+
 //학점 누르면 보이게 하는 함수
 function showGraph(graphTitle, graphLabels, graphDatas) {
 
