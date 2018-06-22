@@ -58,7 +58,13 @@ body,html{
 
 table{
     color: white;
-}.date{
+}
+
+.dlg_table {
+    color: #333 !important;
+}
+
+.date{
     width: 15%;
 }
 .content{
