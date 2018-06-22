@@ -12,7 +12,7 @@ var options={
   host: 'localhost',
   port: 3306,
   user: 'root',
-  password: '7dnjf29dlf',
+  password: '',
   database: 'ssu'
 };
 var users = require('./routes/users');

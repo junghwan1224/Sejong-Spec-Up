@@ -167,7 +167,12 @@ label{
         margin-left: 6%;
     }
     #logo_Div{
-        width: 60%;
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 500px) and (min-width: 300px)  {
+    #logo_Div{
+        width: 54% !important;
     }
 }
 @media screen and (orientation: portrait) {
@@ -181,7 +186,7 @@ label{
         font-size: 17px;
     }
     #logo_Div{
-        width: 42%;
+        width: 65%;
     }
 }
 
