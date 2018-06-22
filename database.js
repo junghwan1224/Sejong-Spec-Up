@@ -1,7 +1,7 @@
 module.exports = {
   host:'localhost',
   user:'root',
-  password:'1066223gks',
+  password:'',
   database:'ssu',
   multipleStatements:true
 }
