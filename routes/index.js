@@ -171,7 +171,7 @@ router.get('/userDetail/:id', function(req, res) {
       console.log(error);
     }
     else{
-      conn.query(detailSql, [req.params.id, results[0].user_id], function(err, rows){
+      conn.query(detailSql, [results[0].user_id], function(err, rows){
         if(err) { console.log(err); }
         else {
           if(req.session.authId){
@@ -179,7 +179,7 @@ router.get('/userDetail/:id', function(req, res) {
               user : req.session.authId,
               title: 'userDetail',
               senior: results[0],
-              seniorContent: rows[0]
+              seniorContent: rows
             });
           }
           else{

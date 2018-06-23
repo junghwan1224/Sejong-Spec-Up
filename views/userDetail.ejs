@@ -263,13 +263,13 @@
                               <% for(var i=0; i<seniorContent.length; i++) { %>
                                 <tr>
                                   <td>
-                                      <%= seniorContent.data %>
+                                      <%= seniorContent[i].date %>
                                   </td>
                                   <td>
-                                      <%= seniorContent.content %>
+                                      <%= seniorContent[i].content %>
                                   </td>
                                   <td>
-                                      <%= seniorContent.result %>
+                                      <%= seniorContent[i].result %>
                                   </td>
                                 </tr>
                               <% } %>
@@ -277,7 +277,7 @@
                             <% } else{ %>
                               <tr>
                                 <td></td>
-                                <td>사용자가 입력한 내용이 없습니다.</td>
+                                <td>해당 유저가 입력한 내용이 없습니다.</td>
                                 <td></td>
                               </tr>
                             <% } %>
