@@ -1,0 +1,538 @@
+<html>
+<head>
+  <mete charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0, user-scalable=no, target-densitydpi=medium-dpi" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css"></link>
+    <link rel="stylesheet" href="/stylesheets/webService.css"></link>
+    <link rel="stylesheet" href="/stylesheets/applyform.css"></link>
+    <!-- [if It IE 9]>
+    <script src="html5shiv.js"></script>
+    <script src="respond.js"></script>
+    <![endif]-->
+    <!-- 익스플로우 8이하에는 html5와 css3를 지원하지 않기 때문에 우리가 사용하는 부트스트랩이 적용이 안되기 때문에 익스플로우 9
+    미만일시 부트스트랩을 사용할수 있게 해주는 js파일들을 연결 -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/javascripts/swipe.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='/javascripts/apply_javascript.js'></script>
+    <title><%= title %></title>
+  </head>
+  <body ondragstart = "return false">
+    <script>
+    </script>
+    <div class="header">
+      <div class="header_Container container-fluit">
+        <div class="introduce">
+          <div class="logo">
+            <img  src="/images/OYRLogo.png" width="100%" height="auto"></img>
+          </div>
+          <nav>
+            <div class="menu"><p class="menuBotton">동아리 소개</p></div>
+            <div class="menu"><p class="menuBotton">주요 활동</p></div>
+            <div class="menu"><p class="menuBotton" id="goboard">공지 사항</p></div>
+            <div class="menu"><p class="menuBotton">지원 하기</p></div>
+            <% if (user === undefined){ %>
+              <div class="menuLogin"><p class="menuLoginBotton">로그인</p></div>
+
+              <% } else{ %>
+                <div class="menuLogin" id="Logout"><button id="logoutButton"><%= user %></button>
+                  <div class="dropdown-content">
+                    <p id="auth">권한: <%= author %></p>
+                    <a href="/login/logout">로그아웃</a>
+                  </div>
+                </div>
+                <% } %>
+
+              </nav>
+            </div>
+          </div>
+          <div class="a container-fluit">
+            <div class="header_Button">
+              <div class="allButtonDiv button_Row row">
+                <div class="button" id="introButton">
+                  <p id="aboutOYR">About OYR</p>
+                  <p id="aboutOYR_content">OPEN YEAR ROUND는 웹개발 동아리로 스터디를 통해 모바일/웹 어플리케이션 개발에 중점을 두고 있고, 현재 각종 공모전 및 학술제에 참여하고 있다.</p>
+                </div>
+                <div class="button" id="actButton">
+                  <div id="actVertical-Helper">
+                    <div class="act-Content">
+                      <p class="mainAct">주요 활동</p>
+                      <img id="mainPagePhoto"src="/images/member2.jpg"></img>
+                      <p id="subActContent">2014-2017동아리 연혁</br>Open Year Round에서 개발 된 Web Services</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="button" id="noticeButtonM">
+                  <p class="buttonMobile">공지 사항</p>
+                </div>
+
+                <div class="button" id="supportButton">
+                  <div class="supportImage">
+                    <p class="applyText">2018년도</br>신입부원</br>모 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;집</p>
+                    <p id="applyDate"> 2018.3.7~3.17</p>
+                    <button class="applyWirteButton">지원서 작성하기</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="moveTopDiv">
+            <img class="moveTop" src="/images/up2.png"></img>
+          </div>
+        </div>
+
+        <div class="act_Container container-fluit" id="act_Container_Id">
+          <div id="actTop">
+            <img id="actImage"src='/images/mainActImage2.png' width="100%" height="auto"></img>
+            <img id="actImageM"src='/images/mainActImage.png' width="100%" height="auto"></img>
+          </div>
+          <div class="actTitle"id="history">
+            <img id="bar"style="vertical-align:middle" src="/images/bar.jpg">
+            <span class="titleContent">동아리 연혁</span><span class="webMente">사진을 클릭하시면 확대됩니다.</span>
+          </div>
+          <div id="award">
+            <table>
+              <tbody>
+                <tr>
+                  <td class="year">2017</td><td class="awardContent">아동 노동 착취 관련 웹 게임 <b style="color:#444444">Dawson's Daily Life</b>, 2017 교내 학술제 입상</br>도서교환 웹서비스 <b style="color:#444444">도서로</b>, 2017 교내 학술제 입상</br>편집 에디터 <b style="color:#444444">마이노트</b>, 2017 교내 학술제 입상</td><td class="tableImg"rowspan="2"><img src="/images/member.jpeg" width="85%"></img></td>
+                </tr>
+                <tr>
+                  <td class="year">2016</td><td class="awardContent">브라우저 탭 통합 서비스 <b style="color:#444444">TabStorage</b>, 2016 교내 학술제 입상</br>서울시 물가비교 쇼핑 어플 <b style="color:#444444">PricePlace</b>, 2016 교내 학술제 입상</td>
+                </tr>
+                <tr>
+                  <td class="year">2015</td><td class="awardContent">강의평가, 시간표 짜기 어플 <b style="color:#444444">아뭐듣지</b>, 2015(등록된 시간표 수 1400개)</br>동물병원 추천 플랫폼 <b style="color:#444444">Keepet</b>, 2015 교내 학술제 입상</td><td class="tableImg"rowspan="2"><img src="/images/member2.jpg" width="85%"></img></td>
+                </tr>
+                <tr>
+                  <td class="year">2014</td><td class="awardContent">현재 날씨에 어울리는 음악추천 <b style="color:#444444">WeatherMusic</b>, 2014 청년창업기상기후산업 기상청장상</br><b style="color:#444444">오늘의 자외선</b>, 2014(기상청 추천 앱 등록)</br>뉴스 요약 어플 <b style="color:#444444">그래서 오늘은</b>, 2014 정주영 창업경진대회 해커톤 2위</br>대학생 이상형 월드컵 <b style="color:#444444">Fethering</b>, 2014(venture square 2014 5월의 아이템 선정)</td>
+                </tr>
+              </tbody>
+            </table>
+            <div id="tableImageM">
+              <div class="webLogo">
+                <img  class="tableImgM"src="/images/member.jpeg" width="40%"></img>
+                <img class="tableImgM"src="/images/member2.jpg" width="40%"></img>
+              </div>
+            </div>
+
+
+            <div id="member1"class="memberModal">
+              <div class="verticalHelp">
+                <div class="memberVertiArrange" >
+                  <div class="memberModal_Content">
+                    <span class="memberClose">&times;</span>
+                    <label></label>
+                    <img src="/images/member.jpeg" width="100%" height="auto"></img>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="member2"class="memberModal">
+              <div class="verticalHelp">
+                <div class="memberVertiArrange">
+                  <div class="memberModal_Content">
+                    <span class="memberClose">&times;</span>
+                    <label></label>
+                    <img src="/images/member2.jpg" width="100%" height="auto"></img>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="actTitle" id="webServices">
+            <img id="bar"style="vertical-align:middle" src="/images/bar.jpg">
+            <span class="titleContent">Web Services </span><span class="webMente">로고를 클릭하면 상세내용이 보입니다.</span>
+          </div>
+          <div id="allLogo">
+            <input type="radio" name="pos" value="1"id="pos1"checked>
+            <input type="radio" name="pos" value="2"id="pos2">
+            <input type="radio" name="pos" value="3"id="pos3">
+            <ul>
+              <div class="webLogo"id="webLogo1">
+                <img class="logoClick"src="/images/dawson.jpg"width="30%"height="auto"></img>
+                <img class="logoClick"src="/images/bookChange2.jpg"width="30%"height="auto"></img>
+                <img class="logoClick"src="/images/mynote.png"width="30%"height="auto"></img>
+              </div>
+              <div class="webLogo2">
+                <img class="logoClick"src="/images/sejongPlate.png"width="25%"height="auto"></img>
+                <img class="logoClick"src="/images/tabStorage.png"width="25%"height="auto"></img>
+                <img class="logoClick"src="/images/shopIn.png"width="25%"height="auto"></img>
+              </div>
+              <div class="webLogo2">
+                <img class="logoClick"src="/images/keepet.png"width="25%"height="auto"></img>
+              </div>
+            </ul>
+            <div class="pos">
+              <label for="pos1"></label>
+              <label for="pos2"></label>
+              <label for="pos3"></label>
+            </div>
+          </div>
+          <footer>
+            <div class="footerContent">
+              <p class="footerBigContent"><b>OPEN YEAR ROUND</b></p>
+              <p class="footerSmallContent">@openyearround</p>
+              <p class="footerSmallContent">세종대학교 다산관 205호</p>
+            </div>
+          </footer>
+
+
+          <div id="dawson"class="webServiceModal">
+            <div class="verticalHelp">
+              <div class="vertiArrange">
+                <div class="webServiceModal_Content">
+                  <span class="webServiceClose">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="webTop">
+                      <p class="mainService"><b>아동 노동 착취 관련 웹 게임</b></p>
+                      <p class="webTitle"><b>DAWSON'S DAILY LIFE</b></p>
+                    </div>
+                    <div class="webImage">
+                      <img class="left"src="/images/left.png" width="4%"height="auto"></img>
+                      <img src="/images/dawson1.png" class="firstImage"width="43%" height="auto"></img>
+                      <img src="/images/dawson2.png" width="43%" height="auto"></img>
+                      <img class="right"src="/images/right.png" width="4%"height="auto"></img>
+                    </div>
+                    <div class="subService">
+                      <p>Dawson이라는 콩고의 한 아이를 모티브로 전세계의 아동 노동 착취를 알리고, 실제 아동들의 노동들을 바탕으로 제작된 웹 게임 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="bookChange"class="webServiceModal">
+            <div class="verticalHelp">
+              <div class="vertiArrange">
+                <div class="webServiceModal_Content">
+                  <span class="webServiceClose">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="webTop">
+                      <p class="mainService"><b>도서교환 웹 서비스</b></p>
+                      <p class="webTitle"><b>도서교환</b></p>
+                    </div>
+                    <div class="webImage">
+                      <img class="left"src="/images/left.png" width="4%"height="auto"></img>
+                      <img src="/images/book1.png" class="firstImage"width="43%" height="auto"></img>
+                      <img src="/images/book2.png" width="43%" height="auto"></img>
+                      <img class="right"src="/images/right.png" width="4%"height="auto"></img>
+                    </div>
+                    <div class="subService">
+                      <p>사용하지 않는 책, 혹은 필요한 책을 온라인상에서 다른 사람들과의 거래를 지원해주는 웹 서비스</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="mynote"class="webServiceModal">
+            <div class="verticalHelp">
+              <div class="vertiArrange">
+                <div class="webServiceModal_Content">
+                  <span class="webServiceClose">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="webTop">
+                      <p class="mainService"><b>자신만의 웹 노트 서비스</b></p>
+                      <p class="webTitle"><b>MY NOTE</b></p>
+                    </div>
+                    <div class="webImage">
+                      <img class="left"src="/images/left.png" width="4%"height="auto"></img>
+                      <img src="/images/mynote1.png" class="firstImage"width="43%" height="auto"></img>
+                      <img src="/images/mynote2.png" width="43%" height="auto"></img>
+                      <img class="right"src="/images/right.png" width="4%"height="auto"></img>
+                    </div>
+                    <div class="subService">
+                      <p>웹 상에서 자신이 원하는 자료를  정리하고 사람들과 공유할 수 있는 웹 노트 서비스 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="sejongPlate"class="webServiceModal">
+            <div class="verticalHelp">
+              <div class="vertiArrange">
+                <div class="webServiceModal_Content" name='1'>
+                  <span class="webServiceClose">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="webTop">
+                      <p class="mainService"><b>세종대 학생들을 위한 맛집 추천 웹 서비스</b></p>
+                      <p class="webTitle"><b>SEJONG PLATE</b></p>
+                    </div>
+                    <div class="webImage">
+                      <img class="left"src="/images/left.png" width="4%"height="auto"></img>
+                      <img src="/images/sejongPlate1.png" class="firstImage"width="43%" height="auto"></img>
+                      <img src="/images/sejongPlate2.png" width="43%" height="auto"></img>
+                      <img class="right"src="/images/right.png" width="4%"height="auto"></img>
+                    </div>
+                    <div class="subService">
+                      <p>세종대 근처 식당의 위치, 메뉴, 가격, 후기 등 다양한 정보들이 한 눈에 보기쉽게 정리되어 있는 세종대생들을 위한 웹 서비스</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tabStorage"class="webServiceModal">
+            <div class="verticalHelp">
+              <div class="vertiArrange">
+                <div class="webServiceModal_Content" name='2'>
+                  <span class="webServiceClose">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="webTop">
+                      <p class="mainService"><b>브라우저 탭 통합 서비스 </b></p>
+                      <p class="webTitle"><b>TAB STORAGE</b></p>
+                    </div>
+                    <div class="webImage">
+                      <img class="left"src="/images/left.png" width="4%"height="auto"></img>
+                      <img src="/images/tabStorage1.gif" class="firstImage"width="43%" height="auto"></img>
+                      <img src="/images/tabStorage2.gif" width="43%" height="auto"></img>
+                      <img class="right"src="/images/right.png" width="4%"height="auto"></img>
+                    </div>
+                    <div class="subService">
+                      <p>웹 사용 시 생성되는 수많은 Tab들을 편리하게 저장, 관리 및 공유 할 수 있게 지원해주는 웹 확장 프로그램</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="shopIn"class="webServiceModal">
+            <div class="verticalHelp">
+              <div class="vertiArrange">
+                <div class="webServiceModal_Content">
+                  <span class="webServiceClose">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="webTop">
+                      <p class="mainService"><b>더 편한 쇼핑을 위한 나만의 쇼핑카트</b></p>
+                      <p class="webTitle"><b>SHOP IN</b></p>
+                    </div>
+                    <div class="webImage">
+                      <img class="left"src="/images/left.png" width="4%"height="auto"></img>
+                      <img src="/images/shopIn1.png" class="firstImage"width="43%" height="auto"></img>
+                      <img src="/images/shopIn2.png" width="43%" height="auto"></img>
+                      <img class="right"src="/images/right.png" width="4%"height="auto"></img>
+                    </div>
+                    <div class="subService">
+                      <p>단 하나의 계정으로 모든 상품을 담아 편리하게 온라인 쇼핑을 지원해주는 웹 서비스</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="keepPet"class="webServiceModal">
+            <div class="verticalHelp">
+              <div class="vertiArrange">
+                <div class="webServiceModal_Content">
+                  <span class="webServiceClose">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="webTop">
+                      <p class="mainService"><b>동물병원 추천 플랫폼</b></p>
+                      <p class="webTitle"><b>KEEPET</b></p>
+                    </div>
+                    <div class="webImage">
+                      <img class="left"src="/images/left.png" width="4%"height="auto"></img>
+                      <img src="/images/keepPet1.png" class="firstImage"width="43%" height="auto"></img>
+                      <img src="/images/keepPet2.png" width="43%" height="auto"></img>
+                      <img class="right"src="/images/right.png" width="4%"height="auto"></img>
+                    </div>
+                    <div class="subService">
+                      <p>현재 위치에서 가까운, 평점이 좋은 동물 병원을 사용자에게 제공해주는 웹 플랫폼</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="introduce_Container container-fluit" id="act_Container_Id">
+          <div id="actTop">
+            <img id="actImage"src='/images/mainIntroImage2.png' width="100%" height="auto"></img>
+            <img id="actImageM"src='/images/mainIntroImageM.png' width="100%" height="auto"></img>
+          </div>
+          <div class="actTitle"id="history">
+            <img id="bar"style="vertical-align:middle" src="/images/bar.jpg">
+            <span class="titleContent">About OYR</span>
+          </div>
+          <div id="introduce">
+            <table class="introTable">
+              <tbody>
+                <tr>
+                  <td class="introduceContent">OPEN YEAR ROUND는 2013년 12월 만들어진 학술 동아리이다. 현재 13명의 동아리원으로 구성되어 있으며, 동아리방은 다산관 205호에 위치해 있다. 스터디를 통해 모바일/웹 어플리케이션 개발에 중점을 두고 있고, 팀프로젝트를 진행하면서 각종 공모전 및 학술제에 참여하고 있다.</td><td class="logoImg"rowspan="2"><img src="/images/OYRLogo.png" width="100%"></img></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="actTitle" id="webServices">
+            <img id="bar"style="vertical-align:middle" src="/images/bar.jpg">
+            <span class="titleContent">동아리 목표</span>
+          </div>
+          <div id="goalDiv">
+            <img id="goalImage" src="/images/goal.jpg" style="width:70%"></img>
+          </div>
+
+          <div class="actTitle" id="webServices">
+            <img id="bar"style="vertical-align:middle" src="/images/bar.jpg">
+            <span class="titleContent">Curriculum </span>
+          </div>
+          <div id="cirDiv">
+            <img id="cirImage"src="/images/cir.jpg" style="width:70%"></img>
+          </div>
+
+
+          <footer>
+            <div class="footerContent">
+              <p class="footerBigContent"><b>OPEN YEAR ROUND</b></p>
+              <p class="footerSmallContent">@openyearround</p>
+              <p class="footerSmallContent">세종대학교 다산관 205호</p>
+            </div>
+          </footer>
+        </div>
+
+
+        <div class="apply_Container container-fluit">
+          <div id="applyTop">
+            <img id="applyImage"src='/images/mainApplyImage.png' width="100%" height="auto"></img>
+            <img id="applyImageM"src='/images/mainApplyImageM.png' width="100%" height="auto"></img>
+          </div>
+          <div id='body_container'>
+            <div class="container">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="firstName" class="col-sm-3 control-label">이름</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="name" placeholder="ex) 홍길동" class="supportForm form-control" >
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName" class="col-sm-3 control-label">학과</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="major" placeholder="ex) 컴퓨터공학과" class="supportForm form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName" class="col-sm-3 control-label">학번</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="student_number" placeholder="ex) 18011234" class="supportForm form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName" class="col-sm-3 control-label">학년-학기</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="grade" placeholder="ex) 3-2" class="supportForm form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName" class="col-sm-3 control-label">연락처</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="phone_number" placeholder="ex) 010 1111 1111" class="supportForm form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName" class="col-sm-3 control-label">이메일</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="email" placeholder="ex) abcd@naver.com" class="supportForm form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName" class="col-sm-3 control-label">거주지</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="home" placeholder="ex) 서울시 광진구" class="supportForm form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-3">성별</label>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <label class="radio-inline">
+                          <input type="radio" name='gender' value="남">남
+                        </label>
+                      </div>
+                      <div class="col-sm-3">
+                        <label class="radio-inline">
+                          <input type="radio" name='gender'value="여">여
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- /.form-group -->
+                <div class="army form-group" style="display:none">
+                  <label class="control-label col-sm-9">군필여부</label>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <div class="checkbox col-sm-3">
+                        <label>
+                          <input type="radio" id="milcheck1" name='milcheck' value="군필">군필
+                        </label>
+                      </div>
+                      <div class="checkbox col-sm-3">
+                        <label>
+                          <input type="radio" id="milcheck2" name='milcheck' value="미필">미필
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                  <label class="control-label col-sm-3">지원 동기</label>
+                  <div class="col-sm-12">
+                    <textarea class='form-control' rows='7' id='apply_reason' placeholder="300자 내외로 작성해주세요."></textarea>
+                  </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                  <label class="control-label col-sm-3">프로젝트 경험</label>
+                  <div class="col-sm-12">
+                    <textarea class='form-control' rows='7' id='project' placeholder="큰 프로젝트가 아니라 수업시간을 통한 사소하고 작은 경험도 괜찮습니다. 프로젝트 경험이 없으면 없다고 적어주세요. 300자 내외로 적어주세요."></textarea>
+                  </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                  <label class="control-label col-sm-5">만들고 싶은 서비스</label>
+                  <div class="col-sm-12">
+                    <textarea class='form-control' rows='7' id='want_service' placeholder="300자 내외로 작성해주세요."></textarea>
+                  </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                  <div class="col-sm-12 col-sm-offset-3">
+                    <button type="button" class="btn btn-primary btn-block" id='applyButton'>지원하기</button>
+                  </div>
+                </div>
+              </form> <!-- /form -->
+            </div> <!-- ./container -->
+          </div>
+          <footer>
+            <div class="footerContent">
+              <p class="footerBigContent"><b>OPEN YEAR ROUND</b></p>
+              <p class="footerSmallContent">@openyearround</p>
+              <p class="footerSmallContent">세종대학교 다산관 205호</p>
+            </div>
+          </footer>
+        </div>
+
+        <script src="/javascripts/login.js"></script>
+        <script src="/javascripts/main.js"></script>
+        <script src="/javascripts/webService.js"></script>
+      </body>
+      </html>

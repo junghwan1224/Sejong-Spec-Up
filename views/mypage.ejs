@@ -44,7 +44,7 @@
             </div>
 
             <div class="mypage_Menu">
-                <p>MY 스펙</p>
+                <p id='my_spec'>MY 스펙</p>
             </div>
 
 
@@ -83,13 +83,13 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
-                            <input type="text" id="score" value="<%= rows[0].toss %>"  readonly class="form-control">
+                            <input type="text" id="score_toss" value= <%= rows[0].toss_num %>  readonly class="form-control">
                         </div>
 
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
-                            <input type="text" id="score" value="<%= rows[0].opic %>"  readonly class="form-control">
+                            <input type="text" id="score_opic" value= <%= rows[0].opic_num %>  readonly class="form-control">
                         </div>
 
 
@@ -97,7 +97,7 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                             <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
-                            <input type="text" id="score" value="<%= rows[0].volunteer %>"  readonly class="form-control">
+                            <input type="text" id="score" value= "<%= rows[0].volunteer %>"  readonly class="form-control">
                         </div>
 
 
@@ -129,11 +129,6 @@
                             <input type="text" id="score" value="<%= rows[0].certificate  %>"  readonly class="form-control">
                         </div>
                     </div>
-
-
-
-
-
 
                     <div class="when_Reform row">
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" id="job">
@@ -346,11 +341,10 @@
                                     <input type="text" id="update_Result" value=<%= item.result %> class="update_Daily">
                                 </td>
                             </tr>
-
-                                                    <%
-                                                  }
-                                                }
-                                                %>
+                            <%
+                          }
+                        }
+                        %>
                         </tbody>
                     </table>
 
@@ -388,53 +382,49 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <!-- The Modal -->
-            <div class="modal fade" id="myModal">
-                <div class="modal-dialog" modal-lg>
-                    <div class="modal-content">
-                        <!-- Modal Header -->
-                        <div class="modal-header" style="background-color: brown">
-                            <h4 class="modal-title" style="color: white">Message</h4>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>보낸사람</th>
-                                        <th>제목</th>
-                                        <th>날짜</th>
-                                        <th>읽음</th>
-                                    </tr>
-                                </thead>
-                                <tbody id='msg_list'>
-                                    <!-- msg list show -->
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- msg detail show -->
-            <div id='msg_detail'></div>
-
-            <!-- msg reply show -->
-            <div id='msg_reply'></div>
-
-
-
         </div>
+    </div>
 
-        <script src="/javascripts/mypage.js"></script>
+    <!-- The Modal -->
+    <div class="modal dialogBack" id="myModal">
+        <div class="modal-dialog" modal-lg>
+            <div class="modal-content dialogAnim">
+                <!-- Modal Header -->
+                <div class="modal-header modal_header_styler">
+                    <h4 class="modal-title" style="color: white">Message</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>보낸사람</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                                <th>읽음</th>
+                            </tr>
+                        </thead>
+                        <tbody id='msg_list'>
+                            <!-- msg list show -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer modal_footer_styler">
+                    <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- msg detail show -->
+    <div id='msg_detail'></div>
+
+    <!-- msg reply show -->
+    <div id='msg_reply'></div>
+
+    <script src="/javascripts/mypage.js"></script>
 </body>
 
 </html>

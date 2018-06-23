@@ -1,0 +1,132 @@
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/board.css"></link>
+    <!-- [if It IE 9]>
+    <script src="html5shiv.js"></script>
+    <script src="respond.js"></script>
+    <!practice_ejs-->
+    <!-- 익스플로우 8이하에는 html5와 css3를 지원하지 않기 때문에 우리가 사용하는 부트스트랩이 적용이 안되기 때문에 익스플로우 9
+    미만일시 부트스트랩을 사용할수 있게 해주는 js파일들을 연결 -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/board.css"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <title><%= title %></title>
+  </head>
+  <body ondragstart = "return false" >
+    <div class="notice_Container container-fluit">
+      <div id="noticeTop">
+        <img id="noticeImage"src='/images/mainNoticeImage.jpg' width="100%" height="auto"></img>
+        <img id="noticeImageM"src='/images/mainNoticeImageM.jpg' width="100%" height="auto"></img>
+      </div>
+      <div class="container"><!--게시판 div-->
+
+
+        <form id='search' method='get' action='/board/1/search'><!-- 키워드 추가 -->
+          <input type="text" class='form-control' name='search_input' value='<%= keyword %>'  id="searchForm" placeholder="검색어를 입력하세요."/ >
+          <button  style="font:'LotteMartHappy', sans-serif;"type='submit' id="searchButton">검색</button>
+        </form>
+
+        <div class="box" id="note1">
+          <!-- <div id="first_area"></div> -->
+          <div id="main_area">
+            <table class="board">
+              <thead>
+                <tr>
+                  <td id="first_td"><b>글번호</b></td>
+                  <td id="second_td"><b>제목</b></td>
+                  <td id="third_td"><b>작성일자</b></td>
+                </tr>
+              </thead>
+
+                <tbody id='board_body'>
+
+                  <%
+                    for(var i = leng-((page*page_num)-page_num); i > leng-(page*page_num); i--) {
+                      if(i < 0) {
+                        break;
+                      } else {
+                        var item = result[i];
+                        %>
+                        <tr class='board_set'>
+                          <td><%= i+1 %> </td>
+                          <td id="titleBoard">
+                            <a href="/board/1/detail/<%= item.id %>" id = "board_content_view_title<%=item.id%>" style="text-decoration:none"><%=item.title%></a>
+                          </td>
+                          <td><%= item.date%></td>
+                        </tr>
+
+                        <%
+                      }
+                    }
+                    %>
+
+
+                    <tr>
+                      <td id="pageBoard"colspan = "5">
+                        <%
+                        for(var j = 0; j < result.length/10; j++) {
+                          %>
+                          [ <a href="/board/<%= j+1 %>"><%= j+1 %></a> ]
+                          <%
+                        }
+                        %>
+                      </td>
+                    </tr>
+
+                  </tbody>
+
+
+                <div id="textUpload">
+                  <div class="verticalHelper">
+                  <div class="vertical">
+                  <div class="modal-content">
+                    <form action='' method="POST" enctype="multipart/form-data" id='board_post_form'>
+                      <span id="uploadClose"class="Close">&times;</span>
+                      <div class="form-group">
+                        <label class="control-label col-sm-3">제목</label>
+                        <div class="col-sm-12">
+                          <textarea class='form-control' rows='1' name='title' id='title_name' placeholder=""></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-5">내용</label>
+                        <div class="col-sm-12">
+                          <textarea class='form-control' rows='12' name='contents' id='contents' placeholder=""></textarea>
+                          <input type='file' name='board_file' id='board_file'/>
+                        </div>
+                      </div>
+                      <button type="button" class="uploadbtn btn-primary btn-block" id='ok_button_on_board'>올리기</button>
+                      <!-- <input type='submit' class="uploadbtn btn-primary btn-block" id='ok_button_on_board' value='올리기'/> -->
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </table>
+              <input type='button' name='write' value='글쓰기' id='writeButton'class="form-control"></input>
+
+        </div>
+      </div>
+    </div>
+    <div id="footerC">
+      <div class="footerContent">
+        <p class="footerBigContent"><b>OPEN YEAR ROUND</b></p>
+        <p class="footerSmallContent">@openyearround</p>
+        <p class="footerSmallContent">세종대학교 다산관 205호</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="moveTopDiv">
+    <img class="moveTop" src="/images/home.png"></img>
+  </div>
+  <script src="/javascripts/board.js"></script>
+
+</body>
+</html>

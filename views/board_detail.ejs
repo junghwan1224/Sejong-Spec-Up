@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- [if It IE 9]>
+    <script src="html5shiv.js"></script>
+    <script src="respond.js"></script>
+    <!practice_ejs-->
+    <!-- 익스플로우 8이하에는 html5와 css3를 지원하지 않기 때문에 우리가 사용하는 부트스트랩이 적용이 안되기 때문에 익스플로우 9
+    미만일시 부트스트랩을 사용할수 있게 해주는 js파일들을 연결 -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/board.css"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title><%= result[0].title %></title>
+    <style>
+    .boardContentContainer{
+      margin-top: 5%;
+      /* width: 100%; */
+    }
+    .boardContentTitle{
+      color: #469fbb;
+      width: 85%;
+    }
+    .boardContentDate{
+      width: 15%;
+    }
+    .boardContentTable{
+      width: 100%;
+    }
+    /* table td{
+      padding: 2%;
+    } */
+    .boardContentUp{
+      border-top-color: #469fbb;
+      border-top-style: solid;
+    }
+    .boardContentButtons{
+      display : flex;
+      align-items : center;
+      height: 100%;
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+    .reformButton{
+      font-family: 'LotteMartDream', sans-serif;
+      width: 10%;
+      height: 38px;
+      color: rgb(255, 255, 255);
+      border-color: #469fbb;
+      border-style: none;
+      background-color:#469fbb;
+      margin-left: 39%;
+      /* margin-left: 39%; */
+    }
+    .deleteButton{
+      font-family: 'LotteMartDream', sans-serif;
+      width: 10%;
+      height: 38px;
+      color: rgb(255, 255, 255);
+      border-color: #469fbb;
+      border-style: none;
+      background-color:#469fbb;
+      margin-left: 2%;
+      display: table-cell;
+      vertical-align: center;
+    }
+    ::-webkit-scrollbar {
+    font-family: 'LotteMartDream', sans-serif;
+    display:none;
+    }
+    #okay_btn,.okay_btn2,.okay_btn3{
+      font-family: 'LotteMartDream', sans-serif;
+      height: 38px;
+      border-radius: 2px;
+      text-align: center;
+      width: 90%;
+      background-color: #469fbb;
+      border-color: #469fbb;
+      color: white;
+      border-style: none;
+      margin-top: 3%;
+      margin-bottom:3%;
+    }
+    .verticalCenter-Help{
+      display: table;
+      width: 100%;
+      height: 100%;
+    }
+    .verticalCenter-Middle{
+        display: table-cell;
+      vertical-align: middle;
+    }
+    @media all and (orientation:portrait){
+      .deleteButton,.reformButton{
+        width: 20%;
+      }
+      .reformButton{
+        margin-left: 29%;
+      }
+      .boardContentTitle{
+        width: 75%;
+      }
+      .boardContentDate{
+        width: 25%;
+      }
+    }
+    </style>
+  </head>
+  <body ondragstart = "return false" >
+    <div class="notice_Container container-fluit">
+      <div id="noticeTop">
+        <img id="noticeImage"src='/images/mainNoticeImage.jpg' width="100%" height="auto"></img>
+        <img id="noticeImageM"src='/images/mainNoticeImageM.jpg' width="100%" height="auto"></img>
+      </div>
+      <div class="boardContentContainer container"><!--게시판 div-->
+        <table class="boardContentTable">
+          <tr class="boardContentUp">
+            <td class="boardContentTitle" style='padding: 2%; border-top: #469fbb;'><b><%= result[0].title %></b></td>
+            <td class="boardContentDate" style='padding: 2%; border-top: #469fbb;'><%= result[0].date %></td>
+          </tr>
+          <% if(user === undefined){ %>
+            <tr>
+              <td colspan="2" style='padding: 2%;'>게시물 접근 권한이 없습니다.</td>
+            </tr>
+          <% } else{ %>
+            <tr>
+              <td colspan="2" style='padding: 2%; white-space: pre-line;'><%= result[0].text %></td>
+            </tr>
+            <% if(result[0].file_name !== "undefined"){ %>
+              <tr>
+                <td>첨부 파일 : <a href='/files/<%= result[0].file_name %>' download><%= result[0].file_name %></a></td>
+              </tr>
+            <% } %>
+          <% } %>
+        </table>
+        <div class="boardContentButtons">
+            <input type='button' name='write' value='수정' id='reformButton' class="reformButton form-control" ></input>
+            <input type='button' name='write' value='삭제' id='deleteButton' class="deleteButton form-control"></input>
+        </div>
+
+        <form id='search' method='get' action='/board/1/search' style='margin-bottom: 5%; margin-top: 5%;'>
+          <input type="text" class='form-control' name='search_input' value='<%= keyword %>'  id="searchForm" placeholder="검색어를 입력하세요."/ >
+          <button  style="font:'LotteMartHappy', sans-serif;"type='submit' id="searchButton">검색</button>
+        </form>
+          <table class="board">
+            <thead>
+              <tr>
+                <td id="first_td"><b>글번호</b></td>
+                <td id="second_td"><b>제목</b></td>
+                <td id="third_td"><b>작성일자</b></td>
+              </tr>
+            </thead>
+
+            <tbody id='board_body'>
+
+              <%
+                for(var i = leng-((page*page_num)-page_num); i > leng-(page*page_num); i--) {
+                  if(i < 0) {
+                    break;
+                  } else {
+                    var item = rows[i];
+                    %>
+                    <tr class='board_set'>
+                      <td><%= i+1 %> </td>
+                      <td id="titleBoard">
+                        <a href="/board/1/detail/<%= item.id %>" id = "board_content_view_title<%=item.id%>" style="text-decoration:none"><%=item.title%></a>
+                      </td>
+                      <td><%= item.date%></td>
+                    </tr>
+
+                    <%
+                  }
+                }
+                %>
+
+
+                <tr>
+                  <td id="pageBoard"colspan = "5">
+                    <%
+                    for(var j = 0; j < rows.length/10; j++) {
+                      %>
+                      [ <a href="/board/<%= j+1 %>/detail/<%= result[0].id %>"><%= j+1 %></a> ]
+                      <%
+                    }
+                    %>
+                  </td>
+                </tr>
+
+              </tbody>
+
+              <div id="numberCheck">
+                <div class="check_Content">
+                  <span id="checkClose"class="close">&times;</span>
+                  <label></label>
+                  <div class="formModal">
+                    <div class="col-sm-12">
+                      <input type="password"class='form-control' rows='1' id="checkPassword" placeholder="비밀번호를 입력해주세요."></input>
+                    </div>
+                  </div>
+                  <button type="button" class="checkbtn" id="okay_btn">확인</button>
+                </div>
+              </div>
+
+                <div id="textUpload">
+                  <div class="verticalHelper">
+                  <div class="vertical">
+                  <div class="modal-content">
+                    <span id="uploadClose"class="close">&times;</span>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3">제목</label>
+                      <div class="col-sm-12">
+                        <textarea class='form-control' rows='1' id='title_name' placeholder=""></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-5">내용</label>
+                      <div class="col-sm-12">
+                        <textarea class='form-control' rows='12' id='contents' placeholder=""></textarea>
+                      </div>
+                    </div>
+                    <button type="button" class="uploadbtn btn-primary btn-block" id='ok_button_on_board'>올리기</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </table>
+          <input type='button' name='write' value='글쓰기' id='writeButton'class="form-control"></input>
+
+  </div>
+
+
+
+
+  <div id="footerC">
+    <div class="footerContent">
+      <p class="footerBigContent"><b>OPEN YEAR ROUND</b></p>
+      <p class="footerSmallContent">@openyearround</p>
+      <p class="footerSmallContent">세종대학교 다산관 205호</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="numberCheck2">
+  <div class="check_Content">
+    <span class="checkClose2">&times;</span>
+    <div class="formModal">
+      <div class="col-sm-12">
+        <input  type="password"class='checkPassword2 form-control' rows='1' placeholder="비밀번호를 입력해주세요."></input>
+      </div>
+    </div>
+    <div >
+      <button  type="button" class="okay_btn2" >확인</button>
+    </div>
+  </div>
+</div>
+
+<div class="numberCheck3"><!--수정하기 위해서 비밀번호 받는 모달-->
+  <div class="check_Content">
+    <span class="checkClose3">&times;</span>
+    <div class="formModal">
+      <div class="col-sm-12">
+        <input  type="password"class='checkPassword3 form-control'  rows='1' placeholder="비밀번호를 입력해주세요."></input>
+      </div>
+    </div>
+    <div >
+      <button  type="button" class="okay_btn3" >확인</button>
+    </div>
+  </div>
+</div>
+
+<div class="textUpload2"><!--수정 하는 공간 모달-->
+  <div class="verticalCenter-Help">
+    <div class="verticalCenter-Middle">
+  <div class="modal-content">
+    <span class="uploadClose2">&times;</span>
+    <div class="form-group">
+      <label class="control-label col-sm-3">제목</label>
+      <div class="col-sm-12">
+        <textarea class='title_nameR form-control' rows='1' id="re_title"><%= result[0].title %></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-5">내용</label>
+      <div class="col-sm-12">
+        <textarea class='contentsR form-control' rows='10' id="re_contens"><%= result[0].text %></textarea>
+      </div>
+    </div>
+    <button type="button" class="ok_button_on_board2" id="reform_btn">수정하기</button>
+  </div>
+</div>
+</div>
+</div>
+<div id="moveTopDiv">
+  <img class="moveTop" src="/images/home.png"></img>
+</div>
+<script>
+// function btn2(){
+//   console.log('deleteButton click');
+//   $('.numberCheck2').css('display','block');
+//   $('.checkClose2').click(function(){
+//     $('.numberCheck2').css('display','none');
+//   });
+//
+//   $('.numberCheck2').keypress(function(event){
+//     console.log('ok');
+//     if ( event.which == 13 ) {
+//       $('.okay_btn2').click();
+//       return false;
+//     }
+//   });
+//   $('.okay_btn2').click(function(){
+//     var index=$('.okay_btn2').index(this);
+//     var passwordCheck2=document.getElementsByClassName("checkPassword2")[index];
+//     var password2=passwordCheck2.value;
+//     var data = {
+//       'Password': password2
+//       // 'title' : title
+//     }
+//     // console.log(data);
+//     $.ajax({
+//       type: "POST",
+//       url: "/check/goCheck",
+//       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+//       cache: false,
+//       datatype: "json", // expecting JSON to be returnedzz
+//       data: data,
+//       success: function(result) {
+//         console.log(data);
+//         if(result['results']==100){
+//           alert('삭제완료');
+//           $(window).attr('location','/board/goCheckk/<%=result[0].id%>');
+//         }else {
+//           alert('비밀번호가 일치하지 않습니다.');
+//           passwordCheck2.value="";
+//         }
+//         //     }
+//         // })
+//       },
+//     })
+//   });
+// };
+// function btn1(){
+//   $('.numberCheck3').css('display','block');
+//   $('.checkClose3').click(function(){
+//     $('.numberCheck3').css('display','none');
+//   });
+//   $('.uploadClose2').click(function(){
+//     $('.textUpload2').css('display','none');
+//   });
+//
+//   $('.numberCheck3').keypress(function(event){
+//     if ( event.which == 13 ) {
+//       $('.okay_btn3').click();
+//       return false;
+//     }
+//   });
+//   $('.okay_btn3').click(function(){
+//     var index=$('.okay_btn3').index(this);
+//     var passwordCheck3=document.getElementsByClassName("checkPassword3")[index];
+//     var password3=passwordCheck3.value;
+//     var data = {
+//       'Password': password3
+//     }
+//     console.log(data);
+//     $.ajax({
+//       type: "POST",
+//       url: "/check/goCheck?"+ Math.random(),
+//       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+//       cache: false,
+//       datatype: "json", // expecting JSON to be returnedzz
+//       data: data,
+//       success: function(result) {
+//         if(result['results']==100){
+//           $('.numberCheck3').css('display','none');
+//           $('.textUpload2').css('display','block');
+//           passwordCheck3.value="";
+//         }else {
+//           alert('비밀번호가 일치하지 않습니다.');
+//           passwordCheck3.value="";
+//         }
+//       },
+//     });
+//   });
+// };
+
+$('.uploadClose2').click(function(){
+  $('.textUpload2').css('display','none');
+});
+
+$('#reformButton').click(function(){
+  $.ajax({
+    type: "POST",
+    url: "/check/goCheck?"+ Math.random(),
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    cache: false,
+    datatype: "json", // expecting JSON to be returnedzz
+    success: function(result) {
+      if(result['results']==100){
+        $('.textUpload2').css('display','block');
+      }else {
+        alert('수정 권한이 없습니다.');
+      }
+    },
+  });
+});
+
+$('#deleteButton').click(function(){
+  $.ajax({
+    type: "POST",
+    url: "/check/goCheck",
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    cache: false,
+    datatype: "json", // expecting JSON to be returnedzz
+    success: function(result) {
+      if(result['results']==100){
+        alert('삭제완료');
+        $(window).attr('location','/board/goCheckk/<%=result[0].id%>');
+      }else {
+        alert('삭제 권한이 없습니다.');
+      }
+    },
+  });
+});
+
+$('#reform_btn').click(function(){
+  var re_title = $('#re_title').val();
+  var re_contents = $('#re_contens').val();
+  var re_now = new Date();
+  function leadingZeros(n, digits){
+    var zero='';
+    n = n.toString();
+    if(n.length < digits){
+      for(i = 0 ; i < digits - n.length; i++){
+        zero += '0';
+      }
+    }
+    return zero + n;
+  }
+  var re_post_date = leadingZeros(re_now.getYear()-100,2)+ '-'+
+  leadingZeros(re_now.getMonth()+1,2)+'-' +
+  leadingZeros(re_now.getDate(),2);
+  if(re_title=='')
+  alert("제목을 입력하세요");
+  else if(re_contents == '')
+  alert("내용을 입력하세요");
+  else{
+    var data={
+      'title' : re_title,
+      'contents' : re_contents,
+      'date' : re_post_date
+    }
+    console.log(data);
+    $.ajax({
+      type : 'post',
+      url : '/board/reBoard/<%=result[0].id%>',
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      cache: false,
+      data: data,
+      datatype: 'json',
+      success : function(result) {
+        if(result['result'] == 'success'){
+          alert('수정완료');
+          location.reload();
+        }else{
+          console.log(result);
+          alert('등록실패1');
+        }
+      },
+      error : function(error){
+        alert('등록실패2');
+      }
+    });
+  }
+});
+</script>
+<script src="/javascripts/board_detail.js"></script>
+  </body>
+</html>
