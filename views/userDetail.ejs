@@ -259,7 +259,11 @@
                             </tr>
                         </thead>
                         <tbody id="upload_Table">
-                            <% if(seniorContent) { %>
+
+
+                            <% if(seniorContent.length != 0) { %>
+
+
                               <% for(var i=0; i<seniorContent.length; i++) { %>
                                 <tr>
                                   <td>
@@ -271,6 +275,7 @@
                                   <td>
                                       <%= seniorContent[i].result %>
                                   </td>
+
                                 </tr>
                               <% } %>
 

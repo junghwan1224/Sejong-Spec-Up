@@ -204,17 +204,22 @@ body,html{
 @media only screen and (max-width: 766px) and (min-width: 300px)  {
   
     #logo_Div{
-        width: 60%;
+        width: 40%;
     }
-
-   
 }
+
+@media only screen and (max-width: 500px) and (min-width: 300px)  {
+    #logo_Div{
+        width: 54% !important;
+    }
+}
+
 @media screen and (orientation: portrait) {
     strong{
         font-size: 17px;
     }
     #logo_Div{
-        width: 42%;
+        width: 65%;
     }
 }
 @media only screen and (max-width: 1025px) and (min-width: 767px)  {
@@ -268,5 +273,61 @@ body,html{
     0% {
         background-color: rgba(64, 64, 64, .7);
         box-shadow: 6px 12px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+.dialogAnim {
+    animation: animDialog .2s forwards;
+}
+
+.dialogBack {
+    animation: animDialogBack .2s forwards;
+    padding-top: 10%;
+}
+
+.modal_header_styler {
+    border-bottom: 2px solid #9a0007 !important;
+    background-color: #d32f2f;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.modal_footer_styler {
+    border-top: 1px solid #c7c7c7 !important;
+    border-bottom: 2px solid #c2c2c2 !important;
+    background-color: #f5f5f5;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.btn-danger {
+    outline: none !important;
+    transition: all .1333s ease-in;
+    transition-property: background-color, border-color, box-shadow;
+}
+
+.btn-danger:hover {
+    border-color: #d9534f !important;
+    background-color: #ff625d !important;
+    box-shadow: 0 3px 6px grey;
+}
+
+@keyframes animDialog {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes animDialogBack {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, .5);
     }
 }
