@@ -42,3 +42,7 @@ function addApplyList(date, details, passed) {
     listParent.innerHTML = html;
     document.getElementById('aply_list_parent').appendChild(listParent);
 }
+
+$('#logo_Image').click(function(){
+    $(window).attr('location','/main');
+})
