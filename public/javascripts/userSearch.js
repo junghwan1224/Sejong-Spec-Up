@@ -39,6 +39,7 @@ $.get('/msg/msgDetail', function(data){
 
 document.getElementsByClassName('search_button_div')[0].onclick = function(){
 
+
   $('#std_list_parent').empty();
 
 
