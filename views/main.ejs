@@ -132,8 +132,9 @@
 
         function newMsgCheck(){
           var blink = document.getElementById("message_Update");
-          blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+          blink.style.visibility = blink.style.visibility == "" ? "hidden" : "";
         }
+        var newMsg;
 
 
         //setInterval(newMsgCheck, 500);
@@ -153,7 +154,11 @@
         var a = '<%= new_msg %>';
         if(a) {
           console.log('ok');
-          setInterval(newMsgCheck, 500);
+          // setInterval(newMsgCheck, 500);
+          newMsg = setInterval(function(){
+            var blink = document.getElementById("message_Update");
+            blink.style.visibility = blink.style.visibility == "" ? "hidden" : "";
+          }, 500);
         }
         else {
           console.log('no');
@@ -180,8 +185,8 @@
         // }, 6000);
 
         $('#msgListCloseBtn').click(function(){
-          clearInterval(newMsgCheck);
-          location.reload();
+          clearInterval(newMsg);
+          document.getElementById("message_Update").style.visibility = 'visible';
         });
     </script>
 </body>
