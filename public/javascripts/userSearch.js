@@ -32,20 +32,14 @@ $.get('/msg/msgDetail', function(data){
   $('#msg_detail').html(data);
 });
 
-$('#msgListCloseBtn').click(function(){
-  clearInterval(newMsgCheck);
-  location.reload();
-});
+// $('#msgListCloseBtn').click(function(){
+//   clearInterval(newMsgCheck);
+//   location.reload();
+// });
 
 document.getElementsByClassName('search_button_div')[0].onclick = function(){
 
-  // var ulTags = document.getElementsByTagName('ul');
-  // for(var i=0; i<ulTags.length; i++){
-  //   ulTags[i].parentNode.removeChild(ulTags[i]);
-  // }
-  // for(var i=0; i<ulTags.length; i++){
-  //   ulTags[i].parentNode.removeChild(ulTags[i]);
-  // }
+
   $('#std_list_parent').empty();
 
 
@@ -127,11 +121,11 @@ document.getElementsByClassName('search_button_div')[0].onclick = function(){
           var listParent = document.createElement("ul");
           listParent.setAttribute("class", "std_list");
 
-          var html = '<li id="stdlst_'+ (i+1) +'"class="std_list_item type="button" onclick='+'>';
+          var html = '<a href="/userDetail/'+ users[i].id +'"><li id="stdlst_'+ (i+1) +'"class="std_list_item type="button" onclick='+'>';
               html+= '<div class="std_item_div">';
               html+= '<span class="std_list_left">' + users[i].user_id + '</span><span class="std_list_right">'+ users[i].major +'</span>';
               html+= '</div>';
-              html+= '</li>';
+              html+= '</li></a>';
 
           listParent.innerHTML = html;
           document.getElementById('std_list_parent').appendChild(listParent);
