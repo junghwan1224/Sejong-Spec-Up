@@ -163,20 +163,33 @@ router.post('/userSearch', function(req, res){
 });
 
 
-router.get('/userDetail', function(req, res) {
-  if (req.session.authId) {
-  res.render('userDetail', {
-    user : req.session.authId,
-    title:'userDetail',
-    major: req.session.major
-    });
-  }
-  else {
-    res.render('userDetail', {
-      user: undefined,
-      title:'userDetail'
-    });
-  }
+router.get('/userDetail/:id', function(req, res) {
+  var sql = 'select * from `ssu_user` where `id`=?';
+  var detailSql = 'select * from `ssu_content` where `user_id`=?';
+  conn.query(sql, [req.params.id], function(error, results){
+    if(error){
+      console.log(error);
+    }
+    else{
+      conn.query(detailSql, [results[0].user_id], function(err, rows){
+        if(err) { console.log(err); }
+        else {
+          if(req.session.authId){
+            res.render('userDetail', {
+              user : req.session.authId,
+              title: 'userDetail',
+              senior: results[0],
+              seniorContent: rows
+            });
+          }
+          else{
+            res.render('login', { title: 'loginPage' });
+          }
+        }
+      });
+    }
+  });
+
 });
 router.get('/specCompare', function(req, res) {
   if (req.session.authId) {
@@ -240,7 +253,7 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
 });//router post
 
 
-router.post('/goContent',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+router.post('/goContent',function(req,res,next){
   var user_id = req.session.authId;
   var result = req.body.result;
   var date = req.body.date;
