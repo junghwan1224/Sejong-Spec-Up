@@ -16,7 +16,7 @@ var conn = mysql.createConnection(dbconfig);
 
 router.get('/', function(req, res, next) {
   var sql = 'select * from msg where recv_name=?;';
-  var new_msgSql = 'select * from msg_new where recv_name=?;';
+  var new_msgSql = 'select * from `msg` where `recv_name`=? and `check`=?;';
   if(req.session.authId){
     conn.query(sql, [req.session.authId], function(error, results){
       if(error){
@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
         console.log('쪽지 리스트 나열 실패');
       }
       else{
-        conn.query(new_msgSql, [req.session.authId], function(err, rows){
+        conn.query(new_msgSql, [req.session.authId, 0], function(err, rows){
           if(err){
             console.log(err);
             console.log('msg new error');

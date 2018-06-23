@@ -90,10 +90,10 @@ $.get('/msg/msgDetail', function(data){
   $('#msg_detail').html(data);
 });
 
-$('#msgListCloseBtn').click(function(){
-  clearInterval(newMsgCheck);
-  location.reload();
-});
+// $('#msgListCloseBtn').click(function(){
+//   clearInterval(newMsgCheck);
+//   location.reload();
+// });
 
 
 $('#logo_Image').click(function(){

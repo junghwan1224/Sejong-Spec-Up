@@ -8,14 +8,14 @@ function addStudentList(i, name, major) { //인덱스, 성명, 학과
         html+= '<span class="std_list_left">' + name + '</span><span class="std_list_right">'+ major +'</span>';
         html+= '</div>';
         html+= '</li>';
-    
+
     listParent.innerHTML = html;
     document.getElementById('std_list_parent').appendChild(listParent);
 }
 
 //지원 정보 리스트 추가
 //인덱스, 일자, 내용, 합격 여부
-function addApplyList(date, details, passed) { 
+function addApplyList(date, details, passed) {
     var listParent = document.createElement("ul");
     listParent.setAttribute("class", "aply_list");
 
@@ -38,7 +38,19 @@ function addApplyList(date, details, passed) {
         html+= '</div>';
         html+= '</li>';
     }
-    
+
     listParent.innerHTML = html;
     document.getElementById('aply_list_parent').appendChild(listParent);
 }
+
+$('#logo_Image').click(function(){
+    $(window).attr('location','/main');
+});
+
+$.get('/msg/msgList', function(data){
+  $('#msg_list').html(data);
+});
+
+$.get('/msg/msgDetail', function(data){
+  $('#msg_detail').html(data);
+});
