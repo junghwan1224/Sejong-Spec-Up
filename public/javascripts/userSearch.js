@@ -39,13 +39,14 @@ $('#msgListCloseBtn').click(function(){
 
 document.getElementsByClassName('search_button_div')[0].onclick = function(){
 
-  var ulTags = document.getElementsByTagName('ul');
-  for(var i=0; i<ulTags.length; i++){
-    ulTags[i].parentNode.removeChild(ulTags[i]);
-  }
-  for(var i=0; i<ulTags.length; i++){
-    ulTags[i].parentNode.removeChild(ulTags[i]);
-  }
+  // var ulTags = document.getElementsByTagName('ul');
+  // for(var i=0; i<ulTags.length; i++){
+  //   ulTags[i].parentNode.removeChild(ulTags[i]);
+  // }
+  // for(var i=0; i<ulTags.length; i++){
+  //   ulTags[i].parentNode.removeChild(ulTags[i]);
+  // }
+  $('#std_list_parent').empty();
 
 
   var select_tags = document.getElementsByClassName('form_control_styler');
