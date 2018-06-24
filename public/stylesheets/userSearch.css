@@ -185,22 +185,6 @@ body,html{
     padding-top: 7px;
 }
 
-/* @media (max-width: 500px) {
-    .std_item_div {
-        font-size: 10px;
-        padding-top: 12px;
-    }
-}
-
-@media (max-width: 400px) {
-    .std_item_div {
-        font-size: 10px;
-        padding-top: 12px;
-    }
-    .std_list_right {
-        width: 55%;
-    }
-} */
 @media only screen and (max-width: 766px) and (min-width: 300px)  {
   
     #logo_Div{
@@ -210,7 +194,7 @@ body,html{
 
 @media only screen and (max-width: 500px) and (min-width: 300px)  {
     #logo_Div{
-        width: 54% !important;
+        width: 43% !important;
     }
 }
 
