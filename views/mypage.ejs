@@ -40,7 +40,7 @@
     <div id="main_Div">
         <div id="menu_Div">
             <div id="mypage_Content">
-                <p><%= title %></p>
+                <p style="cursor:pointer"><%= title %></p>
             </div>
 
             <div class="mypage_Menu">
@@ -332,13 +332,13 @@
                             <tr>
                                 <td>
 
-                                    <input type="text" id="update_Date" value=<%= item.date %> class="update_Daily">
+                                    <input type="text" id="update_Date" value=<%- item.date %> class="update_Daily">
                                 </td>
                                 <td>
-                                    <input type="text" id="update_Content" value=<%= item.content %> class="update_Daily">
+                                    <input type="text" id="update_Content" value='<%- item.content %>' class="update_Daily">
                                 </td>
                                 <td>
-                                    <input type="text" id="update_Result" value=<%= item.result %> class="update_Daily">
+                                    <input type="text" id="update_Result" value= <%- item.result %> class="update_Daily">
                                 </td>
                             </tr>
                             <%

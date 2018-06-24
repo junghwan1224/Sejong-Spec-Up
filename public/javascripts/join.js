@@ -1,6 +1,5 @@
 window.onload=function(){
   document.getElementById('applyButton').onclick=function(){
-    alert('버튼온');
     var user_id = $('#user_ID').val();
     var password = $('#password').val();
     var major = $('#major').val();
