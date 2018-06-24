@@ -31,9 +31,3 @@ input{
 #join_Button{
     margin-bottom: 3%;
 }
-@media only screen and (max-width: 500px) and (min-width: 300px)  {
-    #nav_Div{
-        height: 50px;
-    }
-
-}
