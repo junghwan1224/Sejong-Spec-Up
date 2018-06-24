@@ -58,7 +58,13 @@ body,html{
 
 table{
     color: white;
-}.date{
+}
+
+.dlg_table {
+    color: #333 !important;
+}
+
+.date{
     width: 15%;
 }
 .content{
@@ -180,7 +186,7 @@ table{
     }
 
     #logo_Div{
-        width: 60%;
+        width: 40%;
     }
 
     .tile_title,.tile_value{
@@ -205,12 +211,17 @@ table{
     }
    
 }
+@media only screen and (max-width: 500px) and (min-width: 300px)  {
+    #logo_Div{
+        width: 54% !important;
+    }
+}
 @media screen and (orientation: portrait) {
     strong{
         font-size: 17px;
     }
     #logo_Div{
-        width: 42%;
+        width: 65%;
     }
     .article_div {
         width: 100%;

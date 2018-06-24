@@ -1,3 +1,4 @@
+
 var tbody = document.getElementById('upload_Table');
 $("select").not(":selected").attr("disabled", "disabled");
 $('input').css('background', 'none').css('color', 'white').css('border-color', 'none');
@@ -90,10 +91,10 @@ $.get('/msg/msgDetail', function(data){
   $('#msg_detail').html(data);
 });
 
-$('#msgListCloseBtn').click(function(){
-  clearInterval(newMsgCheck);
-  location.reload();
-});
+// $('#msgListCloseBtn').click(function(){
+//   clearInterval(newMsgCheck);
+//   location.reload();
+// });
 
 
 $('#logo_Image').click(function(){
@@ -187,4 +188,4 @@ $('#my_spec').click(function(){
     b = '미응시';
   }
   document.getElementById('score_opic').value = b;
-})
+});
