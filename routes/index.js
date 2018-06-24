@@ -273,6 +273,10 @@ router.post('/goContent',function(req,res,next){
   });//query
 });//router post
 
+
+//수정
+
+
 router.post('/gologin',function(req,res,next){
   var id = req.body.id;
   var password = req.body.password;
