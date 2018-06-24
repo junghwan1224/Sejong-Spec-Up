@@ -63,7 +63,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <div class="tile_value"><%= avg.gradeAvg %></div>
                                 </div>
                             </div>
 
@@ -73,7 +73,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">700</div>
+                                    <div class="tile_value"><%= avg.toeicAvg %></div>
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <div class="tile_value">Lv. <%= avg.tosAvg %></div>
                                 </div>
                             </div>
 
@@ -93,7 +93,21 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <% if(avg.opicAvg == 0) { %>
+                                      <div class="tile_value">AL</div>
+                                    <% } else if(avg.opicAvg == 1) { %>
+                                      <div class="tile_value">IH</div>
+                                    <% } else if(avg.opicAvg == 2) { %>
+                                      <div class="tile_value">IM3</div>
+                                    <% } else if(avg.opicAvg == 3) { %>
+                                      <div class="tile_value">IM2</div>
+                                    <% } else if(avg.opicAvg == 4) { %>
+                                      <div class="tile_value">IM1</div>
+                                    <% } else if(avg.opicAvg == 5) { %>
+                                      <div class="tile_value">IL</div>
+                                    <% } else if(avg.opicAvg == 6) { %>
+                                      <div class="tile_value">0</div>
+                                    <% } %>
                                 </div>
                             </div>
 
@@ -103,7 +117,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <div class="tile_value"><%= avg.volunteerAvg %></div>
                                 </div>
                             </div>
 
@@ -113,7 +127,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <div class="tile_value"><%= avg.internAvg %></div>
                                 </div>
                             </div>
 
@@ -123,7 +137,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <div class="tile_value"><%= avg.competitionAvg %></div>
                                 </div>
                             </div>
 
@@ -133,7 +147,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <div class="tile_value"><%= avg.activityAvg %></div>
                                 </div>
                             </div>
 
@@ -143,7 +157,7 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">3.5</div>
+                                    <div class="tile_value"><%= avg.certificateAvg %></div>
                                 </div>
                             </div>
 

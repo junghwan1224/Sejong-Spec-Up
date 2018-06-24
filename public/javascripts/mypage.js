@@ -1,3 +1,4 @@
+
 var tbody = document.getElementById('upload_Table');
 $("select").not(":selected").attr("disabled", "disabled");
 $('input').css('background', 'none').css('color', 'white').css('border-color', 'none');
@@ -121,7 +122,7 @@ $('#upload_Button_DB').click(function(){
         data:data,
         success:function(result){
           if(result['result']=='success'){
-            alert('okok');
+            alert('등록되었습니다');
             $(window).attr('location','/mypage');
           }//result if
         },
@@ -130,3 +131,95 @@ $('#upload_Button_DB').click(function(){
         }
   });
 })
+
+//수정
+
+$('#reform_Button_DB').click(function(){
+  var result = document.getElementById('update_Result').value;
+  var date = document.getElementById('update_Date').value;
+  var content = document.getElementById('update_Content').value;
+
+  var data = {
+    'result' : result,
+    'date' : date,
+    'content' : content
+  };
+  console.log(data);
+
+  $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+        type:'POST',
+        url:'/regoContent',
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        cache:false,
+        dataType:'json',
+        data:data,
+        success:function(result){
+          if(result['result']=='success'){
+            alert('수정되었습니다');
+            $(window).attr('location','/mypage');
+          }//result if
+        },
+        error:function(error){
+          console.log('erer');
+        }
+  });
+})
+
+
+$('#my_spec').click(function(){
+  var a = document.getElementById('score_toss').value;
+  if(a == 1){
+    a = 'Level 1';
+  }else if(a == 2)
+  {
+    a = 'Level 2';
+  }else if(a == 3)
+  {
+    a = 'Level 3';
+  }else if(a == 4)
+  {
+    a = 'Level 4';
+  }else if(a == 5)
+  {
+    a = 'Level 5';
+  }else if(a == 6)
+  {
+    a = 'Level 6';
+  }else if(a == 7)
+  {
+    a = 'Level 7';
+  }else if(a == 8)
+  {
+    a = 'Level 8';
+  }else if(a == -1)
+  {
+    a = '미응시';
+  }
+  document.getElementById('score_toss').value = a;
+  var b = document.getElementById('score_opic').value;
+  if(b == 1){
+    b = 'NL';
+  }else if(b == 2)
+  {
+    b = 'NM';
+  }else if(b == 3)
+  {
+    b = 'NH';
+  }else if(b == 4)
+  {
+    b = 'IL';
+  }else if(b == 5)
+  {
+    b = 'IM';
+  }else if(b == 6)
+  {
+    b = 'IH';
+  }else if(b == 7)
+  {
+    b = 'AL';
+  }else if(b == -1)
+  {
+    b = '미응시';
+  }
+  document.getElementById('score_opic').value = b;
+});
