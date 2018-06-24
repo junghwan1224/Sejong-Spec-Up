@@ -28,7 +28,7 @@
                 </div>
                 <div>
                     &nbsp;
-                    <strong><%= user %></strong>
+                    <strong style="cursor:pointer"> <%= user %></strong>
                 </div>
                 <div>
                     <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
@@ -166,16 +166,16 @@
 
 
     <!-- The Modal -->
-    <div class="modal fade" id="myModal">
+    <div class="modal dialogBack" id="myModal">
         <div class="modal-dialog" modal-lg>
-            <div class="modal-content">
+            <div class="modal-content dialogAnim">
                 <!-- Modal Header -->
-                <div class="modal-header" style="background-color: brown">
+                <div class="modal-header modal_header_styler">
                     <h4 class="modal-title" style="color: white">Message</h4>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <table class="table">
+                    <table class="table dlg_table">
                         <thead>
                             <tr>
                                 <th>보낸사람</th>
@@ -190,7 +190,7 @@
                     </table>
                 </div>
                 <!-- Modal footer -->
-                <div class="modal-footer">
+                <div class="modal-footer modal_footer_styler">
                     <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
@@ -238,10 +238,10 @@
           $('#msg_detail').html(data);
         });
 
-        $('#msgListCloseBtn').click(function(){
-          clearInterval(newMsgCheck);
-          location.reload();
-        });
+        // $('#msgListCloseBtn').click(function(){
+        //   clearInterval(newMsgCheck);
+        //   location.reload();
+        // });
     </script>
 
 </body>

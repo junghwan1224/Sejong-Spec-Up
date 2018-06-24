@@ -111,10 +111,19 @@ tbody tr:hover{
  opacity: 0.4;
  color: white;   
 }
-
+@media only screen and (max-width: 954px) and (min-width: 660px)  {
+    .bottom_Part_Button {
+        padding-top: 40px;
+    }
+}
 @media only screen and (max-width: 766px) and (min-width: 300px)  {
     #logo_Div{
-        width: 60%;
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 500px) and (min-width: 300px)  {
+    #logo_Div{
+        width: 54% !important;
     }
 }
 @media screen and (orientation: portrait) {
@@ -153,10 +162,6 @@ tbody tr:hover{
     .top_Part_Button img{
         margin-top: 4.7%;
         }
-        #logo_Image{
-            margin: auto;
-            height: 80%;
-        }
         .three_Button:nth-child(1),.three_Button:nth-child(2){
             border-bottom-color: gray;
             border-bottom-style: solid;
@@ -165,7 +170,7 @@ tbody tr:hover{
             font-size: 17px;
         }
         #logo_Div{
-            width: 42%;
+            width: 65%;
         }
   }
 @media only screen and (max-width: 1025px) and (min-width: 767px)  {
