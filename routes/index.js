@@ -192,18 +192,48 @@ router.get('/userDetail/:id', function(req, res) {
 
 });
 router.get('/specCompare', function(req, res) {
-  if (req.session.authId) {
-  res.render('specCompare', {
-    user : req.session.authId,
-    title:'specCompare'
-    });
-  }
-  else {
-    res.render('specCompare', {
-      user: undefined,
-      title:'specCompare'
-    });
-  }
+  var sql = 'select';
+  var gradeSql = ' round(avg(`grade`), 2) as gradeAvg'; sql += gradeSql;
+  var tosSql = ', round(avg(`toss_num`), 0) as tosAvg'; sql += tosSql;
+  var toeicSql = ', round(avg(`toeic`), 1) as toeicAvg'; sql += toeicSql;
+  var opicSql = ', round(avg(`opic_num`), 0) as opicAvg'; sql += opicSql;
+  var volunteerSql = ', round(avg(`volunteer`), 1) as volunteerAvg'; sql += volunteerSql;
+  var internSql = ', round(avg(`intern`), 1) as internAvg'; sql += internSql;
+  var competitionSql = ', round(avg(`competition`), 1) as competitionAvg'; sql += competitionSql;
+  var certificateSql = ', round(avg(`certificate`), 1) as certificateAvg'; sql += certificateSql;
+  var activitySql = ', round(avg(`activity`), 1) as activityAvg'; sql += activitySql;
+  var fromSql = ' from `ssu_user`;'; sql += fromSql;
+  // var countSql = 'select count(`user_id`) as grade1 from `ssu_user` where `grade`<2.5';
+  // countSql+=',select count(`user_id`) as grade2 from `ssu_user` where `grade`>=2.5 and `grade`<3.0';
+  // countSql+=',select count(`user_id`) as grade3 from `ssu_user` where `grade`>=3.0 and `grade`<3.5';
+  // countSql+=',select count(`user_id`) as grade4 from `ssu_user` where `grade`>=3.5 and `grade`<4.0';
+  // countSql+=',select count(`user_id`) as grade5 from `ssu_user` where `grade`>=4.0 and `grade`<=4.5;';
+  conn.query(sql, function(error, results){
+    if(error) { console.log(error); }
+    // else {
+      // conn.query(countSql, function(err, rows) {
+        // if(err) { console.log(err); }
+        else {
+          console.log(results[0]);
+          // console.log(rows[0]);
+          if (req.session.authId) {
+            res.render('specCompare', {
+              user : req.session.authId,
+              title:'specCompare',
+              avg: results[0],
+              // cnt: rows[0]
+            });
+          }
+          else {
+            res.render('login', {
+              title:'loginPage'
+            });
+          }
+        // }
+      // });
+      
+    }
+  });
 });
 
 router.get('/user', function(req, res) {
