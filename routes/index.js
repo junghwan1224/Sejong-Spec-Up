@@ -203,7 +203,7 @@ router.get('/specCompare', function(req, res) {
   var certificateSql = ', round(avg(`certificate`), 1) as certificateAvg'; sql += certificateSql;
   var activitySql = ', round(avg(`activity`), 1) as activityAvg'; sql += activitySql;
   var fromSql = ' from `ssu_user`;'; sql += fromSql;
- 
+
   conn.query(sql, function(error, results){
     if(error) { console.log(error); }
 
@@ -274,6 +274,38 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
     }
   });//query
 });//router post
+
+//마이페이지 수정
+
+router.post('/regoApply',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var user_id = req.session.authId;
+  var score = req.body.score;
+  var toeic = req.body.toeic;
+  var toss_num = req.body.toss_num;
+  var opic_num = req.body.opic_num;
+  var volunteer = req.body.volunteer;
+  var intern = req.body.intern;
+  var competition = req.body.competition;
+  var aboard = req.body.aboard;
+  var certificate = req.body.certificate;
+  var job_Part = req.body.job_Part;
+
+  var sql = 'update ssu_user set grade = ?, toeic = ?, toss_num = ?, opic_num = ?, volunteer = ?, intern = ?, competition = ?, certificate = ?, activity =?, want_job = ? where user_id = ?';
+
+  conn.query(sql,[score,toeic,toss_num,opic_num,volunteer,intern,competition,certificate,aboard,job_Part,user_id],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
+
+
 
 
 router.post('/goContent',function(req,res,next){

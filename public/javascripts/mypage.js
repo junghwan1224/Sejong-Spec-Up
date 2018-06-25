@@ -179,7 +179,89 @@ $('#reform_Button_Table').click(function(){
 
 });
 
+///스펙수정
 
+  $('#reform_Button').click(function(){
+    var score = parseFloat($('#score').val());
+    console.log(score);
+    var toeic = $('#toeic').val();
+    var test = document.getElementsByClassName('b');
+    var toss = test[0].selectedIndex;
+    var toss_num;
+      if(toss == 0){
+        toss_num = -1;
+      }else if(toss == 1){
+        toss_num = 4;
+      }else if(toss == 2){
+        toss_num = 5;
+      }else if(toss == 3){
+        toss_num = 6;
+      }else if(toss == 4){
+        toss_num = 7;
+      }else if(toss == 5){
+        toss_num = 8;
+      }
+    var test = document.getElementsByClassName('c');
+    var opic = test[0].selectedIndex;
+    var opic_num;
+      if(opic == 0){
+        opic_num = -1;
+      }else if(opic == 1){
+        opic_num = 1;
+      }else if(opic == 2){
+        opic_num = 2;
+      }else if(opic == 3){
+        opic_num = 3;
+      }else if(opic == 4){
+        opic_num = 4;
+      }else if(opic == 5){
+        opic_num = 5;
+      }else if(opic == 6){
+        opic_num = 6;
+      }
+
+    var volunteer = $('#volunteer option:selected').val();//봉사활동
+    console.log(volunteer);
+    var intern = $('#intern option:selected').val();//인턴
+    var competition = $('#Competition option:selected').val();//공모전
+    var aboard = $('#aboard option:selected').val();;//int봉사활동
+    console.log(aboard);
+    var certificate = $('#certificate option:selected').val();//자격증
+    var job_Part = $('#job_Part option:selected').val();//직군
+    console.log(job_Part);
+    var data = {
+      'score' : score,
+      'toeic' : toeic,
+      'toss_num' : toss_num,
+      'opic_num' : opic_num,
+      'volunteer' : volunteer,
+      'intern' : intern,
+      'competition' : competition,
+      'aboard' : aboard,
+      'certificate' : certificate,
+      'job_Part' : job_Part
+    };
+    console.log(data);
+
+
+    $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+          type:'POST',
+          url:'/regoApply',
+          contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+          cache:false,
+          dataType:'json',
+          data:data,
+          success:function(result){
+            if(result['result']=='success'){
+              alert('수정되었습니다.');
+              $(window).attr('location','/mypage');
+            }//result if
+          },
+          error:function(error){
+            console.log('erer');
+          }
+    });
+});
 
 
 
