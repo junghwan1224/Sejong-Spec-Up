@@ -97,7 +97,7 @@ window.onload=function(){
           data:data,
           success:function(result){
             if(result['result']=='success'){
-              alert('ok');
+              alert(user_id + '님, 가입이 완료되었습니다!\n로그인 해 주세요.');
               $(window).attr('location','/');
             }//result if
           },

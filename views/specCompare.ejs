@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Spec Compare</title>
+    <meta name="theme-color" content="#9a0007">
+    <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/specCompare.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,8 +23,8 @@
         </div>
         <div id="user_Input">
             <div id="help_Vertical">
-                <div id="message_Div">
-                    <img id="message_Update" src="/images/message_Icon.png" height="13%" data-toggle="modal" data-target="#myModal"/>
+                <div id="message_Div" data-toggle="modal" data-target="#myModal">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%"/>
                     <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
                 </div>
                 <div>
@@ -40,7 +41,7 @@
     <div class="article_div">
         <div class="user_div">
             <h3 style="margin-left: auto;margin-right: auto;padding-left: 8px;color: rgb(255, 255, 255);">
-                직군 스펙 비교
+                    <%= jobPart %> 직군 스펙 비교
             </h3>
         </div>
 
