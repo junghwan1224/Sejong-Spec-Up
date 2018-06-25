@@ -6,7 +6,7 @@ var conn = mysql.createConnection(dbconfig);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('login', { title: 'loginPage' });
+  res.render('login', { title: '로그인 - Sejong Spec UP' });
 });
 router.get('/main', function(req, res) {
   var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
@@ -19,7 +19,7 @@ router.get('/main', function(req, res) {
       console.log(results);
       res.render('main', {
         user : req.session.authId,
-        title:'mainPage',
+        title:'Sejong Spec UP',
         new_msg: results[0],
       });
     }
@@ -28,12 +28,12 @@ router.get('/main', function(req, res) {
   else {
     res.render('main', {
       user: undefined,
-      title:'mainPage'
+      title:'Sejong Spec UP'
     });
 }
 });
 router.get('/join', function(req, res) {
-  res.render('join', { title: 'joinPage' });
+  res.render('join', { title: '가입 - Sejong Spec UP' });
 });
 
 
@@ -88,14 +88,14 @@ router.get('/userSearch', function(req, res) {
   if (req.session.authId) {
   res.render('userSearch', {
     user : req.session.authId,
-    title:'userSearch',
+    title:'사용자 검색',
     jobPart:req.session.job_Part,
   });
   }
   else {
     res.render('userSearch', {
       user: undefined,
-      title:'userSearch'
+      title:'사용자 검색'
     });
   }
 });
@@ -192,18 +192,49 @@ router.get('/userDetail/:id', function(req, res) {
 
 });
 router.get('/specCompare', function(req, res) {
-  if (req.session.authId) {
-  res.render('specCompare', {
-    user : req.session.authId,
-    title:'specCompare'
-    });
-  }
-  else {
-    res.render('specCompare', {
-      user: undefined,
-      title:'specCompare'
-    });
-  }
+  var sql = 'select';
+  var gradeSql = ' round(avg(`grade`), 2) as gradeAvg'; sql += gradeSql;
+  var tosSql = ', round(avg(`toss_num`), 0) as tosAvg'; sql += tosSql;
+  var toeicSql = ', round(avg(`toeic`), 1) as toeicAvg'; sql += toeicSql;
+  var opicSql = ', round(avg(`opic_num`), 0) as opicAvg'; sql += opicSql;
+  var volunteerSql = ', round(avg(`volunteer`), 1) as volunteerAvg'; sql += volunteerSql;
+  var internSql = ', round(avg(`intern`), 1) as internAvg'; sql += internSql;
+  var competitionSql = ', round(avg(`competition`), 1) as competitionAvg'; sql += competitionSql;
+  var certificateSql = ', round(avg(`certificate`), 1) as certificateAvg'; sql += certificateSql;
+  var activitySql = ', round(avg(`activity`), 1) as activityAvg'; sql += activitySql;
+  var fromSql = ' from `ssu_user`;'; sql += fromSql;
+  // var countSql = 'select count(`user_id`) as grade1 from `ssu_user` where `grade`<2.5';
+  // countSql+=',select count(`user_id`) as grade2 from `ssu_user` where `grade`>=2.5 and `grade`<3.0';
+  // countSql+=',select count(`user_id`) as grade3 from `ssu_user` where `grade`>=3.0 and `grade`<3.5';
+  // countSql+=',select count(`user_id`) as grade4 from `ssu_user` where `grade`>=3.5 and `grade`<4.0';
+  // countSql+=',select count(`user_id`) as grade5 from `ssu_user` where `grade`>=4.0 and `grade`<=4.5;';
+  conn.query(sql, function(error, results){
+    if(error) { console.log(error); }
+    // else {
+      // conn.query(countSql, function(err, rows) {
+        // if(err) { console.log(err); }
+        else {
+          console.log(results[0]);
+          // console.log(rows[0]);
+          if (req.session.authId) {
+            res.render('specCompare', {
+              user : req.session.authId,
+              title:'직군 스펙 비교',
+              jobPart: req.session.job_Part,
+              avg: results[0],
+              // cnt: rows[0]
+            });
+          }
+          else {
+            res.render('login', {
+              title:'loginPage'
+            });
+          }
+        // }
+      // });
+      
+    }
+  });
 });
 
 router.get('/user', function(req, res) {
@@ -211,7 +242,7 @@ router.get('/user', function(req, res) {
   conn.query(sql,function(error,results,fields){
     if(error){
       console.log(error);
-      console.log('faield');
+      console.log('failed');
     }else{
       res.render('index', {
         title: 'userData',

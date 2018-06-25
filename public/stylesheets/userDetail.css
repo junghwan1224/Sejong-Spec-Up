@@ -213,7 +213,7 @@ table{
 }
 @media only screen and (max-width: 500px) and (min-width: 300px)  {
     #logo_Div{
-        width: 54% !important;
+        width: 43% !important;
     }
 }
 @media screen and (orientation: portrait) {
