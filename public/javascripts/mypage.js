@@ -133,37 +133,69 @@ $('#upload_Button_DB').click(function(){
 })
 
 //수정
+$('#reform_Button_Table').click(function(){
+  var delete_result = document.getElementById('update_Result').value;
+  var delete_date = document.getElementById('update_Date').value;
+  var delete_content = document.getElementById('update_Content').value;
 
-$('#reform_Button_DB').click(function(){
-  var result = document.getElementById('update_Result').value;
-  var date = document.getElementById('update_Date').value;
-  var content = document.getElementById('update_Content').value;
+  $('#reform_Button_DB').click(function(){
+    var result = document.getElementById('update_Result').value;
+    var date = document.getElementById('update_Date').value;
+    var content = document.getElementById('update_Content').value;
 
-  var data = {
-    'result' : result,
-    'date' : date,
-    'content' : content
-  };
-  console.log(data);
+    var data = {
+      'result' : result,
+      'date' : date,
+      'content' : content
+    };
 
-  $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
-        type:'POST',
-        url:'/regoContent',
-        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-        cache:false,
-        dataType:'json',
-        data:data,
-        success:function(result){
-          if(result['result']=='success'){
-            alert('수정되었습니다');
-            $(window).attr('location','/mypage');
-          }//result if
-        },
-        error:function(error){
-          console.log('erer');
-        }
+    $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+          type:'POST',
+          url:'/regoContent',
+          contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+          cache:false,
+          dataType:'json',
+          data:data,
+          success:function(result){
+            if(result['result']=='success'){
+
+              var delete_data = {
+                'result' : delete_result,
+                'date' : delete_date,
+                'content' : delete_content
+              };
+
+              $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+                    type:'POST',
+                    url:'/delregoContent',
+                    contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                    cache:false,
+                    dataType:'json',
+                    data:delete_data,
+                    success:function(result){
+                      if(result['result']=='success'){
+                        alert('수정되었습니다');
+                        $(window).attr('location','/mypage');
+                      }//result if
+                    },
+                    error:function(error){
+                      console.log('erer');
+                    }
+              });
+
+              console.log("successed");
+            }//result if
+          },
+          error:function(error){
+            console.log('erer');
+          }
+    });
   });
-})
+
+});
+
+
+
 
 
 $('#my_spec').click(function(){
