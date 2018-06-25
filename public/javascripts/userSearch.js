@@ -32,10 +32,6 @@ $.get('/msg/msgDetail', function(data){
   $('#msg_detail').html(data);
 });
 
-// $('#msgListCloseBtn').click(function(){
-//   clearInterval(newMsgCheck);
-//   location.reload();
-// });
 
 var flag = false;
 
