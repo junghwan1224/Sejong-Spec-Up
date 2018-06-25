@@ -67,16 +67,6 @@ $('#reform_Cancel_Button_Table').click(function () {
     $('.two_Button_Table_Reform').hide('slow');
     $('.upload_Two_Button').show('slow');
 })
-// setInterval(function () {
-//     var blink = document.getElementById("message_Update");
-//     blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
-// }, 500);
-$('#message_Update').click(function(){
-    // $(this).css('display','none');
-    // alert('메세지 확인');
-    // $('#message').css('display','block');
-})
-
 
 function newMsgCheck(){
   var blink = document.getElementById("message_Update");
@@ -90,11 +80,6 @@ $.get('/msg/msgList', function(data){
 $.get('/msg/msgDetail', function(data){
   $('#msg_detail').html(data);
 });
-
-// $('#msgListCloseBtn').click(function(){
-//   clearInterval(newMsgCheck);
-//   location.reload();
-// });
 
 
 $('#logo_Image').click(function(){
