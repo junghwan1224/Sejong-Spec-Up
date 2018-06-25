@@ -6,7 +6,7 @@ var conn = mysql.createConnection(dbconfig);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('login', { title: 'loginPage' });
+  res.render('login', { title: '로그인 - Sejong Spec UP' });
 });
 router.get('/main', function(req, res) {
   var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
@@ -19,7 +19,7 @@ router.get('/main', function(req, res) {
       console.log(results);
       res.render('main', {
         user : req.session.authId,
-        title:'mainPage',
+        title:'Sejong Spec UP',
         new_msg: results[0],
       });
     }
@@ -28,12 +28,12 @@ router.get('/main', function(req, res) {
   else {
     res.render('main', {
       user: undefined,
-      title:'mainPage'
+      title:'Sejong Spec UP'
     });
 }
 });
 router.get('/join', function(req, res) {
-  res.render('join', { title: 'joinPage' });
+  res.render('join', { title: '가입 - Sejong Spec UP' });
 });
 
 
@@ -88,14 +88,14 @@ router.get('/userSearch', function(req, res) {
   if (req.session.authId) {
   res.render('userSearch', {
     user : req.session.authId,
-    title:'userSearch',
+    title:'사용자 검색',
     jobPart:req.session.job_Part,
   });
   }
   else {
     res.render('userSearch', {
       user: undefined,
-      title:'userSearch'
+      title:'사용자 검색'
     });
   }
 });
@@ -219,7 +219,8 @@ router.get('/specCompare', function(req, res) {
           if (req.session.authId) {
             res.render('specCompare', {
               user : req.session.authId,
-              title:'specCompare',
+              title:'직군 스펙 비교',
+              jobPart: req.session.job_Part,
               avg: results[0],
               // cnt: rows[0]
             });
@@ -241,7 +242,7 @@ router.get('/user', function(req, res) {
   conn.query(sql,function(error,results,fields){
     if(error){
       console.log(error);
-      console.log('faield');
+      console.log('failed');
     }else{
       res.render('index', {
         title: 'userData',
