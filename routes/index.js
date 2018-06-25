@@ -232,7 +232,7 @@ router.get('/specCompare', function(req, res) {
           }
         // }
       // });
-      
+
     }
   });
 });
@@ -306,6 +306,51 @@ router.post('/goContent',function(req,res,next){
 
 
 //수정
+
+router.post('/regoContent',function(req,res,next){
+  var user_id = req.session.authId;
+  var result = req.body.result;
+  var date = req.body.date;
+  var content = req.body.content;
+
+  var sql = 'insert into `ssu_content` (`user_id`,`result`,`date`,`content`) values (?,?,?,?);';
+
+  conn.query(sql,[user_id,result,date,content],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
+
+router.post('/delregoContent',function(req,res,next){
+  var user_id = req.session.authId;
+  var result = req.body.result;
+  var date = req.body.date;
+  var content = req.body.content;
+
+  var sql = 'delete from `ssu_content` where `user_id`=? and `result` = ? and `date` = ? and `content` = ?';
+
+  conn.query(sql,[user_id,result,date,content],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
+
+
+
 
 
 router.post('/gologin',function(req,res,next){
