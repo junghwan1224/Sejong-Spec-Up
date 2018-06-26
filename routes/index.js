@@ -45,12 +45,17 @@ router.get('/mainP', function(req, res) {
       console.log(error);
     }
     else{
-      console.log(results);
       res.render('mainP', {
         user : req.session.authId,
+        // name : req.session.name,
+        introduce : req.session.introduce,
+        major : req.session.major,
         title:'Sejong Spec UP',
         new_msg: results[0],
+        email : req.session.email,
+        name : req.session.name,
       });
+
     }
   });
   }
@@ -644,8 +649,14 @@ router.post('/gologinP',function(req,res,next){
       } else if(password == user.password){
         req.session.authId = id;
         req.session.major = user.major;
+        req.session.name = user.name;
+        req.session.email = user.email;
+        req.session.introduce = user.introduce;
         req.session.save(function() {
           res.send({result:'success'});
+          console.log(req.session.introduce);
+          console.log(req.session.name);
+          console.log(req.session.email);
         });
       } else {
         res.send({result:'error'});
