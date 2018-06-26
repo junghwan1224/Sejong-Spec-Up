@@ -10,7 +10,21 @@ body,html{
   flex-direction: column;
   align-items: center;
 }
+strong{
+  margin-left: 2%;
+}
+#pf_list_parent{
+  margin-top: 3%;
+}
 
+span{
+  margin-left: 13%;
+}
+li{
+  border-radius: 5px;
+  list-style-type : none;
+
+}
 body {
   background: url('/images/spec_Compare_Page_Image.png') no-repeat center center fixed;
 }
@@ -65,11 +79,10 @@ body {
 
 .result-container {
   padding: 10px 0 10px 0;
-  width: 80%;
+  width: 40%;
   min-height: 480px;
   height: 100%;
-  border: 2px solid lightgrey;
-  border-radius: 4px;
+
 }
 
 .major_link {
@@ -91,11 +104,11 @@ body {
 }
 
 .pf_list_item {
-  border-bottom: 1px solid lightgray;
-  border-top: 1px solid lightgray;
+  border-bottom: 10px;
+  border-top: 10px;
   background-color: rgba(0, 0, 0, 0.2);
   margin-top: -1px;
-  overflow: auto;
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -122,7 +135,9 @@ body {
   border-radius: 2px;
   background-color: rgba(64, 64, 64, 0.3333);
 }
-
+li{
+  margin-top: 2%;
+}
 #message_Div{
   cursor: pointer;
   margin-bottom: -31px;
