@@ -8,10 +8,18 @@ $('#logo_Image').click(function(){
 function showGraph(graphTitle, graphLabels, graphDatas) {
     var ctx = document.getElementById("barCanvas").getContext('2d');
 
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
     Chart.defaults.global.defaultFontColor = 'white';
-    Chart.defaults.global.defaultFontSize = 18;
     Chart.defaults.global.legend.display=false;
     Chart.defaults.global.tooltips.enabled=false;
+
+    if(width >= 300 && width < 500) Chart.defaults.global.defaultFontSize = 10;
+    else if(width >= 500 && width < 700) Chart.defaults.global.defaultFontSize = 12;
+    else if(width >= 700 && width < 900) Chart.defaults.global.defaultFontSize = 14;
+    else if(width >= 900 && width < 1200) Chart.defaults.global.defaultFontSize = 16;
+    else if(width >= 1200) Chart.defaults.global.defaultFontSize = 18;
 
     if(myChart!=null){ myChart.destroy();}
     myChart = new Chart(ctx, {
