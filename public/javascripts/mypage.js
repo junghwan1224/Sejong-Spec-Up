@@ -181,10 +181,10 @@ $('#reform_Button_Table').click(function(){
 
 ///스펙수정
 
-  $('#reform_Button').click(function(){
-    var score = parseFloat($('#score').val());
+  $('#ok_Button').click(function(){
+    var score = parseFloat($('#score1').val());
     console.log(score);
-    var toeic = $('#toeic').val();
+    var toeic = $('#toeic1').val();
     var test = document.getElementsByClassName('b');
     var toss = test[0].selectedIndex;
     var toss_num;
@@ -220,13 +220,13 @@ $('#reform_Button_Table').click(function(){
         opic_num = 6;
       }
 
-    var volunteer = $('#volunteer option:selected').val();//봉사활동
+    var volunteer = $('#volunteer1 option:selected').val();//봉사활동
     console.log(volunteer);
-    var intern = $('#intern option:selected').val();//인턴
-    var competition = $('#Competition option:selected').val();//공모전
-    var aboard = $('#aboard option:selected').val();;//int봉사활동
+    var intern = $('#intern1 option:selected').val();//인턴
+    var competition = $('#Competition1 option:selected').val();//공모전
+    var aboard = $('#aboard1 option:selected').val();;//int봉사활동
     console.log(aboard);
-    var certificate = $('#certificate option:selected').val();//자격증
+    var certificate = $('#certificate1 option:selected').val();//자격증
     var job_Part = $('#job_Part option:selected').val();//직군
     console.log(job_Part);
     var data = {
@@ -297,25 +297,22 @@ $('#my_spec').click(function(){
   document.getElementById('score_toss').value = a;
   var b = document.getElementById('score_opic').value;
   if(b == 1){
-    b = 'NL';
+    b = 'AL';
   }else if(b == 2)
   {
-    b = 'NM';
+    b = 'IH';
   }else if(b == 3)
   {
-    b = 'NH';
+    b = 'IM3';
   }else if(b == 4)
   {
-    b = 'IL';
+    b = 'IM2';
   }else if(b == 5)
   {
-    b = 'IM';
+    b = 'IM1';
   }else if(b == 6)
   {
-    b = 'IH';
-  }else if(b == 7)
-  {
-    b = 'AL';
+    b = 'IL';
   }else if(b == -1)
   {
     b = '미응시';
