@@ -301,7 +301,7 @@ router.post('/goApplyP',function(req,res,next){//접수 버튼 클릭 시 ajax �
 
   var sql = 'insert into `ssu_userP` (`userP_id`,`name`,`password`,`major`,`email`,`introduce`) values (?,?,?,?,?,?);';
 
-  conn.query(sql,[user_id,password,grade,school_num,major,job_Part,score,toss_num,toeic,opic_num,volunteer,intern,competition,certificate,aboard],function(error,results,fields){
+  conn.query(sql,[userP_id,name,password,major,email,introduce],function(error,results,fields){
     if(error){
       console.log(error);
       console.log('no');
@@ -446,7 +446,7 @@ router.post('/gologinP',function(req,res,next){
   var id = req.body.id;
   var password = req.body.password;
 
-  var sql = "select * from ssu_userP where user_id=?";
+  var sql = "select * from ssu_userP where userP_id=?";
   conn.query(sql,[id], function(error,results,fields){
     if(error){
       console.log(id);
@@ -459,7 +459,6 @@ router.post('/gologinP',function(req,res,next){
       } else if(password == user.password){
         req.session.authId = id;
         req.session.major = user.major;
-        req.session.job_Part = user.want_job;
         req.session.save(function() {
           res.send({result:'success'});
         });
