@@ -51,8 +51,23 @@ router.get('/mainP', function(req, res) {
 });
 
 router.get('/pflist', function(req, res) {
+  var sql = 'select * from `ssu_userP`;';
+  conn.query(sql, function(error, results) {
+    if(error) { console.log(error); }
+    else {
+      res.render('pslist', {
+        title: '로그인 - Sejong Spec UP',
+        user : req.session.authId,
+        professors: results
+      });
+    }
+  });
+});
+
+router.get('/pflist', function(req, res) {
   res.render('pslist', { title: '로그인 - Sejong Spec UP', user : req.session.authId});
 });
+
 
 
 
