@@ -235,8 +235,15 @@
   }
 
   function toeicGraph() {
+    var a = '<%= toeiclow1 %>';
+    var b = '<%= toeiclow2 %>';
+    var c = '<%= toeiclow3 %>';
+    var d = '<%= toeiclow4 %>';
+    var e = '<%= toeiclow5 %>';
+    var f = '<%= toeiclow6 %>';
+    
       var labels = ["700 이하", "700~750", "750~800", "800~850", "850~900", "900~950", "950 이상"];
-      var datas = [11, 6, 12, 11, 8, 5, 3];
+      var datas = [a,b,c,d,e,f];
       showGraph("TOEIC 점수 별 학생 분포도", labels, datas);
   }
 
