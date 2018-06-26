@@ -46,6 +46,10 @@ router.get('/join', function(req, res) {
 router.get('/joinP', function(req, res) {
   res.render('joinP', { title: '가입 - Sejong Spec UP' });
 });
+router.get('/mainP', function(req, res) {
+  res.render('mainP', { title: '로그인 - Sejong Spec UP' });
+});
+
 
 
 
