@@ -120,6 +120,8 @@ router.get('/userSearch', function(req, res) {
 });
 
 
+
+
 router.post('/userSearch', function(req, res){
   var sql = 'select * from ssu_user where';
   var grade;
