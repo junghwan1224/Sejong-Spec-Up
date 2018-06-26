@@ -1,7 +1,7 @@
 window.onload=function(){
     document.getElementById('applyButton').onclick=function(){
       var userP_id = $('#user_ID').val();
-      var name = $('#name').val();
+      var name = $('#nameP').val();
       var password = $('#password').val();
       var major = $('#major').val();
       var email = $('#email').val();
@@ -17,8 +17,8 @@ window.onload=function(){
         'introduce' : introduce
       };
       console.log(data);
-  
-  
+
+
       $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
             type:'POST',
             url:'/goApplyP',
@@ -28,8 +28,8 @@ window.onload=function(){
             data:data,
             success:function(result){
               if(result['result']=='success'){
-                alert(user_id + '님, 가입이 완료되었습니다!\n로그인 해 주세요.');
-                $(window).attr('location','/sejongsu/loginP');
+                alert(userP_id + '님, 가입이 완료되었습니다!\n로그인 해 주세요.');
+                $(window).attr('location','/loginP');
               }//result if
             },
             error:function(error){
@@ -38,4 +38,3 @@ window.onload=function(){
       });
     }
   }
-  
