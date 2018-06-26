@@ -219,40 +219,47 @@
 
 
 
-    <script src="/javascripts/specCompare.js"></script>
+    <script src="/javascripts/specCompare.js">  </script>
+  <script>
 
-    <script>
-        function scoreGraph() {
-            var labels = ["2.5 미만", "2.5~3.0", "3.0~3.5", "3.5~4.0", "4.0~4.5"];
-            var datas = [12, 16, 14, 19, 9];
-            showGraph("학점 별 학생 분포도", labels, datas);
-        }
+  function scoreGraph() {
+    var a = '<%= gradelow1 %>';
+    var b = '<%= gradelow2 %>';
+    var c = '<%= gradelow3 %>';
+    var d = '<%= gradelow4 %>';
+    var e = '<%= gradelow5 %>';
 
-        function toeicGraph() {
-            var labels = ["700 이하", "700~750", "750~800", "800~850", "850~900", "900~950", "950 이상"];
-            var datas = [11, 6, 12, 11, 8, 5, 3];
-            showGraph("TOEIC 점수 별 학생 분포도", labels, datas);
-        }
+    var labels = ["2.5 미만", "2.5~3.0", "3.0~3.5", "3.5~4.0", "4.0~4.5"];
+    var datas = [a,b,c,d,e];//사람수
+    showGraph("학점 별 학생 분포도", labels, datas);
+  }
 
-        function toSGraph() {
-            var labels = ["Lv4 이하", "Lv5", "Lv6", "Lv7", "Lv8"];
-            var datas = [13, 17, 14, 9, 6];
-            showGraph("TOEIC Speaking 점수 별 학생 분포도", labels, datas);
-        }
+  function toeicGraph() {
+      var labels = ["700 이하", "700~750", "750~800", "800~850", "850~900", "900~950", "950 이상"];
+      var datas = [11, 6, 12, 11, 8, 5, 3];
+      showGraph("TOEIC 점수 별 학생 분포도", labels, datas);
+  }
 
-        function newMsgCheck(){
-          var blink = document.getElementById("message_Update");
-          blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
-        }
+  function toSGraph() {
+      var labels = ["Lv4 이하", "Lv5", "Lv6", "Lv7", "Lv8"];
+      var datas = [13, 17, 14, 9, 6];
+      showGraph("TOEIC Speaking 점수 별 학생 분포도", labels, datas);
+  }
+  function newMsgCheck(){
+    var blink = document.getElementById("message_Update");
+    blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+  }
 
-        $.get('/msg/msgList', function(data){
-          $('#msg_list').html(data);
-        });
+  $.get('/msg/msgList', function(data){
+    $('#msg_list').html(data);
+  });
 
-        $.get('/msg/msgDetail', function(data){
-          $('#msg_detail').html(data);
-        });
-    </script>
+  $.get('/msg/msgDetail', function(data){
+    $('#msg_detail').html(data);
+  });
+
+  </script>
+
 
 </body>
 
