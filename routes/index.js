@@ -237,19 +237,57 @@ router.get('/specCompare', function(req, res) {
   var certificateSql = ', round(avg(`certificate`), 1) as certificateAvg'; sql += certificateSql;
   var activitySql = ', round(avg(`activity`), 1) as activityAvg'; sql += activitySql;
   var fromSql = ' from `ssu_user`;'; sql += fromSql;
-
-  conn.query(sql, function(error, results){
+  var gradelow1 = 'select count(*) as cnt from ssu_user where grade < 2.5;';
+  var gradelow2 = 'select count(*) as cnt from ssu_user where grade >= 2.5 and grade <3.0;';
+  var gradelow3 = 'select count(*) as cnt from ssu_user where grade >= 3.0 and grade <3.5;';
+  var gradelow4 = 'select count(*) as cnt from ssu_user where grade >= 3.5 and grade <4.0;';
+  var gradelow5 = 'select count(*) as cnt from ssu_user where grade >= 4.0';
+  conn.query(sql,function(error, results){
     if(error) { console.log(error); }
-
         else {
           console.log(results[0]);
           if (req.session.authId) {
-            res.render('specCompare', {
-              user : req.session.authId,
-              title:'직군 스펙 비교',
-              jobPart: req.session.job_Part,
-              avg: results[0],
-            });
+            conn.query(gradelow1, function(error, result1){
+              if(error){}
+              else {
+                console.log(result1);
+                conn.query(gradelow2, function(error, result2){
+                  if(error){}
+                  else {
+                    console.log(result2);
+                    conn.query(gradelow3, function(error, result3){
+                      if(error){}
+                      else {
+                        console.log(result3);
+                        conn.query(gradelow4, function(error, result4){
+                          if(error){}
+                          else {
+                            console.log(result4);
+                            conn.query(gradelow5, function(error, result5){
+                              if(error){}
+                              else {
+                                console.log(result5);
+                                res.render('specCompare', {
+                                  user : req.session.authId,
+                                  title:'직군 스펙 비교',
+                                  jobPart: req.session.job_Part,
+                                  avg: results[0],
+                                  gradelow1 : result1[0].cnt,
+                                  gradelow2 : result2[0].cnt,
+                                  gradelow3 : result3[0].cnt,
+                                  gradelow4 : result4[0].cnt,
+                                  gradelow5 : result5[0].cnt,
+                                });
+                              }
+                            })
+                          }
+                        })
+                      }
+                    })
+                  }
+                })
+              }
+            })
           }
           else {
             res.render('login', {
