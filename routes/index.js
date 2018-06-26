@@ -64,9 +64,6 @@ router.get('/pflist', function(req, res) {
   });
 });
 
-router.get('/pflist', function(req, res) {
-  res.render('pslist', { title: '로그인 - Sejong Spec UP', user : req.session.authId});
-});
 
 
 
@@ -133,6 +130,8 @@ router.get('/userSearch', function(req, res) {
     });
   }
 });
+
+
 
 
 router.post('/userSearch', function(req, res){
