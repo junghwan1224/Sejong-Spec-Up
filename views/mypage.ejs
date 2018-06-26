@@ -146,47 +146,42 @@
 
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                                <label for="firstName" class="col-sm-12 control-label">학점</label>
-                                <input type="text" id="score" value=<%= rows[0].grade %>  class="form-control">
-
+                                <label for="firstName" class="col-sm-6 control-label">학점</label>
+                                <input type="text" id="score1" value=<%= rows[0].grade %> class="supportForm form-control">
                             </div>
 
 
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">토익-Toeic</label>
-                                <input type="text" id="toeic" value=<%= rows[0].toeic %> class="form-control">
+                                <input type="text" id="toeic1" value=<%= rows[0].toeic %> class="form-control">
                             </div>
 
 
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
-                                <select class="form-control"  id="toss">
-                                    <option>미응시</option>
-                                    <option>Level1</option>
-                                    <option>Level2</option>
-                                    <option>Level3</option>
-                                    <option>Level4</option>
-                                    <option>Level5</option>
-                                    <option>Level6</option>
-                                    <option>Level7</option>
-                                    <option>Level8</option>
+                                <select class="b form-control" id="toss" name="toss_grade">
+                                    <option selected="selected">미응시</option>
+                                    <option>Lv4 이하</option>
+                                    <option>Lv5</option>
+                                    <option>Lv6</option>
+                                    <option>Lv7</option>
+                                    <option>Lv8</option>
                                 </select>
                             </div>
 
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
-                                <select class="form-control" id="opic">
-                                    <option>미응시</option>
-                                    <option>NL</option>
-                                    <option>NM</option>
-                                    <option>NH</option>
-                                    <option>IL</option>
-                                    <option>IM</option>
-                                    <option>IH</option>
+                                <select class="c form-control" id="opic" name="opic_grade">
+                                    <option value="1">미응시</option>
                                     <option>AL</option>
+                                    <option>IH</option>
+                                    <option>IM3</option>
+                                    <option>IM2</option>
+                                    <option>IM1</option>
+                                    <option>IL</option>
                                 </select>
                             </div>
 
@@ -195,13 +190,12 @@
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
-                                <select class="form-control" id="volunteer">
-                                    <option>0번</option>
-                                    <option>1번</option>
-                                    <option>2번</option>
-                                    <option>3번</option>
-                                    <option>4번</option>
-                                    <option>5회이상</option>
+                                <select class="form-control" id="volunteer1" name="volunterr_num">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
                                 </select>
                             </div>
 
@@ -210,13 +204,12 @@
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">인턴 경험</label>
-                                <select class="form-control" id="intern">
-                                    <option>0번</option>>
-                                    <option>1번</option>
-                                    <option>2번</option>
-                                    <option>3번</option>
-                                    <option>4번</option>
-                                    <option>5회이상</option>
+                                <select class="form-control" id="intern1" name="intern_num">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
                                 </select>
                             </div>
 
@@ -224,13 +217,12 @@
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">공모전 수상</label>
-                                <select class="form-control" id="Competition">
-                                    <option>0번</option>
-                                    <option>1번</option>
-                                    <option>2번</option>
-                                    <option>3번</option>
-                                    <option>4번</option>
-                                    <option>5회이상</option>
+                                <select class="form-control" id="Competition1" name="competition_num">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
                                 </select>
                             </div>
 
@@ -238,13 +230,11 @@
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">해외 연수</label>
-                                <select class="form-control" id="aborad">
-                                    <option>0번</option>>
-                                    <option>1번</option>
-                                    <option>2번</option>
-                                    <option>3번</option>
-                                    <option>4번</option>
-                                    <option>5회이상</option>
+                                <select class="form-control" id="aboard1" name="aboard_num">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
                                 </select>
                             </div>
 
@@ -252,13 +242,12 @@
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                 <label for="firstName" class="col-sm-12 control-label">자격증</label>
-                                <select class="form-control" id="certificate">
-                                    <option>0개</option>>
-                                    <option>1개</option>
-                                    <option>2개</option>
-                                    <option>3개</option>
-                                    <option>4개</option>
-                                    <option>5개이상</option>
+                                <select class="form-control" id="certificate1" name="certificate_num">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
                                 </select>
                             </div>
                         </div>
