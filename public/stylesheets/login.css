@@ -54,6 +54,7 @@ html{
     width: 100%;
     margin-top: 1%;
   }
+
   table p{
     color: lightgray;
     cursor: pointer;
@@ -63,6 +64,11 @@ html{
     #logo_Image{
         margin-top: -10px;
         height: 144px;
+    }
+  }
+  @media only screen and (max-width: 350px) and (min-width: 0)  {  
+    #logo_Image{
+        height: 120px !important;
     }
   }
   @media only screen and (max-width: 480px) and (min-width: 64px)  {
@@ -94,3 +100,59 @@ html{
     }
   
   }
+
+.loginBtn_P {
+    background-color:#337ab7;
+    border-color: #337ab7;
+    outline: none !important;
+    transition: all .1333s ease-in;
+}
+
+.loginBtn_P:hover {
+    border-color: #337ab7 !important;
+    background-color: #4aabff !important;
+}
+
+.loginBtn {
+  background-color:brown;
+  border-color: brown;
+  outline: none !important;
+  transition: all .1333s ease-in;
+}
+
+.loginBtn:hover {
+  border-color: #d9534f !important;
+  background-color: #ff625d !important;
+}
+
+.loginForm {
+  padding-left: 4px;
+  margin-left: -3px;
+  border-color: white;
+  outline: none !important;
+  transition: all .1333s ease-in;
+}
+
+.loginForm:hover {
+  border-color: #d9534f !important;
+}
+
+.loginForm:focus {
+  border-color: #ff0000 !important;
+}
+
+.loginForm_P {
+  padding-left: 4px;
+  margin-left: -3px;
+  border-color: white;
+  outline: none !important;
+  transition: all .1333s ease-in;
+}
+
+.loginForm_P:hover {
+  border-color: #4aabff !important;
+}
+
+.loginForm_P:focus {
+  border-color: #337ab7 !important;
+}
