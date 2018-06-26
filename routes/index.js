@@ -267,6 +267,13 @@ router.get('/specCompare', function(req, res) {
   var gradelow3 = 'select count(*) as cnt from ssu_user where grade >= 3.0 and grade <3.5;';
   var gradelow4 = 'select count(*) as cnt from ssu_user where grade >= 3.5 and grade <4.0;';
   var gradelow5 = 'select count(*) as cnt from ssu_user where grade >= 4.0';
+  var toeiclow1 = 'select count(*) as cnt_toeic from ssu_user where toeic <= 700';
+  var toeiclow2 = 'select count(*) as cnt_toeic from ssu_user where toeic > 700 and toeic <= 750';
+  var toeiclow3 = 'select count(*) as cnt_toeic from ssu_user where toeic > 750 and toeic <= 800';
+  var toeiclow4 = 'select count(*) as cnt_toeic from ssu_user where toeic > 800 and toeic <= 850';
+  var toeiclow5 = 'select count(*) as cnt_toeic from ssu_user where toeic > 850 and toeic <= 900';
+  var toeiclow6 = 'select count(*) as cnt_toeic from ssu_user where toeic > 900 and toeic <= 950';
+  var toeiclow7 = 'select count(*) as cnt_toeic from ssu_user where toeic > 950';
   conn.query(sql,function(error, results){
     if(error) { console.log(error); }
         else {
@@ -291,18 +298,59 @@ router.get('/specCompare', function(req, res) {
                             conn.query(gradelow5, function(error, result5){
                               if(error){}
                               else {
-                                console.log(result5);
-                                res.render('specCompare', {
-                                  user : req.session.authId,
-                                  title:'직군 스펙 비교',
-                                  jobPart: req.session.job_Part,
-                                  avg: results[0],
-                                  gradelow1 : result1[0].cnt,
-                                  gradelow2 : result2[0].cnt,
-                                  gradelow3 : result3[0].cnt,
-                                  gradelow4 : result4[0].cnt,
-                                  gradelow5 : result5[0].cnt,
-                                });
+                                conn.query(toeiclow1, function(error,result11){
+                                  if(error){}
+                                  else{
+                                    conn.query(toeiclow2, function(error,result22){
+                                      if(error){}
+                                      else{
+                                        conn.query(toeiclow3, function(error,result33){
+                                          if(error){}
+                                          else{
+                                            conn.query(toeiclow4, function(error,result44){
+                                              if(error){}
+                                              else{
+                                                conn.query(toeiclow5, function(error,result55){
+                                                  if(error){}
+                                                  else{
+                                                    conn.query(toeiclow6, function(error,result66){
+                                                      if(error){}
+                                                      else{
+                                                        console.log(result5);
+                                                        console.log(result11);
+                                                        console.log(result22);
+                                                        console.log(result33);
+                                                        console.log(result44);
+                                                        console.log(result55);
+                                                        res.render('specCompare', {
+                                                          user : req.session.authId,
+                                                          title:'직군 스펙 비교',
+                                                          jobPart: req.session.job_Part,
+                                                          avg: results[0],
+                                                          gradelow1 : result1[0].cnt,
+                                                          gradelow2 : result2[0].cnt,
+                                                          gradelow3 : result3[0].cnt,
+                                                          gradelow4 : result4[0].cnt,
+                                                          gradelow5 : result5[0].cnt,
+                                                          toeiclow1 : result11[0].cnt_toeic,
+                                                          toeiclow2 : result22[0].cnt_toeic,
+                                                          toeiclow3 : result33[0].cnt_toeic,
+                                                          toeiclow4 : result44[0].cnt_toeic,
+                                                          toeiclow5 : result55[0].cnt_toeic,
+                                                          toeiclow6 : result66[0].cnt_toeic,
+                                                        });
+                                                      }
+                                                    })
+                                                  }
+                                                })
+                                              }
+                                            })
+                                          }
+                                        })
+                                      }
+                                    })
+                                  }
+                                })
                               }
                             })
                           }
