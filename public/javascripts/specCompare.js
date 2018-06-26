@@ -6,7 +6,6 @@ $('#logo_Image').click(function(){
 
 //학점 누르면 보이게 하는 함수
 function showGraph(graphTitle, graphLabels, graphDatas) {
-
     var ctx = document.getElementById("barCanvas").getContext('2d');
 
     Chart.defaults.global.defaultFontColor = 'white';
@@ -61,4 +60,5 @@ function showGraph(graphTitle, graphLabels, graphDatas) {
         }
     }
     });
+    $("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
 }
