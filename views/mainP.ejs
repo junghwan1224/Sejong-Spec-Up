@@ -44,7 +44,7 @@
     <div class="article_div">
         <div class="user_div">
             <h3 style="margin-left: auto; margin-right: auto; padding-left: 8px; color: rgb(255, 255, 255);">
-                 <%= name %>교수님
+                 <%= name %> 교수님
             </h3>
         </div>
 
@@ -55,21 +55,21 @@
         <div class="container-fluid curtain">
 
 
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="job">
+            <div class="data col-xs-6 col-sm-6 col-md-6 col-lg-6" id="job">
                 <label for="firstName" class="col-sm-12 control-label">전공</label>
-                <input type="text" id="score"  value="<%= major %>" readonly class="form-control">
+                <input type="text" id="score"  value="-<%= major %>" readonly class="form-control">
             </div>
 
 
 
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="data col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <label for="firstName" class="col-sm-12 control-label">이메일</label>
-                <input type="text" id="score" value="<%= email %>" readonly class="form-control">
+                <input type="text" id="score" value="-<%= email %>" readonly class="form-control">
             </div>
 
             <div class="form-group">
                 <div class="col-sm-12">
-                    <label for="firstName" class="col-sm-6 control-label">소개글</label>
+                    <label for="firstName" class="data col-sm-6 control-label">소개글</label>
                     <textarea class="form-control col-sm-12" rows="10" readonly><%= introduce %></textarea>
                 </div>
             </div>

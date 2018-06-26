@@ -1,7 +1,7 @@
 body,html{
     width: 100%;
     height: 100%;
-    background: url('/images/spec_Compare_Page_Image.png') no-repeat center center fixed;
+    background: url('/images/mainP2.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -78,7 +78,9 @@ label{
 
 .content{
     width: 70%;
-
+}
+.data{
+    margin-top: 2%;
 }
 
 
@@ -87,8 +89,8 @@ label{
 }
 
 .article_div {
-    margin-left: 5%;
-    width: 90%;
+    margin-left: 20%;
+    width: 60%;
     margin-top: 4%;
     background-color: rgba(0, 0, 0, .66);
     border: 2px solid grey;
@@ -209,9 +211,9 @@ label{
         width: 65%;
     }
     .article_div {
-        width: 100%;
+        width: 90%;
         margin-top: 10%;
-        margin-left: 0;
+        margin-left: 5%;
     }
    
 }
