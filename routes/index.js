@@ -254,7 +254,7 @@ router.get('/userDetail/:id', function(req, res) {
 router.get('/specCompare', function(req, res) {
   var sql = 'select';
   var gradeSql = ' round(avg(`grade`), 2) as gradeAvg'; sql += gradeSql;
-  var tosSql = ', round(avg(`toss_num`), 0) as tosAvg'; sql += tosSql;
+  var tosSql = ', avg(`toss_num`) as tosAvg'; sql += tosSql;
   var toeicSql = ', round(avg(`toeic`), 1) as toeicAvg'; sql += toeicSql;
   var opicSql = ', round(avg(`opic_num`), 0) as opicAvg'; sql += opicSql;
   var volunteerSql = ', round(avg(`volunteer`), 1) as volunteerAvg'; sql += volunteerSql;
@@ -262,7 +262,7 @@ router.get('/specCompare', function(req, res) {
   var competitionSql = ', round(avg(`competition`), 1) as competitionAvg'; sql += competitionSql;
   var certificateSql = ', round(avg(`certificate`), 1) as certificateAvg'; sql += certificateSql;
   var activitySql = ', round(avg(`activity`), 1) as activityAvg'; sql += activitySql;
-  var fromSql = ' from `ssu_user` group by toss_num having toss_num > -1;'; sql += fromSql;
+  var fromSql = ' from `ssu_user` where toss_num not in(select toss_num from ssu_user where toss_num = -1);'; sql += fromSql;
   var gradelow1 = 'select count(*) as cnt from ssu_user where grade < 2.5;';
   var gradelow2 = 'select count(*) as cnt from ssu_user where grade >= 2.5 and grade <3.0;';
   var gradelow3 = 'select count(*) as cnt from ssu_user where grade >= 3.0 and grade <3.5;';
