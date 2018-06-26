@@ -8,6 +8,9 @@ var conn = mysql.createConnection(dbconfig);
 router.get('/', function(req, res) {
   res.render('login', { title: '로그인 - Sejong Spec UP' });
 });
+router.get('/loginP', function(req, res) {
+  res.render('loginP', { title: '로그인 - Sejong Spec UP' });
+});
 
 router.get('/main', function(req, res) {
   var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
@@ -39,6 +42,9 @@ router.get('/main', function(req, res) {
 
 router.get('/join', function(req, res) {
   res.render('join', { title: '가입 - Sejong Spec UP' });
+});
+router.get('/joinP', function(req, res) {
+  res.render('joinP', { title: '가입 - Sejong Spec UP' });
 });
 
 
@@ -280,6 +286,29 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
   });//query
 });//router post
 
+router.post('/goApplyP',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var userP_id = req.body.userP_id;
+  var name = req.body.name;
+  var password = req.body.password;
+  var major = req.body.major;
+  var email = req.body.email;
+  var introduce = req.body.introduce;
+
+
+  var sql = 'insert into `ssu_userP` (`userP_id`,`name`,`password`,`major`,`email`,`introduce`) values (?,?,?,?,?,?);';
+
+  conn.query(sql,[user_id,password,grade,school_num,major,job_Part,score,toss_num,toeic,opic_num,volunteer,intern,competition,certificate,aboard],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});
+
 //마이페이지 수정
 
 router.post('/regoApply',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
@@ -409,6 +438,34 @@ router.post('/gologin',function(req,res,next){
     }
   });
 });
+router.post('/gologinP',function(req,res,next){
+  var id = req.body.id;
+  var password = req.body.password;
+
+  var sql = "select * from ssu_userP where user_id=?";
+  conn.query(sql,[id], function(error,results,fields){
+    if(error){
+      console.log(id);
+
+    } else {
+      var user = results[0];
+      if(!user){
+        console.log('id fail');
+        res.send({result:'error'});
+      } else if(password == user.password){
+        req.session.authId = id;
+        req.session.major = user.major;
+        req.session.job_Part = user.want_job;
+        req.session.save(function() {
+          res.send({result:'success'});
+        });
+      } else {
+        res.send({result:'error'});
+      }
+    }
+  });
+});
+
 router.get('/logout',function(req,res){
   delete req.session.authId;
   delete req.session.major;
