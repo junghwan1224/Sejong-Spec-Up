@@ -37,6 +37,32 @@ router.get('/main', function(req, res) {
 }
 });
 
+router.get('/mainP', function(req, res) {
+  var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
+  if (req.session.authId) {
+  conn.query(sql, [req.session.authId], function(error, results){
+    if(error){
+      console.log(error);
+    }
+    else{
+      console.log(results);
+      res.render('mainP', {
+        user : req.session.authId,
+        title:'Sejong Spec UP',
+        new_msg: results[0],
+      });
+    }
+  });
+  }
+  else {
+    res.render('mainP', {
+      user: undefined,
+      title:'Sejong Spec UP'
+    });
+}
+});
+
+
 
 
 
