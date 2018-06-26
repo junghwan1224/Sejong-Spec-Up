@@ -262,7 +262,7 @@ router.get('/specCompare', function(req, res) {
   var competitionSql = ', round(avg(`competition`), 1) as competitionAvg'; sql += competitionSql;
   var certificateSql = ', round(avg(`certificate`), 1) as certificateAvg'; sql += certificateSql;
   var activitySql = ', round(avg(`activity`), 1) as activityAvg'; sql += activitySql;
-  var fromSql = ' from `ssu_user`;'; sql += fromSql;
+  var fromSql = ' from `ssu_user` group by toss_num having toss_num > -1;'; sql += fromSql;
   var gradelow1 = 'select count(*) as cnt from ssu_user where grade < 2.5;';
   var gradelow2 = 'select count(*) as cnt from ssu_user where grade >= 2.5 and grade <3.0;';
   var gradelow3 = 'select count(*) as cnt from ssu_user where grade >= 3.0 and grade <3.5;';
