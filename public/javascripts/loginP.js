@@ -24,7 +24,7 @@ $(document).ready(function(){
   
         if (result['result']=='success'){
           alert(id+'님 로그인 성공');
-          $(window).attr('location','/main');
+          $(window).attr('location','/mainP');
         }
         else if(result['result']=='error'){
           alert('아이디나 비밀번호가 틀렸습니다.');
