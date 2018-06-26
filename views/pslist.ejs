@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pslist.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title><%= title %></title>
+</head>
+<body>
+    <div id="nav_Div">
+        <div id="logo_Div">
+            <img src="/images/logo4.png" id="logo_Image" height="100%">
+        </div>
+        <div id="user_Input">
+            <div id="help_Vertical">
+                <div id="message_Div" data-toggle="modal" data-target="#myModal">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%"/>
+                    <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />-->
+                </div>
+                <div>
+                    &nbsp;
+                    <strong style="cursor:pointer">user</strong>
+                </div>
+                <div>
+                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-lg-2">
+                <div class="major_link" onclick="listTest()">
+                    <span>컴퓨터공학과</span>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-lg-2">
+                <div class="major_link">
+                    <span>소프트웨어학과</span>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-lg-2">
+                <div class="major_link">
+                    <span>정보보호학과</span>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-lg-2">
+                <div class="major_link">
+                    <span>데이터사이언스학과</span>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-lg-2">
+                <div class="major_link">
+                    <span>지능기전공학부</span>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-lg-2">
+                <div class="major_link">
+                    <span>창의소프트학부</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-result">
+        <div class="result-container">
+           <!-- <div style="height: 40px; padding: 0px 24px 0px 24px;">
+                <div style="float: left; width: 40%;">
+                    <span class="form_control_label">성함</span>
+                </div>
+                <div style="float: right; width: 50%;">
+                    <span class="form_control_label">학과</span>
+                </div>
+            </div>-->
+            <div class="result_div">
+                <div id="pf_list_parent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog" modal-lg>
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: brown">
+                    <h4 class="modal-title" style="color: white">Message</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>보낸사람</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                                <th>읽음</th>
+                            </tr>
+                        </thead>
+                        <tbody id='msg_list'>
+                            <!-- msg list show -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- msg detail show -->
+    <div id='msg_detail'></div>
+
+    <script src="/javascripts/pflist.js"></script>
+</body>
+</html>
