@@ -54,6 +54,17 @@ html{
     width: 100%;
     margin-top: 1%;
   }
+
+  .loginBtn_P {
+    background-color:#337ab7;
+    border-color: #337ab7;
+  }
+
+  .loginS_P {
+    background-color:#337ab7;
+    border-color: #337ab7;
+  }
+
   table p{
     color: lightgray;
     cursor: pointer;
@@ -63,6 +74,11 @@ html{
     #logo_Image{
         margin-top: -10px;
         height: 144px;
+    }
+  }
+  @media only screen and (max-width: 350px) and (min-width: 0)  {  
+    #logo_Image{
+        height: 120px !important;
     }
   }
   @media only screen and (max-width: 480px) and (min-width: 64px)  {
