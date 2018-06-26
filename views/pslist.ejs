@@ -169,7 +169,7 @@
       leadingZeros(now.getDate(),2);
       var data = {
         post_user: '<%= user %>',
-        recv_user: '<%= professors[i].name %>',
+        recv_user: '<%= professors[i].userP_id %>',
         title: $('#title<%= professors[i].id %>').val(),
         contents: $('#content<%= professors[i].id %>').val(),
         post_date: post_date,
