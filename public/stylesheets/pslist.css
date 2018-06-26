@@ -15,7 +15,7 @@ body,html{
   margin-top: 3%;
 }
 
-span{
+span:nth-child(1){
   margin-left: 13%;
 }
 li{
@@ -145,6 +145,7 @@ li{
 
 #message_Update {
   width: 20px;
+  
 }
 
 @media only screen and (max-width: 954px) and (min-width: 660px)  {
