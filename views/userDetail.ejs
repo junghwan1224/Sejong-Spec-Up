@@ -180,7 +180,21 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <div class="tile_value">Lv. <%= senior.toss_num %></div>
+                                    <div class="tile_value">
+                                      <% if(senior.toss_num == -1) { %>
+                                        <div class="tile_value">미응시</div>
+                                      <% } else if(senior.toss_num == 4) { %>
+                                        <div class="tile_value">LV 4</div>
+                                      <% } else if(senior.toss_num == 5) { %>
+                                        <div class="tile_value">LV 5</div>
+                                      <% } else if(senior.toss_num == 6) { %>
+                                        <div class="tile_value">LV 6</div>
+                                      <% } else if(senior.toss_num == 7) { %>
+                                        <div class="tile_value">LV 7</div>
+                                      <% } else if(senior.toss_num == 8) { %>
+                                        <div class="tile_value">LV 8</div>
+                                      <% } %>
+                                    </div>
                                 </div>
                             </div>
 
@@ -190,8 +204,8 @@
                                     <div class="divider_h_o2">
                                         <div class="divider_h_i2"></div>
                                     </div>
-                                    <% if(senior.opic_num == 0) { %>
-                                      <div class="tile_value">AL</div>
+                                    <% if(senior.opic_num == -1) { %>
+                                      <div class="tile_value">미응시</div>
                                     <% } else if(senior.opic_num == 1) { %>
                                       <div class="tile_value">IH</div>
                                     <% } else if(senior.opic_num == 2) { %>
@@ -203,7 +217,7 @@
                                     <% } else if(senior.opic_num == 5) { %>
                                       <div class="tile_value">IL</div>
                                     <% } else if(senior.opic_num == 6) { %>
-                                      <div class="tile_value">0</div>
+                                      <div class="tile_value">AL</div>
                                     <% } %>
                                 </div>
                             </div>
