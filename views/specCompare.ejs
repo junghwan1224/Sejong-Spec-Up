@@ -248,16 +248,16 @@
   }
 
   function toSGraph() {
+
     
-    var a = '<%= tosslow1 %>';
     var b = '<%= tosslow4 %>';
     var c = '<%= tosslow5 %>';
     var d = '<%= tosslow6 %>';
     var e = '<%= tosslow7 %>';
     var f = '<%= tosslow8 %>';
 
-      var labels = ["미응시","Lv4 이하", "Lv5", "Lv6", "Lv7", "Lv8"];
-      var datas = [a,b,c,d,e,f];
+      var labels = ["Lv4 이하", "Lv5", "Lv6", "Lv7", "Lv8"];
+      var datas = [b,c,d,e,f];
       showGraph("TOEIC Speaking 점수 별 학생 분포도", labels, datas);
   }
   function newMsgCheck(){
