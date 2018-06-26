@@ -26,7 +26,9 @@ li{
 body {
   background: url('/images/mainP2.png') no-repeat center center fixed;
 }
-
+#logo_Div{
+  height: 100%;
+}
 #logo_Image{
   margin-left: 3%;
   cursor: pointer;

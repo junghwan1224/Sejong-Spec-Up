@@ -12,6 +12,9 @@ body,html{
     margin-top: 3%;
    
 }
+#logo_Div{
+    height: 100%;
+}
 input{
     width: 100%;
 }
