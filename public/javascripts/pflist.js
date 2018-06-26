@@ -7,7 +7,7 @@ function addPfList(i, name, major, email, introdMsg) { //인덱스, 성함, 전�
                 <div class="row">
 
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <div id="message_Div" data-toggle="modal" data-target="#myModal">
+                    <div id="message_Div" data-toggle="modal" data-target="#toProf">
                         <img id="message_Update" src="/images/message_Icon.png" height="13%"/>
                     </div>
 
