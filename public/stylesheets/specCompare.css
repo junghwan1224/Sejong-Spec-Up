@@ -16,6 +16,9 @@ body,html{
     margin-left: 3%;
     cursor: pointer;
 }
+.spec{
+    cursor: pointer;
+}
 
 #nav_Div{
     display: flex;
