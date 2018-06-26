@@ -102,7 +102,9 @@ table{
        padding: 0 16px 0 16px;
     }
 } */
-
+#user_Input img{
+    height: 32px;
+}
 .tile_title {
     display: flex;
     color: #efefef;

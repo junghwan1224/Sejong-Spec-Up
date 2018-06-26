@@ -14,7 +14,9 @@ body,html{
 #pf_list_parent{
   margin-top: 3%;
 }
-
+#user_Input img{
+  height: 32px;
+}
 span:nth-child(1){
   margin-left: 13%;
 }
