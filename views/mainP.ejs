@@ -27,7 +27,6 @@
             <div id="help_Vertical">
                 <div id="message_Div" data-toggle="modal" data-target="#myModal">
                     <img id="message_Update" src="/images/message_Icon.png" height="13%" />
-                    <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
                 </div>
                 <div>
                     &nbsp;
@@ -115,7 +114,7 @@
                     <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -132,7 +131,7 @@
         $('input').css('background', 'none').css('border', 'none').css('color', 'white');
         $('textarea').css('background', 'none').css('border', 'none').css('color', 'white');
         $('#reform').click(function () {
-             
+
             $(this).hide(500);
             $('.two').show(500);
             $('input').css('background', 'white').css('border', 'none').css('color', 'black');
@@ -140,19 +139,42 @@
             $('input').removeAttr("readonly");
             $('textarea').removeAttr("readonly");
         })
+        
+  function newMsgCheck() {
+                var blink = document.getElementById("message_Update");
+                blink.style.visibility = blink.style.visibility == "" ? "hidden" : "";
+            }
+            var newMsg;
 
-        function newMsgCheck() {
+
+            $.get('/msg/msgList', function (data) {
+                $('#msg_list').html(data);
+            });
+
+            $.get('/msg/msgDetail', function (data) {
+                $('#msg_detail').html(data);
+            });
+        var a = '<%= new_msg %>';
+        //var i = false;
+        if(a) {
+          console.log('ok');
+          // setInterval(newMsgCheck, 500);
+          newMsg = setInterval(function(){
             var blink = document.getElementById("message_Update");
-            blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+            blink.style.visibility = blink.style.visibility == "" ? "hidden" : "";
+ 
+          }, 500);
+        }
+        else {
+          console.log('no');
+          clearInterval(newMsgCheck);
         }
 
-        $.get('/msg/msgList', function (data) {
-            $('#msg_list').html(data);
+        $('#msgListCloseBtn').click(function(){
+          clearInterval(newMsg);
+          document.getElementById("message_Update").style.visibility = 'visible';
         });
 
-        $.get('/msg/msgDetail', function (data) {
-            $('#msg_detail').html(data);
-        });
     </script>
 
 </body>
