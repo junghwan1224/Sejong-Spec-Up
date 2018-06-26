@@ -50,6 +50,10 @@ router.get('/mainP', function(req, res) {
   res.render('mainP', { title: '로그인 - Sejong Spec UP' });
 });
 
+router.get('/pflist', function(req, res) {
+  res.render('pslist', { title: '로그인 - Sejong Spec UP' });
+});
+
 
 
 

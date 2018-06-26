@@ -5,9 +5,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#9a0007">
-    <title><%= title %></title>
+    <title>
+        <%= title %>
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/specCompare.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mainP.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -24,15 +26,17 @@
         <div id="user_Input">
             <div id="help_Vertical">
                 <div id="message_Div" data-toggle="modal" data-target="#myModal">
-                    <img id="message_Update" src="/images/message_Icon.png" height="13%"/>
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
                     <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
                 </div>
                 <div>
                     &nbsp;
-                    <strong style="cursor:pointer"> <%= user %></strong>
+                    <strong style="cursor:pointer">
+                        <%= title %>
+                    </strong>
                 </div>
                 <div>
-                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
+                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'" />
                 </div>
             </div>
         </div>
@@ -41,7 +45,7 @@
     <div class="article_div">
         <div class="user_div">
             <h3 style="margin-left: auto;margin-right: auto;padding-left: 8px;color: rgb(255, 255, 255);">
-                    <%= jobPart %> 직군 스펙 비교
+                한성진 교수님
             </h3>
         </div>
 
@@ -51,132 +55,34 @@
 
         <div class="container-fluid curtain">
 
-            <div class="row">
 
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 tile_section">
-                    <div class="container-fluid" style="padding-top: 16px;">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="job">
+                <label for="firstName" class="col-sm-12 control-label">전공</label>
+                <input type="text" id="score" value="컴퓨터공학" readonly class="form-control">
+            </div>
 
-                        <div class="row">
 
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" onclick="scoreGraph();">
-                                <div class="tile" title="학점">
-                                    <div class="tile_title">학점 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value"><%= avg.gradeAvg %></div>
-                                </div>
-                            </div>
 
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" onclick="toeicGraph();">
-                                <div class="tile" title="토익">
-                                    <div class="tile_title">토익 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value"><%= avg.toeicAvg %></div>
-                                </div>
-                            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="firstName" class="col-sm-12 control-label">이메일</label>
+                <input type="text" id="score" value="gkstjdwls11@naver.com" readonly class="form-control">
+            </div>
 
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" onclick="toSGraph();">
-                                <div class="tile" title="토익스피킹">
-                                    <div class="tile_title">토스 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value">Lv. <%= avg.tosAvg %></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div class="tile" title="오픽">
-                                    <div class="tile_title">오픽 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <% if(avg.opicAvg == 0) { %>
-                                      <div class="tile_value">AL</div>
-                                    <% } else if(avg.opicAvg == 1) { %>
-                                      <div class="tile_value">IH</div>
-                                    <% } else if(avg.opicAvg == 2) { %>
-                                      <div class="tile_value">IM3</div>
-                                    <% } else if(avg.opicAvg == 3) { %>
-                                      <div class="tile_value">IM2</div>
-                                    <% } else if(avg.opicAvg == 4) { %>
-                                      <div class="tile_value">IM1</div>
-                                    <% } else if(avg.opicAvg == 5) { %>
-                                      <div class="tile_value">IL</div>
-                                    <% } else if(avg.opicAvg < 0) { %>
-                                      <div class="tile_value">0</div>
-                                    <% } %>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div class="tile" title="봉사 활동">
-                                    <div class="tile_title">봉사 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value"><%= avg.volunteerAvg %></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div class="tile" title="인턴쉽">
-                                    <div class="tile_title">인턴 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value"><%= avg.internAvg %></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div class="tile" title="공모전">
-                                    <div class="tile_title">공모전 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value"><%= avg.competitionAvg %></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div class="tile" title="해외 경험">
-                                    <div class="tile_title">해외경험</div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value"><%= avg.activityAvg %></div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div class="tile" title="자격증">
-                                    <div class="tile_title">자격증 </div>
-                                    <div class="divider_h_o2">
-                                        <div class="divider_h_i2"></div>
-                                    </div>
-                                    <div class="tile_value"><%= avg.certificateAvg %></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container-fluid">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 graph_section">
-                        <div class="graph_internal_div">
-                            <div class="size_div">
-                                <canvas id="barCanvas"></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label for="firstName" class="col-sm-6 control-label">소개글</label>
+                    <textarea class="form-control col-sm-12" rows="10" readonly>dwqdqdgegw efw fe</textarea>
                 </div>
             </div>
+
+            <div class="form-group" id="join_Button">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <button type="button" class="btn btn-danger btn-block" id='reform'>수정하기</button>
+                </div>
+            </div>
+
         </div>
+    </div>
     </div>
 
 
@@ -209,6 +115,8 @@
                     <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
 
+                
+
             </div>
         </div>
     </div>
@@ -219,38 +127,31 @@
 
 
 
-    <script src="/javascripts/specCompare.js"></script>
 
     <script>
-        function scoreGraph() {
-            var labels = ["2.5 미만", "2.5~3.0", "3.0~3.5", "3.5~4.0", "4.0~4.5"];
-            var datas = [12, 16, 14, 19, 9];
-            showGraph("학점 별 학생 분포도", labels, datas);
+        $('input').css('background', 'none').css('border', 'none').css('color', 'white');
+        $('textarea').css('background', 'none').css('border', 'none').css('color', 'white');
+        $('#reform').click(function () {
+             
+            $(this).hide(500);
+            $('.two').show(500);
+            $('input').css('background', 'white').css('border', 'none').css('color', 'black');
+            $('textarea').css('background', 'white').css('border', 'none').css('color', 'black');
+            $('input').removeAttr("readonly");
+            $('textarea').removeAttr("readonly");
+        })
+
+        function newMsgCheck() {
+            var blink = document.getElementById("message_Update");
+            blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
         }
 
-        function toeicGraph() {
-            var labels = ["700 이하", "700~750", "750~800", "800~850", "850~900", "900~950", "950 이상"];
-            var datas = [11, 6, 12, 11, 8, 5, 3];
-            showGraph("TOEIC 점수 별 학생 분포도", labels, datas);
-        }
-
-        function toSGraph() {
-            var labels = ["Lv4 이하", "Lv5", "Lv6", "Lv7", "Lv8"];
-            var datas = [13, 17, 14, 9, 6];
-            showGraph("TOEIC Speaking 점수 별 학생 분포도", labels, datas);
-        }
-
-        function newMsgCheck(){
-          var blink = document.getElementById("message_Update");
-          blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
-        }
-
-        $.get('/msg/msgList', function(data){
-          $('#msg_list').html(data);
+        $.get('/msg/msgList', function (data) {
+            $('#msg_list').html(data);
         });
 
-        $.get('/msg/msgDetail', function(data){
-          $('#msg_detail').html(data);
+        $.get('/msg/msgDetail', function (data) {
+            $('#msg_detail').html(data);
         });
     </script>
 
