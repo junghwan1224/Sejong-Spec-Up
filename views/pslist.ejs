@@ -21,7 +21,6 @@
       <div id="help_Vertical">
         <div id="message_Div" data-toggle="modal" data-target="#myModal">
           <img id="message_Update" src="/images/message_Icon.png" height="13%"/>
-          <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" />-->
         </div>
         <div>
           &nbsp;
@@ -34,51 +33,9 @@
     </div>
   </div>
 
-  <!-- <div class="container-fluid">
-  <div class="row">
-  <div class="col-xs-4_s col-sm-4 col-lg-2">
-  <div class="major_link" onclick="listTest()">
-  <span>컴퓨터공학과</span>
-</div>
-</div>
-<div class="col-xs-4_s col-sm-4 col-lg-2">
-<div class="major_link">
-<span>소프트웨어학과</span>
-</div>
-</div>
-<div class="col-xs-4_s col-sm-4 col-lg-2">
-<div class="major_link">
-<span>정보보호학과</span>
-</div>
-</div>
-<div class="col-xs-4_s col-sm-4 col-lg-2">
-<div class="major_link">
-<span>데이터사이언스학과</span>
-</div>
-</div>
-<div class="col-xs-4_s col-sm-4 col-lg-2">
-<div class="major_link">
-<span>지능기전공학부</span>
-</div>
-</div>
-<div class="col-xs-4_s col-sm-4 col-lg-2">
-<div class="major_link">
-<span>창의소프트학부</span>
-</div>
-</div>
-</div>
-</div> -->
-
 <div class="border-result">
   <div class="result-container">
-    <!-- <div style="height: 40px; padding: 0px 24px 0px 24px;">
-    <div style="float: left; width: 40%;">
-    <span class="form_control_label">성함</span>
-  </div>
-  <div style="float: right; width: 50%;">
-  <span class="form_control_label">학과</span>
-</div>
-</div>-->
+
 <div class="result_div">
   <div id="pf_list_parent">
     <% for(var i=0; i<professors.length; i++) { %>
@@ -159,32 +116,7 @@
 <% for(var i=0; i<professors.length; i++) { %>
   <!-- The Modal -->
   <div class="modal fade" id="toProf<%= professors[i].id %>">
-    <!-- <div class="modal-dialog" modal-lg>
-      <div class="modal-content">
-        <div class="modal-header" style="background-color: brown">
-          <h4 class="modal-title" style="color: white">교수님께 메시지 보내기</h4>
-        </div>
-        <div class="modal-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>보낸사람</th>
-                <th>제목</th>
-                <th>날짜</th>
-                <th>읽음</th>
-              </tr>
-            </thead>
-            <tbody id='msg_list'>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="modal-footer">
-          <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div> -->
+  
     <div class="modal-dialog">
         <div class="modal-content dialogAnim">
             <!-- Modal Header -->
