@@ -167,6 +167,9 @@ li{
   .result-container {
     width: 100% !important;
   }
+  strong{
+    font-size: 16.5px;
+  }
 }
 @media only screen and (max-width: 500px) and (min-width: 300px)  {
   .modal-content {
