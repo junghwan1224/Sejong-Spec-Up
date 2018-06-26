@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#9a0007">
+    <title>
+        <%= title %>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mainP.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+</head>
+
+<body>
+    <div id="nav_Div">
+        <div id="logo_Div">
+            <img src="/images/logo4.png" id="logo_Image" height="100%">
+        </div>
+        <div id="user_Input">
+            <div id="help_Vertical">
+                <div id="message_Div" data-toggle="modal" data-target="#myModal">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%" />
+                    <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
+                </div>
+                <div>
+                    &nbsp;
+                    <strong style="cursor:pointer">
+                        <%= title %>
+                    </strong>
+                </div>
+                <div>
+                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="article_div">
+        <div class="user_div">
+            <h3 style="margin-left: auto;margin-right: auto;padding-left: 8px;color: rgb(255, 255, 255);">
+                한성진 교수님
+            </h3>
+        </div>
+
+        <div class="divider_h_o1">
+            <div class="divider_h_i1"></div>
+        </div>
+
+        <div class="container-fluid curtain">
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="job">
+                <label for="firstName" class="col-sm-12 control-label">전공</label>
+                <input type="text" id="score" value="컴퓨터공학" readonly class="form-control">
+            </div>
+
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <label for="firstName" class="col-sm-12 control-label">이메일</label>
+                <input type="text" id="score" value="gkstjdwls11@naver.com" readonly class="form-control">
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label for="firstName" class="col-sm-6 control-label">소개글</label>
+                    <textarea class="form-control col-sm-12" rows="10" readonly>dwqdqdgegw efw fe</textarea>
+                </div>
+            </div>
+
+            <div class="form-group" id="join_Button">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <button type="button" class="btn btn-danger btn-block" id='reform'>수정하기</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal dialogBack" id="myModal">
+        <div class="modal-dialog" modal-lg>
+            <div class="modal-content dialogAnim">
+                <!-- Modal Header -->
+                <div class="modal-header modal_header_styler">
+                    <h4 class="modal-title" style="color: white">Message</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table dlg_table">
+                        <thead>
+                            <tr>
+                                <th>보낸사람</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                                <th>읽음</th>
+                            </tr>
+                        </thead>
+                        <tbody id='msg_list'>
+                            <!-- msg list show -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer modal_footer_styler">
+                    <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- msg detail show -->
+    <div id='msg_detail'></div>
+
+
+
+
+    <script>
+        $('input').css('background', 'none').css('border', 'none').css('color', 'white');
+        $('textarea').css('background', 'none').css('border', 'none').css('color', 'white');
+        $('#reform').click(function () {
+             
+            $(this).hide(500);
+            $('.two').show(500);
+            $('input').css('background', 'white').css('border', 'none').css('color', 'black');
+            $('textarea').css('background', 'white').css('border', 'none').css('color', 'black');
+            $('input').removeAttr("readonly");
+            $('textarea').removeAttr("readonly");
+        })
+
+        function newMsgCheck() {
+            var blink = document.getElementById("message_Update");
+            blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
+        }
+
+        $.get('/msg/msgList', function (data) {
+            $('#msg_list').html(data);
+        });
+
+        $.get('/msg/msgDetail', function (data) {
+            $('#msg_detail').html(data);
+        });
+    </script>
+
+</body>
+
+</html>
