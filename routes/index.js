@@ -38,24 +38,28 @@ router.get('/main', function(req, res) {
 });
 
 router.get('/mainP', function(req, res) {
-  var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
+  var sql1 = 'select * from `msg` where `recv_name`=? and `check`=0;';
   if (req.session.authId) {
-  conn.query(sql, [req.session.authId], function(error, results){
+  conn.query(sql1, [req.session.authId], function(error, results){
     if(error){
       console.log(error);
     }
     else{
-      res.render('mainP', {
-        user : req.session.authId,
-        // name : req.session.name,
-        introduce : req.session.introduce,
-        major : req.session.major,
-        title:'Sejong Spec UP',
-        new_msg: results[0],
-        email : req.session.email,
-        name : req.session.name,
-      });
-
+      if(req.session.authId){
+        conn.query('select * from ssu_userP where userP_id =?',[req.session.authId],function(err,result){
+          if(err){
+            throw err;
+          }else{
+            res.render('mainP', {
+            result : result,
+            user : req.session.authId,
+            title:'myPage',
+            new_msg: results[0],
+              });
+            
+          }
+        })
+      }
     }
   });
   }
@@ -66,7 +70,6 @@ router.get('/mainP', function(req, res) {
     });
 }
 });
-
 
 
 
@@ -532,7 +535,25 @@ router.post('/regoApply',function(req,res,next){//접수 버튼 클릭 시 ajax 
   });//query
 });//router post
 
+router.post('/regoApplyP',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var userP_id = req.session.authId;
+  var major = req.body.major;
+  var email = req.body.email;
+  var introduce = req.body.introduce;
 
+  var sql = 'update ssu_userP set major =?, email = ?, introduce = ? where userP_id = ?';
+
+  conn.query(sql,[major,email,introduce,userP_id],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
 
 
 
