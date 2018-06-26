@@ -250,6 +250,7 @@ router.get('/userDetail/:id', function(req, res) {
   });
 
 });
+
 router.get('/specCompare', function(req, res) {
   var sql = 'select';
   var gradeSql = ' round(avg(`grade`), 2) as gradeAvg'; sql += gradeSql;
@@ -274,6 +275,12 @@ router.get('/specCompare', function(req, res) {
   var toeiclow5 = 'select count(*) as cnt_toeic from ssu_user where toeic > 850 and toeic <= 900';
   var toeiclow6 = 'select count(*) as cnt_toeic from ssu_user where toeic > 900 and toeic <= 950';
   var toeiclow7 = 'select count(*) as cnt_toeic from ssu_user where toeic > 950';
+  var tosslow1 = 'select count(*) as cnt_toss from ssu_user where toss_num = -1';
+  var tosslow4 = 'select count(*) as cnt_toss from ssu_user where toss_num = 4';
+  var tosslow5 = 'select count(*) as cnt_toss from ssu_user where toss_num = 5';
+  var tosslow6 = 'select count(*) as cnt_toss from ssu_user where toss_num = 6';
+  var tosslow7 = 'select count(*) as cnt_toss from ssu_user where toss_num = 7';
+  var tosslow8 = 'select count(*) as cnt_toss from ssu_user where toss_num = 8';
   conn.query(sql,function(error, results){
     if(error) { console.log(error); }
         else {
@@ -316,29 +323,77 @@ router.get('/specCompare', function(req, res) {
                                                     conn.query(toeiclow6, function(error,result66){
                                                       if(error){}
                                                       else{
-                                                        console.log(result5);
-                                                        console.log(result11);
-                                                        console.log(result22);
-                                                        console.log(result33);
-                                                        console.log(result44);
-                                                        console.log(result55);
-                                                        res.render('specCompare', {
-                                                          user : req.session.authId,
-                                                          title:'직군 스펙 비교',
-                                                          jobPart: req.session.job_Part,
-                                                          avg: results[0],
-                                                          gradelow1 : result1[0].cnt,
-                                                          gradelow2 : result2[0].cnt,
-                                                          gradelow3 : result3[0].cnt,
-                                                          gradelow4 : result4[0].cnt,
-                                                          gradelow5 : result5[0].cnt,
-                                                          toeiclow1 : result11[0].cnt_toeic,
-                                                          toeiclow2 : result22[0].cnt_toeic,
-                                                          toeiclow3 : result33[0].cnt_toeic,
-                                                          toeiclow4 : result44[0].cnt_toeic,
-                                                          toeiclow5 : result55[0].cnt_toeic,
-                                                          toeiclow6 : result66[0].cnt_toeic,
-                                                        });
+                                                        conn.query(tosslow1, function(error,result111){
+                                                          if(error){}
+                                                          else {
+                                                            {
+                                                              conn.query(tosslow4, function(error,result444){
+                                                                if(error){}
+                                                                else {
+                                                                  {
+                                                                    conn.query(tosslow5, function(error,result555){
+                                                                      if(error){}
+                                                                      else {
+                                                                        {
+                                                                          conn.query(tosslow6, function(error,result666){
+                                                                            if(error){}
+                                                                            else {
+                                                                              {
+                                                                                conn.query(tosslow7, function(error,result777){
+                                                                                  if(error){}
+                                                                                  else {
+                                                                                    {
+                                                                                      conn.query(tosslow8, function(error,result888){
+                                                                                        if(error){}
+                                                                                        else {
+                                                                                          {
+                                                                                            console.log(result5);
+                                                                                            console.log(result11);
+                                                                                            console.log(result22);
+                                                                                            console.log(result33);
+                                                                                            console.log(result44);
+                                                                                            console.log(result55);
+                                                                                            res.render('specCompare', {
+                                                                                              user : req.session.authId,
+                                                                                              title:'직군 스펙 비교',
+                                                                                              jobPart: req.session.job_Part,
+                                                                                              avg: results[0],
+                                                                                              gradelow1 : result1[0].cnt,
+                                                                                              gradelow2 : result2[0].cnt,
+                                                                                              gradelow3 : result3[0].cnt,
+                                                                                              gradelow4 : result4[0].cnt,
+                                                                                              gradelow5 : result5[0].cnt,
+                                                                                              toeiclow1 : result11[0].cnt_toeic,
+                                                                                              toeiclow2 : result22[0].cnt_toeic,
+                                                                                              toeiclow3 : result33[0].cnt_toeic,
+                                                                                              toeiclow4 : result44[0].cnt_toeic,
+                                                                                              toeiclow5 : result55[0].cnt_toeic,
+                                                                                              toeiclow6 : result66[0].cnt_toeic,
+                                                                                              tosslow1 : result111[0].cnt_toss,
+                                                                                              tosslow4 : result444[0].cnt_toss,
+                                                                                              tosslow5 : result555[0].cnt_toss,
+                                                                                              tosslow6 : result666[0].cnt_toss,
+                                                                                              tosslow7 : result777[0].cnt_toss,
+                                                                                              tosslow8 : result888[0].cnt_toss,
+                                                                                            });
+                                                                                          }
+                                                                                        }
+                                                                                      })
+                                                                                    }
+                                                                                  }
+                                                                                })
+                                                                              }
+                                                                            }
+                                                                          })
+                                                                        }
+                                                                      }
+                                                                    })
+                                                                  }
+                                                                }
+                                                              })
+                                                            }
+                                                          }
+                                                        })
                                                       }
                                                     })
                                                   }
