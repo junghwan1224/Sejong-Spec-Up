@@ -36,32 +36,32 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 col-sm-4 col-lg-2">
+            <div class="col-xs-4_s col-sm-4 col-lg-2">
                 <div class="major_link" onclick="listTest()">
                     <span>컴퓨터공학과</span>
                 </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-lg-2">
+            <div class="col-xs-4_s col-sm-4 col-lg-2">
                 <div class="major_link">
                     <span>소프트웨어학과</span>
                 </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-lg-2">
+            <div class="col-xs-4_s col-sm-4 col-lg-2">
                 <div class="major_link">
                     <span>정보보호학과</span>
                 </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-lg-2">
+            <div class="col-xs-4_s col-sm-4 col-lg-2">
                 <div class="major_link">
                     <span>데이터사이언스학과</span>
                 </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-lg-2">
+            <div class="col-xs-4_s col-sm-4 col-lg-2">
                 <div class="major_link">
                     <span>지능기전공학부</span>
                 </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-lg-2">
+            <div class="col-xs-4_s col-sm-4 col-lg-2">
                 <div class="major_link">
                     <span>창의소프트학부</span>
                 </div>
@@ -120,6 +120,39 @@
 
     <!-- msg detail show -->
     <div id='msg_detail'></div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="toProf">
+        <div class="modal-dialog" modal-lg>
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: brown">
+                    <h4 class="modal-title" style="color: white">교수님께 메시지 보내기</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>보낸사람</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                                <th>읽음</th>
+                            </tr>
+                        </thead>
+                        <tbody id='msg_list'>
+                            <!-- msg list show -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <script src="/javascripts/pflist.js"></script>
 </body>
