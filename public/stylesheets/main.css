@@ -16,6 +16,9 @@ body,html{
     height: 20%;
     background-color:brown;
 }
+#logo_Div{
+    height: 100%;
+}
 #logo_Image{
     margin-left: 3%;
     cursor: pointer;

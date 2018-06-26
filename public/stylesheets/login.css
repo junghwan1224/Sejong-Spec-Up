@@ -19,6 +19,9 @@ html{
     text-align: center;
     display: table;
   }
+  #logo_Div{
+    height: 100%;
+}
   #vertical_Helper{
     width: 100%;
     height: 100%;
