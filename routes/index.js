@@ -8,6 +8,7 @@ var conn = mysql.createConnection(dbconfig);
 router.get('/', function(req, res) {
   res.render('login', { title: '로그인 - Sejong Spec UP' });
 });
+
 router.get('/main', function(req, res) {
   var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
   if (req.session.authId) {
@@ -32,6 +33,10 @@ router.get('/main', function(req, res) {
     });
 }
 });
+
+
+
+
 router.get('/join', function(req, res) {
   res.render('join', { title: '가입 - Sejong Spec UP' });
 });
