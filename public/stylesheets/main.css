@@ -16,6 +16,9 @@ body,html{
     height: 20%;
     background-color:brown;
 }
+#user_Input img{
+    height: 32px;
+}
 #logo_Div{
     height: 100%;
 }
