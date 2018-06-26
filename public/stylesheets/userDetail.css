@@ -109,7 +109,9 @@ table{
     font-size: 24px;
     justify-content: center;
 }
-
+#logo_Div{
+    height: 100%;
+}
 .tile_value {
     color: #dbdbdb;
     font-size: 22px;
