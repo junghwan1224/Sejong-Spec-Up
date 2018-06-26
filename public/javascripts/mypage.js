@@ -67,16 +67,6 @@ $('#reform_Cancel_Button_Table').click(function () {
     $('.two_Button_Table_Reform').hide('slow');
     $('.upload_Two_Button').show('slow');
 })
-// setInterval(function () {
-//     var blink = document.getElementById("message_Update");
-//     blink.style.visibility = blink.style.visibility == "" ? "hidden" : ""
-// }, 500);
-$('#message_Update').click(function(){
-    // $(this).css('display','none');
-    // alert('메세지 확인');
-    // $('#message').css('display','block');
-})
-
 
 function newMsgCheck(){
   var blink = document.getElementById("message_Update");
@@ -90,11 +80,6 @@ $.get('/msg/msgList', function(data){
 $.get('/msg/msgDetail', function(data){
   $('#msg_detail').html(data);
 });
-
-// $('#msgListCloseBtn').click(function(){
-//   clearInterval(newMsgCheck);
-//   location.reload();
-// });
 
 
 $('#logo_Image').click(function(){
@@ -133,37 +118,151 @@ $('#upload_Button_DB').click(function(){
 })
 
 //수정
+$('#reform_Button_Table').click(function(){
+  var delete_result = document.getElementById('update_Result').value;
+  var delete_date = document.getElementById('update_Date').value;
+  var delete_content = document.getElementById('update_Content').value;
 
-$('#reform_Button_DB').click(function(){
-  var result = document.getElementById('update_Result').value;
-  var date = document.getElementById('update_Date').value;
-  var content = document.getElementById('update_Content').value;
+  $('#reform_Button_DB').click(function(){
+    var result = document.getElementById('update_Result').value;
+    var date = document.getElementById('update_Date').value;
+    var content = document.getElementById('update_Content').value;
 
-  var data = {
-    'result' : result,
-    'date' : date,
-    'content' : content
-  };
-  console.log(data);
+    var data = {
+      'result' : result,
+      'date' : date,
+      'content' : content
+    };
 
-  $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
-        type:'POST',
-        url:'/regoContent',
-        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-        cache:false,
-        dataType:'json',
-        data:data,
-        success:function(result){
-          if(result['result']=='success'){
-            alert('수정되었습니다');
-            $(window).attr('location','/mypage');
-          }//result if
-        },
-        error:function(error){
-          console.log('erer');
-        }
+    $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+          type:'POST',
+          url:'/regoContent',
+          contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+          cache:false,
+          dataType:'json',
+          data:data,
+          success:function(result){
+            if(result['result']=='success'){
+
+              var delete_data = {
+                'result' : delete_result,
+                'date' : delete_date,
+                'content' : delete_content
+              };
+
+              $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+                    type:'POST',
+                    url:'/delregoContent',
+                    contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                    cache:false,
+                    dataType:'json',
+                    data:delete_data,
+                    success:function(result){
+                      if(result['result']=='success'){
+                        alert('수정되었습니다');
+                        $(window).attr('location','/mypage');
+                      }//result if
+                    },
+                    error:function(error){
+                      console.log('erer');
+                    }
+              });
+
+              console.log("successed");
+            }//result if
+          },
+          error:function(error){
+            console.log('erer');
+          }
+    });
   });
-})
+
+});
+
+///스펙수정
+
+  $('#ok_Button').click(function(){
+    var score = parseFloat($('#score1').val());
+    console.log(score);
+    var toeic = $('#toeic1').val();
+    var test = document.getElementsByClassName('b');
+    var toss = test[0].selectedIndex;
+    var toss_num;
+      if(toss == 0){
+        toss_num = -1;
+      }else if(toss == 1){
+        toss_num = 4;
+      }else if(toss == 2){
+        toss_num = 5;
+      }else if(toss == 3){
+        toss_num = 6;
+      }else if(toss == 4){
+        toss_num = 7;
+      }else if(toss == 5){
+        toss_num = 8;
+      }
+    var test = document.getElementsByClassName('c');
+    var opic = test[0].selectedIndex;
+    var opic_num;
+      if(opic == 0){
+        opic_num = -1;
+      }else if(opic == 1){
+        opic_num = 1;
+      }else if(opic == 2){
+        opic_num = 2;
+      }else if(opic == 3){
+        opic_num = 3;
+      }else if(opic == 4){
+        opic_num = 4;
+      }else if(opic == 5){
+        opic_num = 5;
+      }else if(opic == 6){
+        opic_num = 6;
+      }
+
+    var volunteer = $('#volunteer1 option:selected').val();//봉사활동
+    console.log(volunteer);
+    var intern = $('#intern1 option:selected').val();//인턴
+    var competition = $('#Competition1 option:selected').val();//공모전
+    var aboard = $('#aboard1 option:selected').val();;//int봉사활동
+    console.log(aboard);
+    var certificate = $('#certificate1 option:selected').val();//자격증
+    var job_Part = $('#job_Part option:selected').val();//직군
+    console.log(job_Part);
+    var data = {
+      'score' : score,
+      'toeic' : toeic,
+      'toss_num' : toss_num,
+      'opic_num' : opic_num,
+      'volunteer' : volunteer,
+      'intern' : intern,
+      'competition' : competition,
+      'aboard' : aboard,
+      'certificate' : certificate,
+      'job_Part' : job_Part
+    };
+    console.log(data);
+
+
+    $.ajax({ // ajax 통신으로 지원자 입력한 정보를 서버에 보낸다.
+          type:'POST',
+          url:'/regoApply',
+          contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+          cache:false,
+          dataType:'json',
+          data:data,
+          success:function(result){
+            if(result['result']=='success'){
+              alert('수정되었습니다.');
+              $(window).attr('location','/mypage');
+            }//result if
+          },
+          error:function(error){
+            console.log('erer');
+          }
+    });
+});
+
 
 
 $('#my_spec').click(function(){
@@ -198,25 +297,22 @@ $('#my_spec').click(function(){
   document.getElementById('score_toss').value = a;
   var b = document.getElementById('score_opic').value;
   if(b == 1){
-    b = 'NL';
+    b = 'AL';
   }else if(b == 2)
   {
-    b = 'NM';
+    b = 'IH';
   }else if(b == 3)
   {
-    b = 'NH';
+    b = 'IM3';
   }else if(b == 4)
   {
-    b = 'IL';
+    b = 'IM2';
   }else if(b == 5)
   {
-    b = 'IM';
+    b = 'IM1';
   }else if(b == 6)
   {
-    b = 'IH';
-  }else if(b == 7)
-  {
-    b = 'AL';
+    b = 'IL';
   }else if(b == -1)
   {
     b = '미응시';

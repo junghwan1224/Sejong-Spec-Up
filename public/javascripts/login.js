@@ -4,7 +4,7 @@ $(document).ready(function(){
     var password = $('#login_password').val();
 
     if(id == '' || password == ''){
-        alert('정보를 입력해주세요');
+        alert('회원 정보를 입력해주세요!');
           location.reload();//지원 완료 했으면 페이지 새로고침
       }
     else{

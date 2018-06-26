@@ -6,8 +6,12 @@ var conn = mysql.createConnection(dbconfig);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('login', { title: 'loginPage' });
+  res.render('login', { title: '로그인 - Sejong Spec UP' });
 });
+router.get('/loginP', function(req, res) {
+  res.render('loginP', { title: '로그인 - Sejong Spec UP' });
+});
+
 router.get('/main', function(req, res) {
   var sql = 'select * from `msg` where `recv_name`=? and `check`=0;';
   if (req.session.authId) {
@@ -19,7 +23,7 @@ router.get('/main', function(req, res) {
       console.log(results);
       res.render('main', {
         user : req.session.authId,
-        title:'mainPage',
+        title:'Sejong Spec UP',
         new_msg: results[0],
       });
     }
@@ -28,13 +32,38 @@ router.get('/main', function(req, res) {
   else {
     res.render('main', {
       user: undefined,
-      title:'mainPage'
+      title:'Sejong Spec UP'
     });
 }
 });
+
+
+
+
 router.get('/join', function(req, res) {
-  res.render('join', { title: 'joinPage' });
+  res.render('join', { title: '가입 - Sejong Spec UP' });
 });
+router.get('/joinP', function(req, res) {
+  res.render('joinP', { title: '가입 - Sejong Spec UP' });
+});
+router.get('/mainP', function(req, res) {
+  res.render('mainP', { title: '로그인 - Sejong Spec UP' });
+});
+
+router.get('/pflist', function(req, res) {
+  var sql = 'select * from `ssu_userP`;';
+  conn.query(sql, function(error, results) {
+    if(error) { console.log(error); }
+    else {
+      res.render('pslist', {
+        title: '로그인 - Sejong Spec UP',
+        user : req.session.authId,
+        professors: results
+      });
+    }
+  });
+});
+
 
 
 
@@ -88,14 +117,14 @@ router.get('/userSearch', function(req, res) {
   if (req.session.authId) {
   res.render('userSearch', {
     user : req.session.authId,
-    title:'userSearch',
+    title:'사용자 검색',
     jobPart:req.session.job_Part,
   });
   }
   else {
     res.render('userSearch', {
       user: undefined,
-      title:'userSearch'
+      title:'사용자 검색'
     });
   }
 });
@@ -203,22 +232,28 @@ router.get('/specCompare', function(req, res) {
   var certificateSql = ', round(avg(`certificate`), 1) as certificateAvg'; sql += certificateSql;
   var activitySql = ', round(avg(`activity`), 1) as activityAvg'; sql += activitySql;
   var fromSql = ' from `ssu_user`;'; sql += fromSql;
+
   conn.query(sql, function(error, results){
     if(error) { console.log(error); }
-    else {
-      console.log(results[0]);
-      if (req.session.authId) {
-        res.render('specCompare', {
-          user : req.session.authId,
-          title:'specCompare',
-          avg: results[0]
-        });
-      }
-      else {
-        res.render('login', {
-          title:'loginPage'
-        });
-      }
+
+        else {
+          console.log(results[0]);
+          if (req.session.authId) {
+            res.render('specCompare', {
+              user : req.session.authId,
+              title:'직군 스펙 비교',
+              jobPart: req.session.job_Part,
+              avg: results[0],
+            });
+          }
+          else {
+            res.render('login', {
+              title:'loginPage'
+            });
+          }
+        // }
+      // });
+
     }
   });
 });
@@ -228,7 +263,7 @@ router.get('/user', function(req, res) {
   conn.query(sql,function(error,results,fields){
     if(error){
       console.log(error);
-      console.log('faield');
+      console.log('failed');
     }else{
       res.render('index', {
         title: 'userData',
@@ -269,6 +304,61 @@ router.post('/goApply',function(req,res,next){//접수 버튼 클릭 시 ajax �
   });//query
 });//router post
 
+router.post('/goApplyP',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var userP_id = req.body.userP_id;
+  var name = req.body.name;
+  var password = req.body.password;
+  var major = req.body.major;
+  var email = req.body.email;
+  var introduce = req.body.introduce;
+
+
+  var sql = 'insert into `ssu_userP` (`userP_id`,`name`,`password`,`major`,`email`,`introduce`) values (?,?,?,?,?,?);';
+
+  conn.query(sql,[userP_id,name,password,major,email,introduce],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});
+
+//마이페이지 수정
+
+router.post('/regoApply',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var user_id = req.session.authId;
+  var score = req.body.score;
+  var toeic = req.body.toeic;
+  var toss_num = req.body.toss_num;
+  var opic_num = req.body.opic_num;
+  var volunteer = req.body.volunteer;
+  var intern = req.body.intern;
+  var competition = req.body.competition;
+  var aboard = req.body.aboard;
+  var certificate = req.body.certificate;
+  var job_Part = req.body.job_Part;
+
+  var sql = 'update ssu_user set grade = ?, toeic = ?, toss_num = ?, opic_num = ?, volunteer = ?, intern = ?, competition = ?, certificate = ?, activity =?, want_job = ? where user_id = ?';
+
+  conn.query(sql,[score,toeic,toss_num,opic_num,volunteer,intern,competition,certificate,aboard,job_Part,user_id],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
+
+
+
 
 router.post('/goContent',function(req,res,next){
   var user_id = req.session.authId;
@@ -292,6 +382,51 @@ router.post('/goContent',function(req,res,next){
 
 
 //수정
+
+router.post('/regoContent',function(req,res,next){
+  var user_id = req.session.authId;
+  var result = req.body.result;
+  var date = req.body.date;
+  var content = req.body.content;
+
+  var sql = 'insert into `ssu_content` (`user_id`,`result`,`date`,`content`) values (?,?,?,?);';
+
+  conn.query(sql,[user_id,result,date,content],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
+
+router.post('/delregoContent',function(req,res,next){
+  var user_id = req.session.authId;
+  var result = req.body.result;
+  var date = req.body.date;
+  var content = req.body.content;
+
+  var sql = 'delete from `ssu_content` where `user_id`=? and `result` = ? and `date` = ? and `content` = ?';
+
+  conn.query(sql,[user_id,result,date,content],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
+
+
+
 
 
 router.post('/gologin',function(req,res,next){
@@ -321,6 +456,33 @@ router.post('/gologin',function(req,res,next){
     }
   });
 });
+router.post('/gologinP',function(req,res,next){
+  var id = req.body.id;
+  var password = req.body.password;
+
+  var sql = "select * from ssu_userP where userP_id=?";
+  conn.query(sql,[id], function(error,results,fields){
+    if(error){
+      console.log(id);
+
+    } else {
+      var user = results[0];
+      if(!user){
+        console.log('id fail');
+        res.send({result:'error'});
+      } else if(password == user.password){
+        req.session.authId = id;
+        req.session.major = user.major;
+        req.session.save(function() {
+          res.send({result:'success'});
+        });
+      } else {
+        res.send({result:'error'});
+      }
+    }
+  });
+});
+
 router.get('/logout',function(req,res){
   delete req.session.authId;
   delete req.session.major;
