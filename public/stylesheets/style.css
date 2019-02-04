@@ -4,6 +4,10 @@ body {
 }
 
 a {
+<<<<<<< HEAD
   color:blue;
   
+=======
+  color: #00B7FF;
+>>>>>>> parent of e6d2516... test
 }
