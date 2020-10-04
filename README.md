@@ -1,4 +1,4 @@
-### Sejong Spec Up (2018년 하계 교내 해커톤 대회 개발 작품)
+### Sejong Spec Up (2018년 하계 교내 해커톤 대회 개발 작)
 
 
 
@@ -14,6 +14,7 @@
 - Bootstrap, Chart.js
 - ExpressJS, MySQL
 - AWS EC2
+- Android WebView
 
 
 
